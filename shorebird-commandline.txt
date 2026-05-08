@@ -1,0 +1,69 @@
+Android:
+
+⦿ Create Release
+
+APK:
+    shorebird release \
+    --flutter-version 3.38.7 \
+    --platforms=android \
+    --artifact=apk  \
+    --dart-define-from-file=.env/<flavor>.json \
+    --flavor=<flavor> \
+    --target=lib/main/main_<flavor>.dart
+
+AAB:
+    shorebird release \
+    --flutter-version 3.38.7 \
+    --platforms=android \
+    --artifact=aab  \
+    --dart-define-from-file=.env/<flavor>.json \
+    --flavor=<flavor> \
+    --target=lib/main/main_<flavor>.dart
+
+⦿ Create Preview
+    shorebird preview \
+    --release-version latest
+
+⦿ Create Patch
+    shorebird patch \
+    --release-version latest \
+    --platforms=android \
+    --dart-define-from-file=.env/<flavor>.json \
+    --flavor=<flavor> \
+    --target=lib/main/main_<flavor>.dart
+
+
+iOS:
+
+⦿ Create Release
+
+IPA:
+    shorebird release \
+    --flutter-version 3.38.7 \
+    --platforms=ios \
+    --dart-define-from-file=.env/<flavor>.json \
+    --flavor=<flavor> \
+    --target=lib/main/main_<flavor>.dart
+// Set of export options plist files:
+// --export-options-plist=.env/ad-hoc-export-options.plist
+// --export-options-plist=.env/app-store-connect-export-options.plist
+
+⦿ Create Preview
+    shorebird preview \
+    --release-version latest
+
+⦿ Create Patch
+    shorebird patch \
+    --release-version latest \
+    --platforms=ios \
+    --dart-define-from-file=.env/<flavor>.json \
+    --flavor=<flavor> \
+    --target=lib/main/main_<flavor>.dart
+// Set of export options plist files:
+// --export-options-plist=.env/ad-hoc-export-options.plist
+// --export-options-plist=.env/app-store-connect-export-options.plist
+
+
+⦿ ExportOptions for iOS
+--export-options-plist=.env/ad-hoc-export-options.plist
+--export-options-plist=.env/app-store-connect-export-options.plist

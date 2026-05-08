@@ -1,0 +1,6 @@
+{
+    "appVarName": "Production",
+    "apiBaseURL": "https://agent.dotsin.ai",
+    "middleware": "api",
+    "apiVersion": "v1"
+}

@@ -1,0 +1,166 @@
+{
+  "project_info": {
+    "project_number": "799296776426",
+    "project_id": "assei-apps-development",
+    "storage_bucket": "assei-apps-development.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:799296776426:android:985e89756615be1fc88f93",
+        "android_client_info": {
+          "package_name": "com.assessli.connector.development"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "799296776426-t8a5gi6jjg1rnvfr80hn3dm1nbuohvk1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxRHR8DZhqYJB8ipjxW_dImXjZk7tlUa4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "799296776426-sjuvg4ldumek076v0fv1ino919s2e8fd.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "799296776426-20v1ojc8k5f5fjv4vffbb1mf28jfguoh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.assessli.horizon.development"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:799296776426:android:df9a34e0319aa453c88f93",
+        "android_client_info": {
+          "package_name": "com.assessli.dotsin.development"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "799296776426-c5d0bp3jdemtg5vpmqlad8urp0r31dn8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.assessli.dotsin.development",
+            "certificate_hash": "a83b5b221ff79723a1b6c86d359c7d849de785dc"
+          }
+        },
+        {
+          "client_id": "799296776426-r39i3ga6vgh28tsghnr39p9op7rk29mi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.assessli.dotsin.development",
+            "certificate_hash": "cb9468bf47bb3237d813d6d73507e5d56d3ae470"
+          }
+        },
+        {
+          "client_id": "799296776426-s6vefef89jfhj3pnqsfrd2s06st8sl1e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.assessli.dotsin.development",
+            "certificate_hash": "c34ce853e30262f33d81dcca1b740e7f1f76f9ae"
+          }
+        },
+        {
+          "client_id": "799296776426-t8a5gi6jjg1rnvfr80hn3dm1nbuohvk1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxRHR8DZhqYJB8ipjxW_dImXjZk7tlUa4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "799296776426-sjuvg4ldumek076v0fv1ino919s2e8fd.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "799296776426-20v1ojc8k5f5fjv4vffbb1mf28jfguoh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.assessli.horizon.development"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:799296776426:android:24823856e8f90b69c88f93",
+        "android_client_info": {
+          "package_name": "com.assessli.horizon.development"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "799296776426-9i8hi9icc3ao1qal2mmpdra2rebdk1tk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.assessli.horizon.development",
+            "certificate_hash": "a83b5b221ff79723a1b6c86d359c7d849de785dc"
+          }
+        },
+        {
+          "client_id": "799296776426-er8quoci5kdp4jmmphvehc02t4pnal6n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.assessli.horizon.development",
+            "certificate_hash": "cb9468bf47bb3237d813d6d73507e5d56d3ae470"
+          }
+        },
+        {
+          "client_id": "799296776426-nuk18jtjggah7d1n7ts8fd8d8gdh7ilo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.assessli.horizon.development",
+            "certificate_hash": "94a81beda107ba4d8bdf953f0765bea127440e94"
+          }
+        },
+        {
+          "client_id": "799296776426-t8a5gi6jjg1rnvfr80hn3dm1nbuohvk1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxRHR8DZhqYJB8ipjxW_dImXjZk7tlUa4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "799296776426-sjuvg4ldumek076v0fv1ino919s2e8fd.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "799296776426-20v1ojc8k5f5fjv4vffbb1mf28jfguoh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.assessli.horizon.development"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

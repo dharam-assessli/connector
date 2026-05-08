@@ -1,0 +1,99 @@
+Android:
+
+⦿ Development - Run
+◦ Debug Mode:   flutter run --debug --dart-define-from-file=.env/development.json --flavor=development --target=lib/main/main_development.dart
+◦ Profile Mode: flutter run --profile --dart-define-from-file=.env/development.json --flavor=development --target=lib/main/main_development.dart
+◦ Release Mode: flutter run --release --dart-define-from-file=.env/development.json --flavor=development --target=lib/main/main_development.dart
+
+⦿ Staging - Run
+◦ Debug Mode:   flutter run --debug --dart-define-from-file=.env/staging.json --flavor=staging --target=lib/main/main_staging.dart
+◦ Profile Mode: flutter run --profile --dart-define-from-file=.env/staging.json --flavor=staging --target=lib/main/main_staging.dart
+◦ Release Mode: flutter run --release --dart-define-from-file=.env/staging.json --flavor=staging --target=lib/main/main_staging.dart
+
+⦿ Production - Run
+◦ Debug Mode:   flutter run --debug --dart-define-from-file=.env/production.json --flavor=production --target=lib/main/main_production.dart
+◦ Profile Mode: flutter run --profile --dart-define-from-file=.env/production.json --flavor=production --target=lib/main/main_production.dart
+◦ Release Mode: flutter run --release --dart-define-from-file=.env/production.json --flavor=production --target=lib/main/main_production.dart
+
+⦿ Development - Build apk
+◦ Debug Mode:   flutter build apk --debug --dart-define-from-file=.env/development.json --flavor=development --target=lib/main/main_development.dart
+◦ Profile Mode: flutter build apk --profile --dart-define-from-file=.env/development.json --flavor=development --target=lib/main/main_development.dart
+◦ Release Mode: flutter build apk --release --dart-define-from-file=.env/development.json --flavor=development --target=lib/main/main_development.dart
+
+⦿ Staging - Build apk
+◦ Debug Mode:   flutter build apk --debug --dart-define-from-file=.env/staging.json --flavor=staging --target=lib/main/main_staging.dart
+◦ Profile Mode: flutter build apk --profile --dart-define-from-file=.env/staging.json --flavor=staging --target=lib/main/main_staging.dart
+◦ Release Mode: flutter build apk --release --dart-define-from-file=.env/staging.json --flavor=staging --target=lib/main/main_staging.dart
+
+⦿ Production - Build apk
+◦ Debug Mode:   flutter build apk --debug --dart-define-from-file=.env/production.json --flavor=production --target=lib/main/main_production.dart
+◦ Profile Mode: flutter build apk --profile --dart-define-from-file=.env/production.json --flavor=production --target=lib/main/main_production.dart
+◦ Release Mode: flutter build apk --release --dart-define-from-file=.env/production.json --flavor=production --target=lib/main/main_production.dart
+
+⦿ Development - Build appbundle
+◦ Debug Mode:   flutter build appbundle --debug --dart-define-from-file=.env/development.json --flavor=development --target=lib/main/main_development.dart
+◦ Profile Mode: flutter build appbundle --profile --dart-define-from-file=.env/development.json --flavor=development --target=lib/main/main_development.dart
+◦ Release Mode: flutter build appbundle --release --dart-define-from-file=.env/development.json --flavor=development --target=lib/main/main_development.dart
+
+⦿ Staging - Build appbundle
+◦ Debug Mode:   flutter build appbundle --debug --dart-define-from-file=.env/staging.json --flavor=staging --target=lib/main/main_staging.dart
+◦ Profile Mode: flutter build appbundle --profile --dart-define-from-file=.env/staging.json --flavor=staging --target=lib/main/main_staging.dart
+◦ Release Mode: flutter build appbundle --release --dart-define-from-file=.env/staging.json --flavor=staging --target=lib/main/main_staging.dart
+
+⦿ Production - Build appbundle
+◦ Debug Mode:   flutter build appbundle --debug --dart-define-from-file=.env/production.json --flavor=production --target=lib/main/main_production.dart
+◦ Profile Mode: flutter build appbundle --profile --dart-define-from-file=.env/production.json --flavor=production --target=lib/main/main_production.dart
+◦ Release Mode: flutter build appbundle --release --dart-define-from-file=.env/production.json --flavor=production --target=lib/main/main_production.dart
+
+
+iOS:
+
+⦿ Development - Run
+◦ Debug Mode:   flutter run --debug --dart-define-from-file=.env/development.json --flavor=development --target=lib/main/main_development.dart
+◦ Profile Mode: flutter run --profile --dart-define-from-file=.env/development.json --flavor=development --target=lib/main/main_development.dart
+◦ Release Mode: flutter run --release --dart-define-from-file=.env/development.json --flavor=development --target=lib/main/main_development.dart
+
+⦿ Staging - Run
+◦ Debug Mode:   flutter run --debug --dart-define-from-file=.env/staging.json --flavor=staging --target=lib/main/main_staging.dart
+◦ Profile Mode: flutter run --profile --dart-define-from-file=.env/staging.json --flavor=staging --target=lib/main/main_staging.dart
+◦ Release Mode: flutter run --release --dart-define-from-file=.env/staging.json --flavor=staging --target=lib/main/main_staging.dart
+
+⦿ Production - Run
+◦ Debug Mode:   flutter run --debug --dart-define-from-file=.env/production.json --flavor=production --target=lib/main/main_production.dart
+◦ Profile Mode: flutter run --profile --dart-define-from-file=.env/production.json --flavor=production --target=lib/main/main_production.dart
+◦ Release Mode: flutter run --release --dart-define-from-file=.env/production.json --flavor=production --target=lib/main/main_production.dart
+
+⦿ Development - Build ios
+◦ Debug Mode:   flutter build ios --debug --dart-define-from-file=.env/development.json --flavor=development --target=lib/main/main_development.dart
+◦ Profile Mode: flutter build ios --profile --dart-define-from-file=.env/development.json --flavor=development --target=lib/main/main_development.dart
+◦ Release Mode: flutter build ios --release --dart-define-from-file=.env/development.json --flavor=development --target=lib/main/main_development.dart
+
+⦿ Staging - Build ios
+◦ Debug Mode:   flutter build ios --debug --dart-define-from-file=.env/staging.json --flavor=staging --target=lib/main/main_staging.dart
+◦ Profile Mode: flutter build ios --profile --dart-define-from-file=.env/staging.json --flavor=staging --target=lib/main/main_staging.dart
+◦ Release Mode: flutter build ios --release --dart-define-from-file=.env/staging.json --flavor=staging --target=lib/main/main_staging.dart
+
+⦿ Production - Build ios
+◦ Debug Mode:   flutter build ios --debug --dart-define-from-file=.env/production.json --flavor=production --target=lib/main/main_production.dart
+◦ Profile Mode: flutter build ios --profile --dart-define-from-file=.env/production.json --flavor=production --target=lib/main/main_production.dart
+◦ Release Mode: flutter build ios --release --dart-define-from-file=.env/production.json --flavor=production --target=lib/main/main_production.dart
+
+⦿ Development - Build ipa
+◦ Debug Mode:   flutter build ipa --debug --dart-define-from-file=.env/development.json --flavor=development --target=lib/main/main_development.dart
+◦ Profile Mode: flutter build ipa --profile --dart-define-from-file=.env/development.json --flavor=development --target=lib/main/main_development.dart
+◦ Release Mode: flutter build ipa --release --dart-define-from-file=.env/development.json --flavor=development --target=lib/main/main_development.dart
+
+⦿ Staging - Build ipa
+◦ Debug Mode:   flutter build ipa --debug --dart-define-from-file=.env/staging.json --flavor=staging --target=lib/main/main_staging.dart
+◦ Profile Mode: flutter build ipa --profile --dart-define-from-file=.env/staging.json --flavor=staging --target=lib/main/main_staging.dart
+◦ Release Mode: flutter build ipa --release --dart-define-from-file=.env/staging.json --flavor=staging --target=lib/main/main_staging.dart
+
+⦿ Production - Build ipa
+◦ Debug Mode:   flutter build ipa --debug --dart-define-from-file=.env/production.json --flavor=production --target=lib/main/main_production.dart
+◦ Profile Mode: flutter build ipa --profile --dart-define-from-file=.env/production.json --flavor=production --target=lib/main/main_production.dart
+◦ Release Mode: flutter build ipa --release --dart-define-from-file=.env/production.json --flavor=production --target=lib/main/main_production.dart
+
+
+⦿ ExportOptions for iOS
+--export-options-plist=.env/ad-hoc-export-options.plist
+--export-options-plist=.env/app-store-connect-export-options.plist

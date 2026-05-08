@@ -1,0 +1,160 @@
+import "dart:io";
+
+import "package:connector/controllers/dashboard/tabs/tab_connector_controller.dart";
+import "package:connector/utils/languages_util.dart";
+import "package:connector/widgets/category_container.dart";
+import "package:font_awesome_flutter/font_awesome_flutter.dart";
+import "package:get/get.dart";
+import "package:horizon/widgets/containers/custom_container.dart";
+import "package:horizon/widgets/texts/custom_text.dart";
+import "package:material_ui/material_ui.dart";
+
+class TabConnectorScreen extends GetView<TabConnectorController> {
+  const TabConnectorScreen({super.key});
+
+  @override
+  Widget build(final BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        introductionWidget(context),
+        const SizedBox(height: 16),
+        Expanded(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: categoriesWidget(context),
+          ),
+        ),
+        const SizedBox(height: 16),
+        Align(child: infoText()),
+        const SizedBox(height: 16),
+        const SizedBox(height: kBottomNavigationBarHeight * 2.32),
+      ],
+    );
+  }
+
+  Widget introductionWidget(final BuildContext context) {
+    return CustomContainer(
+      margin: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          CustomText(
+            data: LanguagesUtil().connectorHeading,
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            maxLines: 10,
+            overflow: TextOverflow.ellipsis,
+          ),
+          const SizedBox(height: 16),
+          CustomText(
+            data: LanguagesUtil().connectorTopDescription,
+            style: const TextStyle(fontSize: 14),
+            maxLines: 10,
+            overflow: TextOverflow.ellipsis,
+          ),
+          const SizedBox(height: 16),
+          CustomText(
+            data: LanguagesUtil().connectorBtmDescription,
+            style: const TextStyle(fontSize: 12),
+            maxLines: 10,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget categoriesWidget(final BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Expanded(
+              child: CategoryContainer(
+                icon: const FaIcon(FontAwesomeIcons.mapLocationDot, size: 56.0),
+                heading: LanguagesUtil().location,
+                onItemTap: controller.onItemTapLocation,
+                onHelpTap: controller.onHelpTapLocation,
+                onSettingsTap: controller.onSettingsTapLocation,
+              ),
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: CategoryContainer(
+                icon: const FaIcon(FontAwesomeIcons.heartPulse, size: 56.0),
+                heading: LanguagesUtil().health,
+                onItemTap: controller.onItemTapHealth,
+                onHelpTap: controller.onHelpTapHealth,
+                onSettingsTap: controller.onSettingsTapTapHealth,
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 16),
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Expanded(
+              child: CategoryContainer(
+                icon: const FaIcon(FontAwesomeIcons.bell, size: 56.0),
+                heading: LanguagesUtil().notifications,
+                onItemTap: controller.onItemTapNotification,
+                onHelpTap: controller.onHelpTapNotification,
+                onSettingsTap: controller.onSettingsTapNotification,
+              ),
+            ),
+            if (Platform.isAndroid) const SizedBox(width: 16),
+            if (Platform.isAndroid)
+              Expanded(
+                child: CategoryContainer(
+                  icon: const FaIcon(FontAwesomeIcons.chartColumn, size: 56.0),
+                  heading: LanguagesUtil().screenTime,
+                  onItemTap: controller.onItemTapScreenTime,
+                  onHelpTap: controller.onHelpTapScreenTime,
+                  onSettingsTap: controller.onSettingsTapScreenTime,
+                ),
+              )
+            else
+              const Expanded(child: SizedBox()),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget infoText() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          const FaIcon(FontAwesomeIcons.circleInfo, size: 16.0),
+          const SizedBox(width: 8),
+          Flexible(
+            child: CustomText(
+              data: LanguagesUtil().reassurance,
+              style: const TextStyle(fontSize: 12),
+              maxLines: 10,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

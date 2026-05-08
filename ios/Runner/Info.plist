@@ -2,12 +2,19 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>BGTaskSchedulerPermittedIdentifiers</key>
+	<array>
+		<string>$(PRODUCT_BUNDLE_IDENTIFIER).ios.processing_task</string>
+		<string>$(PRODUCT_BUNDLE_IDENTIFIER).ios.periodic_task</string>
+	</array>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
+	<key>CFBundleAllowMixedLocalizations</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>My App</string>
+	<string>$(APP_DISPLAY_NAME)</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -15,21 +22,162 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>my_app</string>
+	<string>Dotsin Connector</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>$(REVERSED_CLIENT_ID)</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<true/>
+	<key>GIDClientID</key>
+	<string>$(GOOGLE_CLIENT_ID)</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>itms-apps</string>
+		<string>https</string>
+		<string>http</string>
+		<string>mailto</string>
+		<string>tel</string>
+		<string>telprompt</string>
+		<string>sms</string>
+		<string>file</string>
+		<string>geo</string>
+		<string>maps</string>
+		<string>comgooglemaps</string>
+		<string>comgooglemaps-x-callback</string>
+		<string>whatsapp</string>
+		<string>upi</string>
+		<string>fb</string>
+		<string>twitter</string>
+		<string>instagram</string>
+		<string>linkedin</string>
+		<string>youtube</string>
+		<string>x-apple-health</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSAllowsLocalNetworking</key>
+		<true/>
+	</dict>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Used to play and manage your Apple Music library directly within the app, giving you seamless access to your songs and playlists.</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Used to discover and connect to nearby devices, enabling seamless pairing and communication with compatible accessories.</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Used to discover and connect to nearby devices, enabling seamless pairing and communication with compatible accessories.</string>
+	<key>NSCalendarsFullAccessUsageDescription</key>
+	<string>Allows the app to read and write events to your calendar, helping you schedule tasks, set reminders, and sync important dates without leaving the app.</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Allows the app to read and write events to your calendar, helping you schedule tasks, set reminders, and sync important dates without leaving the app.</string>
+	<key>NSCalendarsWriteOnlyAccessUsageDescription</key>
+	<string>Allows the app to add events and reminders to your calendar so you can keep your schedule up to date without leaving the app.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Required to take photos, scan QR codes, and record videos directly within the app. Your camera is only activated when you initiate these actions.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>Used to help you quickly find and connect with people you know, auto-fill recipient details, and share content with your connections seamlessly.</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Used to securely authenticate you with Face ID so you can unlock the app and approve sensitive actions without entering a password.</string>
+	<key>NSHealthClinicalHealthRecordsShareUsageDescription</key>
+	<string>Used to read your clinical health records from Apple Health to give you a complete view of your wellness, lab results, medications, and conditions.</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>Used to read and sync your health and activity data with Apple Health, providing you with personalized insights and a complete wellness overview.</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>Used to write health and activity data to Apple Health so your records stay synchronized across the apps and devices you use.</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Used to discover and communicate with compatible devices on your local Wi-Fi network for seamless pairing and data exchange.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Used to deliver location-aware features both while you are using the app and in the background, including geofenced reminders and continuous activity tracking. Your location data is never shared without your consent.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Used to deliver location-aware features in the background, such as commute tracking, geofenced reminders, and region-specific content. Your location data is never shared without your consent.</string>
+	<key>NSLocationTemporaryUsageDescriptionDictionary</key>
+	<dict>
+		<key>PreciseLocationRequired</key>
+		<string>Precise location is required to deliver accurate, location-specific recommendations and mapping features.</string>
+	</dict>
+	<key>NSLocationUsageDescription</key>
+	<string>Used to deliver location-aware features such as nearby recommendations, accurate mapping, and region-specific content. Your location data is never shared without your consent.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Used to deliver location-aware features such as nearby recommendations, accurate mapping, and region-specific content while you are using the app.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Needed to record audio messages, enable voice commands, and support video calls. The microphone is only accessed during active recording sessions.</string>
+	<key>NSMotionUsageDescription</key>
+	<string>Accesses motion sensors and activity data to track your physical activity, detect movement patterns, and provide personalized health and fitness insights.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Allows the app to save photos and videos you create in the app to your device library.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Grants access to your photos, videos, and audio files so you can upload, share, and manage your media content directly from your device library.</string>
+	<key>NSPrivacyAccessedAPITypes</key>
+	<array>
+		<dict>
+			<key>NSPrivacyAccessedAPIType</key>
+			<string>NSPrivacyAccessedAPICategoryFileTimestamp</string>
+			<key>NSPrivacyAccessedAPITypeReasons</key>
+			<array>
+				<string>C617.1</string>
+			</array>
+		</dict>
+		<dict>
+			<key>NSPrivacyAccessedAPIType</key>
+			<string>NSPrivacyAccessedAPICategorySystemBootTime</string>
+			<key>NSPrivacyAccessedAPITypeReasons</key>
+			<array>
+				<string>35F9.1</string>
+			</array>
+		</dict>
+		<dict>
+			<key>NSPrivacyAccessedAPIType</key>
+			<string>NSPrivacyAccessedAPICategoryDiskSpace</string>
+			<key>NSPrivacyAccessedAPITypeReasons</key>
+			<array>
+				<string>E174.1</string>
+			</array>
+		</dict>
+		<dict>
+			<key>NSPrivacyAccessedAPIType</key>
+			<string>NSPrivacyAccessedAPICategoryUserDefaults</string>
+			<key>NSPrivacyAccessedAPITypeReasons</key>
+			<array>
+				<string>CA92.1</string>
+			</array>
+		</dict>
+	</array>
+	<key>NSRemindersFullAccessUsageDescription</key>
+	<string>Allows the app to read and write reminders so you can manage tasks, follow-ups, and time-based notes alongside your calendar events.</string>
+	<key>NSRemindersUsageDescription</key>
+	<string>Allows the app to read and write reminders so you can manage tasks, follow-ups, and time-based notes alongside your calendar events.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Used to convert your spoken input into text for voice commands, dictation, and accessibility features.</string>
+	<key>NSUserNotificationUsageDescription</key>
+	<string>Enables real-time alerts for messages, reminders, and important updates. You can customize notification preferences anytime in your device settings.</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>Allows the app to link your activity across other apps and websites for more relevant ads and analytics. You can opt out at any time without affecting core app functionality.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
-		<false/>
+		<true/>
 		<key>UISceneConfigurations</key>
 		<dict>
 			<key>UIWindowSceneSessionRoleApplication</key>
@@ -40,7 +188,7 @@
 					<key>UISceneConfigurationName</key>
 					<string>flutter</string>
 					<key>UISceneDelegateClassName</key>
-					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
+					<string>FlutterSceneDelegate</string>
 					<key>UISceneStoryboardFile</key>
 					<string>Main</string>
 				</dict>
@@ -49,22 +197,40 @@
 	</dict>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>processing</string>
+		<string>location</string>
+		<string>remote-notification</string>
+		<string>audio</string>
+		<string>bluetooth-central</string>
+		<string>bluetooth-peripheral</string>
+		<string>voip</string>
+		<string>external-accessory</string>
+	</array>
+	<key>UIDeviceFamily</key>
+	<array>
+		<integer>1</integer>
+		<integer>2</integer>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>UIRequiresFullScreen</key>
+	<false/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UISupportsDocumentBrowser</key>
+	<true/>
+	<key>io.flutter.embedded_views_preview</key>
+	<string>YES</string>
 </dict>
 </plist>

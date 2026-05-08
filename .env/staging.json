@@ -1,0 +1,6 @@
+{
+    "appVarName": "Staging",
+    "apiBaseURL": "https://agent.dotsin.ai",
+    "middleware": "api",
+    "apiVersion": "v1"
+}
