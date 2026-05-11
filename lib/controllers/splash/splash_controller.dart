@@ -1,5 +1,6 @@
 import "package:connector/utils/routes_utils.dart";
 import "package:get/get.dart";
+import "package:horizon/models/auth/auth.dart";
 import "package:horizon/observer/observer.dart";
 import "package:horizon/services/api_gateway.dart";
 import "package:horizon/services/jwt/auth_db_service.dart";
@@ -73,11 +74,20 @@ class SplashController extends GetxController with WidgetsBindingObserver {
 
     // Set the function that should be executed during pre-checks
     PreChecksService().function = () async {
-      final bool hasUser = AuthDBService().hasUser;
+      final User user = AuthDBService().user;
+      final bool hasUser = (user.id ?? "").isNotEmpty;
+      final bool isNewUser = user.isNewUser ?? false;
 
+      // Decide the route
+      final String route = !hasUser
+          ? RoutesUtils().signInScreen
+          : isNewUser
+          ? RoutesUtils().yourDetailsScreen
+          : RoutesUtils().dashboardScreen;
+
+      // Navigate to the route
       await NavigationService().pushNamedAndRemoveUntil(
-        hasUser ? RoutesUtils().dashboardScreen : RoutesUtils().signInScreen,
-        arguments: <String, dynamic>{},
+        route,
         circularTransition: true,
       );
     };

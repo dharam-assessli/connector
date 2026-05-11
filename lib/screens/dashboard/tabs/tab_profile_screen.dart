@@ -34,7 +34,7 @@ class TabProfileScreen extends GetView<TabProfileController> {
         ),
         const SizedBox(height: 16),
         CustomText(
-          data: controller.rxUser.value.displayName ?? "",
+          data: controller.rxUser.value.username ?? "",
           style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,

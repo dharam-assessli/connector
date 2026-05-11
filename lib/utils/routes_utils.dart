@@ -1,15 +1,19 @@
 import "package:connector/bindings/auth/sign_in_binding.dart";
+import "package:connector/bindings/auth/verify_otp_binding.dart";
 import "package:connector/bindings/dashboard/dashboard_binding.dart";
 import "package:connector/bindings/dashboard/tabs/tab_connector_binding.dart";
 import "package:connector/bindings/dashboard/tabs/tab_profile_binding.dart";
 import "package:connector/bindings/introduction/introduction_binding.dart";
+import "package:connector/bindings/onboarding/your_details_binding.dart";
 import "package:connector/bindings/splash/splash_binding.dart";
 import "package:connector/bindings/unknown_route/unknown_route_binding.dart";
 import "package:connector/screens/auth/sign_in_screen.dart";
+import "package:connector/screens/auth/verify_otp_screen.dart";
 import "package:connector/screens/dashboard/dashboard_screen.dart";
 import "package:connector/screens/dashboard/tabs/tab_connector_screen.dart";
 import "package:connector/screens/dashboard/tabs/tab_profile_screen.dart";
 import "package:connector/screens/introduction/introduction_screen.dart";
+import "package:connector/screens/onboarding/your_details_screen.dart";
 import "package:connector/screens/splash/splash_screen.dart";
 import "package:connector/screens/unknown_route/unknown_route_screen.dart";
 import "package:get/get.dart";
@@ -28,10 +32,13 @@ class RoutesUtils {
   // Known Pages
   String get splashScreen => "/splashScreen";
   String get introductionScreen => "/introductionScreen";
-  String get signInScreen => "/signInScreen";
   String get dashboardScreen => "/dashboardScreen";
   String get tabConnectorScreen => "/tabConnectorScreen";
   String get tabProfileScreen => "/tabProfileScreen";
+
+  String get signInScreen => "/signInScreen";
+  String get verifyOTPScreen => "/verifyOTPScreen";
+  String get yourDetailsScreen => "/yourDetailsScreen";
 
   // Unknown Page
   GetPage<dynamic> get getUnknownPage {
@@ -54,11 +61,6 @@ class RoutesUtils {
       page: IntroductionScreen.new,
       binding: IntroductionBinding(),
     );
-    final GetPage<dynamic> signInRoute = GetPage<dynamic>(
-      name: signInScreen,
-      page: SignInScreen.new,
-      binding: SignInBinding(),
-    );
     final GetPage<dynamic> dashboardRoute = GetPage<dynamic>(
       name: dashboardScreen,
       page: DashboardScreen.new,
@@ -74,14 +76,31 @@ class RoutesUtils {
       page: TabProfileScreen.new,
       binding: TabProfileBinding(),
     );
+    final GetPage<dynamic> signInRoute = GetPage<dynamic>(
+      name: signInScreen,
+      page: SignInScreen.new,
+      binding: SignInBinding(),
+    );
+    final GetPage<dynamic> verifyOTPRoute = GetPage<dynamic>(
+      name: verifyOTPScreen,
+      page: VerifyOTPScreen.new,
+      binding: VerifyOTPBinding(),
+    );
+    final GetPage<dynamic> yourDetailsRoute = GetPage<dynamic>(
+      name: yourDetailsScreen,
+      page: YourDetailsScreen.new,
+      binding: YourDetailsBinding(),
+    );
 
     return <GetPage<dynamic>>[
       splashRoute,
       introductionRoute,
-      signInRoute,
       dashboardRoute,
       tabConnectorRoute,
       tabProfileRoute,
+      signInRoute,
+      verifyOTPRoute,
+      yourDetailsRoute,
     ];
   }
 }

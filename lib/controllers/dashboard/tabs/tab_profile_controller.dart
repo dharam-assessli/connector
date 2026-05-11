@@ -9,7 +9,7 @@ class TabProfileController extends GetxController {
   final Rx<User> rxUser = AuthDBService().user.obs;
 
   String get contructImageURL {
-    final String displayName = rxUser.value.displayName ?? "";
+    final String displayName = rxUser.value.username ?? "";
 
     return "https://ui-avatars.com/api/?name=$displayName";
   }
