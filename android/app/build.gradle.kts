@@ -81,16 +81,21 @@ android {
             dimension = "default"
             resValue("string", "app_name", "Dotsin Connector Development")
             applicationIdSuffix = ".development"
+            manifestPlaceholders["MAPS_API_KEY"] = "AIzaSyDf7k7tRdUZvGS0ehW-VB19kFwPxzQj5v0"
         }
+
         create("staging") {
             dimension = "default"
             resValue("string", "app_name", "Dotsin Connector Staging")
             applicationIdSuffix = ".staging"
+            manifestPlaceholders["MAPS_API_KEY"] = "AIzaSyDf7k7tRdUZvGS0ehW-VB19kFwPxzQj5v0"
         }
+        
         create("production") {
             dimension = "default"
             resValue("string", "app_name", "Dotsin Connector")
             applicationIdSuffix = ""
+            manifestPlaceholders["MAPS_API_KEY"] = "AIzaSyDf7k7tRdUZvGS0ehW-VB19kFwPxzQj5v0"
         }
     }
 

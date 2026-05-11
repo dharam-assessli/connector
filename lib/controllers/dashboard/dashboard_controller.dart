@@ -1,18 +1,28 @@
 import "dart:developer";
 
-import "package:connector/utils/bottom_bar_util.dart";
+import "package:connector/functions/mood_functions.dart";
+import "package:connector/models/dashboard/insights/insights_model.dart";
+import "package:connector/models/dashboard/quick_start/quick_start_model.dart";
+import "package:connector/utils/bottom_nav_util.dart";
 import "package:flutter/widgets.dart";
 import "package:get/get.dart";
 
 class DashboardController extends GetxController {
   final PageController pageController = PageController();
 
-  final RxList<Bindings> getBindings = BottomBarUtil().getBindings;
-  final RxList<GetxController> getControllers = BottomBarUtil().getControllers;
-  final RxList<GetView<dynamic>> getViews = BottomBarUtil().getViews;
-  final RxList<BottomNavigationBarItem> tabWidgets = BottomBarUtil().tabWidgets;
+  final RxList<Bindings> getBindings = BottomNavUtil().getBindings;
+  final RxList<GetxController> getControllers = BottomNavUtil().getControllers;
+  final RxList<GetView<dynamic>> getViews = BottomNavUtil().getViews;
+  final RxList<BottomNavigationBarItem> tabWidgets = BottomNavUtil().tabWidgets;
+  final RxInt rxIndex = BottomNavUtil().rxIndex;
 
-  final RxInt rxIndex = BottomBarUtil().rxIndex;
+  final Rx<Mood> rxMood = Mood.sunny.obs;
+  final Rx<num> rxSelectedMoodIndex = 0.obs;
+
+  final RxList<QuickStartModelOuter> rxQuickStart = quickStartData.obs;
+  final Rx<num> rxSelectedQuickStartIndex = 0.obs;
+
+  final RxList<InsightsModel> rxInsights = insightsData.obs;
 
   @override
   void onInit() {
@@ -35,7 +45,7 @@ class DashboardController extends GetxController {
   void refreshBindings() {
     getBindings
       ..clear()
-      ..addAll(BottomBarUtil().getBindings)
+      ..addAll(BottomNavUtil().getBindings)
       ..refresh();
 
     return;
@@ -44,7 +54,7 @@ class DashboardController extends GetxController {
   void refreshControllers() {
     getControllers
       ..clear()
-      ..addAll(BottomBarUtil().getControllers)
+      ..addAll(BottomNavUtil().getControllers)
       ..refresh();
 
     return;
@@ -53,7 +63,7 @@ class DashboardController extends GetxController {
   void refreshViews() {
     getViews
       ..clear()
-      ..addAll(BottomBarUtil().getViews)
+      ..addAll(BottomNavUtil().getViews)
       ..refresh();
 
     return;
@@ -62,14 +72,14 @@ class DashboardController extends GetxController {
   void refreshTabWidgets() {
     tabWidgets
       ..clear()
-      ..addAll(BottomBarUtil().tabWidgets)
+      ..addAll(BottomNavUtil().tabWidgets)
       ..refresh();
 
     return;
   }
 
   void refreshIndex() {
-    rxIndex.value = BottomBarUtil().rxIndex.value;
+    rxIndex.value = BottomNavUtil().rxIndex.value;
 
     rxIndex.refresh();
 
@@ -79,7 +89,7 @@ class DashboardController extends GetxController {
   Future<void> updateIndex({required int index, required bool animate}) async {
     rxIndex.value = index;
 
-    BottomBarUtil().updateIndex(index);
+    BottomNavUtil().updateIndex(index);
 
     if (animate) {
       await pageController.animateToPage(

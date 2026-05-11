@@ -1,17 +1,25 @@
 import "package:connector/bindings/auth/sign_in_binding.dart";
 import "package:connector/bindings/auth/verify_otp_binding.dart";
+import "package:connector/bindings/connector/connector_binding.dart";
 import "package:connector/bindings/dashboard/dashboard_binding.dart";
-import "package:connector/bindings/dashboard/tabs/tab_connector_binding.dart";
-import "package:connector/bindings/dashboard/tabs/tab_profile_binding.dart";
+import "package:connector/bindings/dashboard/tab_chat_binding.dart";
+import "package:connector/bindings/dashboard/tab_community_binding.dart";
+import "package:connector/bindings/dashboard/tab_feed_binding.dart";
+import "package:connector/bindings/dashboard/tab_home_binding.dart";
+import "package:connector/bindings/dashboard/tab_hub_binding.dart";
 import "package:connector/bindings/introduction/introduction_binding.dart";
 import "package:connector/bindings/onboarding/your_details_binding.dart";
 import "package:connector/bindings/splash/splash_binding.dart";
 import "package:connector/bindings/unknown_route/unknown_route_binding.dart";
 import "package:connector/screens/auth/sign_in_screen.dart";
 import "package:connector/screens/auth/verify_otp_screen.dart";
+import "package:connector/screens/connector/connector_screen.dart";
 import "package:connector/screens/dashboard/dashboard_screen.dart";
-import "package:connector/screens/dashboard/tabs/tab_connector_screen.dart";
-import "package:connector/screens/dashboard/tabs/tab_profile_screen.dart";
+import "package:connector/screens/dashboard/tab_chat_screen.dart";
+import "package:connector/screens/dashboard/tab_community_screen.dart";
+import "package:connector/screens/dashboard/tab_feed_screen.dart";
+import "package:connector/screens/dashboard/tab_home_screen.dart";
+import "package:connector/screens/dashboard/tab_hub_screen.dart";
 import "package:connector/screens/introduction/introduction_screen.dart";
 import "package:connector/screens/onboarding/your_details_screen.dart";
 import "package:connector/screens/splash/splash_screen.dart";
@@ -32,13 +40,19 @@ class RoutesUtils {
   // Known Pages
   String get splashScreen => "/splashScreen";
   String get introductionScreen => "/introductionScreen";
-  String get dashboardScreen => "/dashboardScreen";
-  String get tabConnectorScreen => "/tabConnectorScreen";
-  String get tabProfileScreen => "/tabProfileScreen";
 
   String get signInScreen => "/signInScreen";
   String get verifyOTPScreen => "/verifyOTPScreen";
   String get yourDetailsScreen => "/yourDetailsScreen";
+
+  String get dashboardScreen => "/dashboardScreen";
+  String get tabHomeScreen => "/tabHomeScreen";
+  String get tabFeedScreen => "/tabFeedScreen";
+  String get tabChatScreen => "/tabChatScreen";
+  String get tabCommunityScreen => "/tabCommunityScreen";
+  String get tabHubScreen => "/tabHubScreen";
+
+  String get connectorScreen => "/connectorScreen";
 
   // Unknown Page
   GetPage<dynamic> get getUnknownPage {
@@ -61,21 +75,6 @@ class RoutesUtils {
       page: IntroductionScreen.new,
       binding: IntroductionBinding(),
     );
-    final GetPage<dynamic> dashboardRoute = GetPage<dynamic>(
-      name: dashboardScreen,
-      page: DashboardScreen.new,
-      binding: DashboardBinding(),
-    );
-    final GetPage<dynamic> tabConnectorRoute = GetPage<dynamic>(
-      name: tabConnectorScreen,
-      page: TabConnectorScreen.new,
-      binding: TabConnectorBinding(),
-    );
-    final GetPage<dynamic> tabProfileRoute = GetPage<dynamic>(
-      name: tabProfileScreen,
-      page: TabProfileScreen.new,
-      binding: TabProfileBinding(),
-    );
     final GetPage<dynamic> signInRoute = GetPage<dynamic>(
       name: signInScreen,
       page: SignInScreen.new,
@@ -91,16 +90,55 @@ class RoutesUtils {
       page: YourDetailsScreen.new,
       binding: YourDetailsBinding(),
     );
+    final GetPage<dynamic> dashboardRoute = GetPage<dynamic>(
+      name: dashboardScreen,
+      page: DashboardScreen.new,
+      binding: DashboardBinding(),
+    );
+    final GetPage<dynamic> tabHomeRoute = GetPage<dynamic>(
+      name: tabHomeScreen,
+      page: TabHomeScreen.new,
+      binding: TabHomeBinding(),
+    );
+    final GetPage<dynamic> tabFeedRoute = GetPage<dynamic>(
+      name: tabFeedScreen,
+      page: TabFeedScreen.new,
+      binding: TabFeedBinding(),
+    );
+    final GetPage<dynamic> tabChatRoute = GetPage<dynamic>(
+      name: tabChatScreen,
+      page: TabChatScreen.new,
+      binding: TabChatBinding(),
+    );
+    final GetPage<dynamic> tabCommunityRoute = GetPage<dynamic>(
+      name: tabCommunityScreen,
+      page: TabCommunityScreen.new,
+      binding: TabCommunityBinding(),
+    );
+    final GetPage<dynamic> tabHubRoute = GetPage<dynamic>(
+      name: tabHubScreen,
+      page: TabHubScreen.new,
+      binding: TabHubBinding(),
+    );
+    final GetPage<dynamic> connectorRoute = GetPage<dynamic>(
+      name: connectorScreen,
+      page: ConnectorScreen.new,
+      binding: ConnectorBinding(),
+    );
 
     return <GetPage<dynamic>>[
       splashRoute,
       introductionRoute,
-      dashboardRoute,
-      tabConnectorRoute,
-      tabProfileRoute,
       signInRoute,
       verifyOTPRoute,
       yourDetailsRoute,
+      dashboardRoute,
+      tabHomeRoute,
+      tabFeedRoute,
+      tabChatRoute,
+      tabCommunityRoute,
+      tabHubRoute,
+      connectorRoute,
     ];
   }
 }

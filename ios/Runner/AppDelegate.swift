@@ -1,6 +1,7 @@
 import Flutter
 import UIKit
 import Firebase
+import GoogleMaps
 import workmanager_apple
 import flutter_local_notifications
 
@@ -10,6 +11,14 @@ import flutter_local_notifications
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
+        // Google Maps — read key from Info.plist (resolved from User-Defined Setting MAPS_API_KEY)
+        let mapsApiKey = Bundle.main.object(forInfoDictionaryKey: "MAPS_API_KEY") as? String ?? ""
+        if !mapsApiKey.isEmpty {
+            GMSServices.provideAPIKey(mapsApiKey)
+        } else {
+            print("⚠️ MAPS_API_KEY missing from Info.plist — Google Maps will not work")
+        }
+
         // Firebase
         if FirebaseApp.app() == nil {
             FirebaseApp.configure()

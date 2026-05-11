@@ -247,8 +247,12 @@ class YourDetailsController extends GetxController {
       ".",
     );
     setHeightInFt((
-      int.tryParse(heightInFt[0]) ?? defaultHeightFt.$1,
-      int.tryParse(heightInFt[1]) ?? defaultHeightFt.$2,
+      heightInFt.asMap().containsKey(0)
+          ? (int.tryParse(heightInFt[0]) ?? defaultHeightFt.$1)
+          : defaultHeightFt.$1,
+      heightInFt.asMap().containsKey(1)
+          ? (int.tryParse(heightInFt[1]) ?? defaultHeightFt.$2)
+          : defaultHeightFt.$2,
     ));
     setHeightInCm((user.heightInCm ?? defaultHeightCm).toInt());
 
@@ -321,4 +325,5 @@ class YourDetailsController extends GetxController {
 
     return Future<void>.value();
   }
+  //
 }

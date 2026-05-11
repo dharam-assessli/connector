@@ -13,7 +13,7 @@ import "package:horizon/services/permission_service.dart";
 import "package:horizon/services/screen_time_service.dart";
 import "package:permission_handler/permission_handler.dart";
 
-class TabConnectorController extends GetxController {
+class ConnectorController extends GetxController {
   Future<void> onItemTapLocation() async {
     await location_data_automation.startAutomation();
 
