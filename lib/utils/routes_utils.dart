@@ -8,6 +8,7 @@ import "package:connector/bindings/dashboard/tab_feed_binding.dart";
 import "package:connector/bindings/dashboard/tab_home_binding.dart";
 import "package:connector/bindings/dashboard/tab_hub_binding.dart";
 import "package:connector/bindings/introduction/introduction_binding.dart";
+import "package:connector/bindings/onboarding/gather_permissions_binding.dart";
 import "package:connector/bindings/onboarding/your_details_binding.dart";
 import "package:connector/bindings/splash/splash_binding.dart";
 import "package:connector/bindings/unknown_route/unknown_route_binding.dart";
@@ -21,6 +22,7 @@ import "package:connector/screens/dashboard/tab_feed_screen.dart";
 import "package:connector/screens/dashboard/tab_home_screen.dart";
 import "package:connector/screens/dashboard/tab_hub_screen.dart";
 import "package:connector/screens/introduction/introduction_screen.dart";
+import "package:connector/screens/onboarding/gather_permissions_screen.dart";
 import "package:connector/screens/onboarding/your_details_screen.dart";
 import "package:connector/screens/splash/splash_screen.dart";
 import "package:connector/screens/unknown_route/unknown_route_screen.dart";
@@ -39,6 +41,7 @@ class RoutesUtils {
 
   // Known Pages
   String get splashScreen => "/splashScreen";
+
   String get introductionScreen => "/introductionScreen";
 
   String get signInScreen => "/signInScreen";
@@ -53,6 +56,7 @@ class RoutesUtils {
   String get tabHubScreen => "/tabHubScreen";
 
   String get connectorScreen => "/connectorScreen";
+  String get gatherPermissionsScreen => "/gatherPermissionsScreen";
 
   // Unknown Page
   GetPage<dynamic> get getUnknownPage {
@@ -125,6 +129,11 @@ class RoutesUtils {
       page: ConnectorScreen.new,
       binding: ConnectorBinding(),
     );
+    final GetPage<dynamic> gatherPermissionsRoute = GetPage<dynamic>(
+      name: gatherPermissionsScreen,
+      page: GatherPermissionsScreen.new,
+      binding: GatherPermissionsBinding(),
+    );
 
     return <GetPage<dynamic>>[
       splashRoute,
@@ -139,6 +148,7 @@ class RoutesUtils {
       tabCommunityRoute,
       tabHubRoute,
       connectorRoute,
+      gatherPermissionsRoute,
     ];
   }
 }

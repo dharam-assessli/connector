@@ -82,7 +82,7 @@ class SplashController extends GetxController with WidgetsBindingObserver {
       final String route = !hasUser
           ? RoutesUtils().signInScreen
           : isNewUser
-          ? RoutesUtils().yourDetailsScreen
+          ? RoutesUtils().gatherPermissionsScreen
           : RoutesUtils().dashboardScreen;
 
       // Navigate to the route

@@ -151,5 +151,6 @@
     "lastName": "Last Name",
     "lastNameHint": "Enter your last name",
     "username": "Username",
-    "usernameHint": "Choose a username"
+    "usernameHint": "Choose a username",
+    "continueText": "Continue"
 }

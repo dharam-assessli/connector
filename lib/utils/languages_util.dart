@@ -163,4 +163,5 @@ class LanguagesUtil {
   String get lastNameHint => "lastNameHint".tr;
   String get username => "username".tr;
   String get usernameHint => "usernameHint".tr;
+  String get continueText => "continueText".tr;
 }

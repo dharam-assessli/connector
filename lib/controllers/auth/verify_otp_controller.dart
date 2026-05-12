@@ -137,7 +137,7 @@ class VerifyOTPController extends GetxController {
 
   Future<void> navigate() async {
     await NavigationService().pushNamedAndRemoveUntil(
-      RoutesUtils().yourDetailsScreen,
+      RoutesUtils().gatherPermissionsScreen,
       // Provide the navigation source as an argument...
       arguments: <String, dynamic>{
         "navigationSource": NavigationSource.verify.name,

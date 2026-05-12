@@ -17,7 +17,6 @@ dependencies:
     git:
       url: https://github.com/Assessli-tech/horizon-flutter.git
       ref: main
-  webview_flutter: ^4.13.1
 
 dev_dependencies:
   flutter_lints: 6.0.0
@@ -28,6 +27,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/images/app_icon/
     - assets/languages/
     - assets/styles/
     - shorebird.yaml

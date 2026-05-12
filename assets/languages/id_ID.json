@@ -151,5 +151,6 @@
     "lastName": "Nama Belakang",
     "lastNameHint": "Masukkan nama belakang Anda",
     "username": "Nama Pengguna",
-    "usernameHint": "Pilih nama pengguna"
+    "usernameHint": "Pilih nama pengguna",
+    "continueText": "Lanjutkan"
 }
