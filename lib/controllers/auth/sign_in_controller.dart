@@ -10,6 +10,7 @@ import "package:get/get.dart";
 import "package:horizon/models/countries/countries.dart";
 import "package:horizon/services/country_find_service.dart";
 import "package:horizon/services/identify_service.dart";
+import "package:horizon/services/jwt/auth_refresh_service.dart";
 import "package:horizon/services/navigation_service.dart";
 import "package:horizon/services/sms_service.dart";
 import "package:horizon/utils/bottom_sheets/countries_sheet.dart";
@@ -125,6 +126,7 @@ class SignInController extends GetxController {
       SnackBarUtil().show(LanguagesUtil().pleaseFillAllFields);
       return value;
     }
+
     final bool result2 = rxIsAcceptedTerm.value;
     if (!result2) {
       SnackBarUtil().show(LanguagesUtil().pleaseAcceptTerms);
@@ -136,10 +138,8 @@ class SignInController extends GetxController {
 
   Future<bool> sendOTP() async {
     final String dialCode = rxSelectedCountry.value.dialCode ?? "";
-
     final String number = rxNumber.value;
     final String email = rxEmail.value;
-
     final String signature = await SMSService().getAppSignature();
 
     final SendOTP result = await AuthRepository().sendOTP(<String, dynamic>{
@@ -161,6 +161,46 @@ class SignInController extends GetxController {
         "number": rxNumber.value,
         "email": rxEmail.value,
         "isAPhoneNumber": rxIsAPhoneNumber.value,
+      },
+    );
+
+    return Future<void>.value();
+  }
+
+  Future<void> signInWithGoogle() async {
+    final bool result = rxIsAcceptedTerm.value;
+    if (!result) {
+      SnackBarUtil().show(LanguagesUtil().pleaseAcceptTerms);
+      return Future<void>.value();
+    }
+
+    await AuthRefreshService().google(
+      navigate: () async {
+        await NavigationService().pushNamedAndRemoveUntil(
+          RoutesUtils().dashboardScreen,
+          arguments: <String, dynamic>{},
+          circularTransition: true,
+        );
+      },
+    );
+
+    return Future<void>.value();
+  }
+
+  Future<void> signInWithApple() async {
+    final bool result = rxIsAcceptedTerm.value;
+    if (!result) {
+      SnackBarUtil().show(LanguagesUtil().pleaseAcceptTerms);
+      return Future<void>.value();
+    }
+
+    await AuthRefreshService().apple(
+      navigate: () async {
+        await NavigationService().pushNamedAndRemoveUntil(
+          RoutesUtils().dashboardScreen,
+          arguments: <String, dynamic>{},
+          circularTransition: true,
+        );
       },
     );
 

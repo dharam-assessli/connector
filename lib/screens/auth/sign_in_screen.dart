@@ -219,7 +219,7 @@ class SignInScreen extends GetView<SignInController> {
             height: kToolbarHeight,
             width: double.infinity,
             child: CustomOutlinedButton(
-              onPressed: () async {},
+              onPressed: controller.signInWithGoogle,
               data: "",
               fullWidth: true,
               customChild: CustomMediaViewer(
@@ -235,7 +235,7 @@ class SignInScreen extends GetView<SignInController> {
             height: kToolbarHeight,
             width: double.infinity,
             child: CustomOutlinedButton(
-              onPressed: () async {},
+              onPressed: controller.signInWithApple,
               data: "",
               fullWidth: true,
               customChild: CustomMediaViewer(
