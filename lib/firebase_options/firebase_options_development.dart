@@ -63,7 +63,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '799296776426',
     projectId: 'assei-apps-development',
     storageBucket: 'assei-apps-development.firebasestorage.app',
-    androidClientId: '799296776426-9i8hi9icc3ao1qal2mmpdra2rebdk1tk.apps.googleusercontent.com',
+    androidClientId: '799296776426-2grgs7apgk378rl9m7mutuom0i1s1u1a.apps.googleusercontent.com',
     iosClientId: '799296776426-515pacq7e5u1cak96mobk6k68q1lhtel.apps.googleusercontent.com',
     iosBundleId: 'com.assessli.connector.development',
   );

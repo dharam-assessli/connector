@@ -14,6 +14,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "1047961685171-cjhq6t00119hcn5k4tkbmnu612dmb5b2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.assessli.connector.staging",
+            "certificate_hash": "a83b5b221ff79723a1b6c86d359c7d849de785dc"
+          }
+        },
+        {
+          "client_id": "1047961685171-ri6l3mcphklj7oli3qj2u8bsat406uss.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.assessli.connector.staging",
+            "certificate_hash": "5e5bfaea14c71c2fa3eaf11b864ed57869dffce7"
+          }
+        },
+        {
           "client_id": "1047961685171-55lg75gmhsfa8s6mfc8vu18gme0flnhp.apps.googleusercontent.com",
           "client_type": 3
         }
