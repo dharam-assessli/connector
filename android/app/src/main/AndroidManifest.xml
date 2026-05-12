@@ -265,7 +265,8 @@
         android:supportsRtl="true"
         android:enableOnBackInvokedCallback="true"
         android:usesCleartextTraffic="true"
-        android:networkSecurityConfig="@xml/network_security_config">
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:extractNativeLibs="true">
 
         <activity
             android:name=".MainActivity"
@@ -316,6 +317,12 @@
 
         </activity-alias>
 
+        <!-- WorkManager foreground service (Android 14+ requires explicit foregroundServiceType) -->
+        <service
+            android:name="androidx.work.impl.foreground.SystemForegroundService"
+            android:foregroundServiceType="location|health|dataSync|connectedDevice|specialUse|microphone|camera|mediaPlayback|mediaProjection|phoneCall"
+            tools:node="merge"/>
+
         <service
             android:label="notifications"
             android:name="notification.listener.service.NotificationListener"
@@ -351,7 +358,7 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@mipmap/ic_launcher"/>
-        
+
         <!-- Google Maps API key -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
