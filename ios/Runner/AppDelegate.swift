@@ -47,7 +47,7 @@ import flutter_local_notifications
         )
         WorkmanagerPlugin.registerPeriodicTask(
             withIdentifier: "\(bundleId).ios.periodic_task",
-            frequency: NSNumber(value: 15 * 60)
+            frequency: NSNumber(value: 30 * 60)
         )
 
         return super.application(application, didFinishLaunchingWithOptions: launchOptions)

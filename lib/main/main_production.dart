@@ -23,7 +23,6 @@ Future<void> main() async {
 
   setEnvironmentConfig();
 
-  // Critical-path init only — needed before the first frame paints.
   await initCore();
 
   await StorageService().init();
@@ -35,7 +34,6 @@ Future<void> main() async {
 
   runApp(const MyApp());
 
-  // Continue non-critical init in the background. UI is already painting.
   unawaited(deferredInitialization());
 }
 
@@ -47,8 +45,10 @@ Future<void> deferredInitialization() async {
 
     await DeviceInfoService().init();
 
+    // NotificationService: full initialization in main isolate
     await NotificationService().initialize();
 
+    // WorkManager: configureBundleID must complete before initialize/registerTasks
     await WorkManagerService().configureBundleID();
     await WorkManagerService().initialize();
     await WorkManagerService().registerTasks();
