@@ -24,15 +24,25 @@ class VerifyOTPScreen extends GetView<VerifyOTPController> {
       body: AnimatedGradient(
         child: SafeArea(
           child: Obx(() {
-            return Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                const Spacer(),
-                const BrandingWidget(),
-                const Spacer(),
-                botttomWidget(context),
-                const SizedBox(height: 16),
-              ],
+            return SingleChildScrollView(
+              padding: EdgeInsets.zero,
+              child: SizedBox(
+                height:
+                    Get.height -
+                    MediaQuery.of(context).padding.vertical -
+                    kBottomNavigationBarHeight,
+                width: double.infinity,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    const Spacer(),
+                    const BrandingWidget(),
+                    const Spacer(),
+                    botttomWidget(context),
+                    const SizedBox(height: 16),
+                  ],
+                ),
+              ),
             );
           }),
         ),

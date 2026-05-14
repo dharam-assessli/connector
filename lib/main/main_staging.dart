@@ -1,4 +1,5 @@
 import "dart:async";
+import "dart:developer";
 import "dart:ui";
 
 import "package:connector/functions/environment_functions.dart";
@@ -14,19 +15,16 @@ import "package:horizon/utils/orientations_util.dart";
 import "package:material_ui/material_ui.dart";
 
 Future<void> main() async {
-  // Ensure Flutter bindings are initialized
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Ensure plugins are registered
   DartPluginRegistrant.ensureInitialized();
 
   await OrientationsUtil().setPreferredOrientations();
 
   setEnvironmentConfig();
 
+  // Critical-path init only — needed before the first frame paints.
   await initCore();
-  await initCrashlytics();
-  await initRemoteConfig();
 
   await StorageService().init();
 
@@ -35,13 +33,28 @@ Future<void> main() async {
 
   await PackageInfoService().init();
 
-  await DeviceInfoService().init();
-
-  await NotificationService().initialize();
-
-  await WorkManagerService().configureBundleID();
-  await WorkManagerService().initialize();
-  await WorkManagerService().registerTasks();
-
   runApp(const MyApp());
+
+  // Continue non-critical init in the background. UI is already painting.
+  unawaited(deferredInitialization());
+}
+
+Future<void> deferredInitialization() async {
+  try {
+    await initCrashlytics();
+
+    await initRemoteConfig();
+
+    await DeviceInfoService().init();
+
+    await NotificationService().initialize();
+
+    await WorkManagerService().configureBundleID();
+    await WorkManagerService().initialize();
+    await WorkManagerService().registerTasks();
+  } on Exception catch (error, stackTrace) {
+    log("Exception", error: error, stackTrace: stackTrace);
+  } finally {}
+
+  return Future<void>.value();
 }

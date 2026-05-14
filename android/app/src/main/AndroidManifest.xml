@@ -363,6 +363,16 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="${MAPS_API_KEY}"/>
+        
+        <!-- BootReceiver to reschedule WorkManager tasks on device reboot or app update -->
+        <!-- <receiver -->
+            <!-- android:name=".BootReceiver" -->
+            <!-- android:exported="true"> -->
+            <!-- <intent-filter> -->
+                <!-- <action android:name="android.intent.action.BOOT_COMPLETED"/> -->
+                <!-- <action android:name="android.intent.action.MY_PACKAGE_REPLACED"/> -->
+            <!-- </intent-filter> -->
+        <!-- </receiver> -->
 
     </application>
 

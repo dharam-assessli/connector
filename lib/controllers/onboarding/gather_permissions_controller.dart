@@ -1,20 +1,27 @@
 // ignore_for_file: lines_longer_than_80_chars, avoid_redundant_argument_values
 
 import "dart:developer";
+import "dart:io";
 
 import "package:connector/utils/languages_util.dart";
 import "package:connector/utils/routes_utils.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:horizon/services/battery_service.dart";
 import "package:horizon/services/health_service.dart";
 import "package:horizon/services/location_service.dart";
 import "package:horizon/services/navigation_service.dart";
 import "package:horizon/services/permission_service.dart";
 import "package:horizon/services/screen_time_service.dart";
-// import "package:horizon/utils/overlays/snack_bar_util.dart";
 import "package:permission_handler/permission_handler.dart";
 
-enum PermissionType { location, health, notification, screenTime }
+enum PermissionType {
+  location,
+  health,
+  notification,
+  screenTime,
+  batteryOptimization,
+}
 
 class GatherPermissionsController extends GetxController
     with WidgetsBindingObserver {
@@ -26,11 +33,13 @@ class GatherPermissionsController extends GetxController
   final RxBool isHealthPermissionGranted = false.obs;
   final RxBool isNotificationPermissionGranted = false.obs;
   final RxBool isScreenTimePermissionGranted = false.obs;
+  final RxBool isBatteryOptimizationDisabled = false.obs;
 
   final RxBool hasRequestedLocationPermission = false.obs;
   final RxBool hasRequestedHealthPermission = false.obs;
   final RxBool hasRequestedNotificationPermission = false.obs;
   final RxBool hasRequestedScreenTimePermission = false.obs;
+  final RxBool hasRequestedBatteryOptimization = false.obs;
 
   @override
   void onInit() {
@@ -59,12 +68,14 @@ class GatherPermissionsController extends GetxController
       checkHealthPermission(request: false),
       checkNotificationPermission(request: false),
       checkScreenTimePermission(request: false),
+      checkBatteryOptimizationPermission(request: false),
     ]);
 
     isLocationPermissionGranted.value = results[0];
     isHealthPermissionGranted.value = results[1];
     isNotificationPermissionGranted.value = results[2];
     isScreenTimePermissionGranted.value = results[3];
+    isBatteryOptimizationDisabled.value = results[4];
 
     return Future<void>.value();
   }
@@ -145,6 +156,25 @@ class GatherPermissionsController extends GetxController
         request: true,
       );
       hasRequestedScreenTimePermission.value = true;
+    } on Exception catch (error, stackTrace) {
+      log("Exception", error: error, stackTrace: stackTrace);
+    }
+
+    return Future<void>.value();
+  }
+
+  Future<void> requestBatteryOptimizationPermission() async {
+    try {
+      if (hasRequestedBatteryOptimization.value) {
+        await openBatteryOptimizationPermission();
+        isBatteryOptimizationDisabled.value =
+            await checkBatteryOptimizationPermission(request: false);
+        return;
+      }
+
+      isBatteryOptimizationDisabled.value =
+          await checkBatteryOptimizationPermission(request: true);
+      hasRequestedBatteryOptimization.value = true;
     } on Exception catch (error, stackTrace) {
       log("Exception", error: error, stackTrace: stackTrace);
     }
@@ -289,6 +319,26 @@ class GatherPermissionsController extends GetxController
     return Future<bool>.value(value);
   }
 
+  Future<bool> checkBatteryOptimizationPermission({
+    required bool request,
+  }) async {
+    bool value = false;
+
+    try {
+      final bool condition = await BatteryService().isDisabledOptimization();
+      if (!condition) {
+        // SnackBarUtil().show("Battery optimization is not disabled.");
+        return Future<bool>.value(value);
+      }
+
+      value = condition;
+    } on Exception catch (error, stackTrace) {
+      log("Exception", error: error, stackTrace: stackTrace);
+    } finally {}
+
+    return Future<bool>.value(value);
+  }
+
   Future<void> openLocationPermission() async {
     try {
       final bool condition1 = await LocationService().checkServices(
@@ -409,7 +459,40 @@ class GatherPermissionsController extends GetxController
     return Future<void>.value();
   }
 
+  Future<void> openBatteryOptimizationPermission() async {
+    try {
+      final bool condition = await BatteryService().isDisabledOptimization();
+      if (!condition) {
+        await BatteryService().openBatteryOptimizationSettings();
+        // SnackBarUtil().show("Opening battery optimization settings");
+        return Future<void>.value();
+      }
+    } on Exception catch (error, stackTrace) {
+      log("Exception", error: error, stackTrace: stackTrace);
+    } finally {}
+
+    return Future<void>.value();
+  }
+
   //
+
+  List<PermissionType> getPermissionTypes() {
+    return Platform.isAndroid
+        ? <PermissionType>[
+            PermissionType.location,
+            PermissionType.health,
+            PermissionType.notification,
+            PermissionType.screenTime,
+            PermissionType.batteryOptimization,
+          ]
+        : Platform.isIOS
+        ? <PermissionType>[
+            PermissionType.location,
+            PermissionType.health,
+            PermissionType.notification,
+          ]
+        : <PermissionType>[];
+  }
 
   IconData getIconData(int index) {
     switch (index) {
@@ -421,6 +504,8 @@ class GatherPermissionsController extends GetxController
         return Icons.notifications_outlined;
       case 3:
         return Icons.hourglass_empty_outlined;
+      case 4:
+        return Icons.battery_5_bar_outlined;
       default:
         return Icons.error_outline;
     }
@@ -436,6 +521,8 @@ class GatherPermissionsController extends GetxController
         return LanguagesUtil().introNotificationHeading;
       case 3:
         return LanguagesUtil().introScreenHeading;
+      case 4:
+        return LanguagesUtil().introBatteryHeading;
       default:
         return "";
     }
@@ -451,6 +538,8 @@ class GatherPermissionsController extends GetxController
         return LanguagesUtil().introNotificationTopDescription;
       case 3:
         return LanguagesUtil().introScreenTopDescription;
+      case 4:
+        return LanguagesUtil().introBatteryTopDescription;
       default:
         return "";
     }
@@ -466,44 +555,65 @@ class GatherPermissionsController extends GetxController
         return LanguagesUtil().introNotificationBtmDescription;
       case 3:
         return LanguagesUtil().introScreenBtmDescription;
+      case 4:
+        return LanguagesUtil().introBatteryBtmDescription;
       default:
         return "";
     }
   }
 
   Future<void> onTap() async {
-    switch (rxCurrentPage.value) {
-      case 0:
-        await requestLocationPermission();
-        if (isLocationPermissionGranted.value) {
-          await nextPage();
-        }
-        break;
+    if (Platform.isAndroid) {
+      switch (rxCurrentPage.value) {
+        case 0:
+          await requestLocationPermission();
+          isLocationPermissionGranted.value ? await nextPage() : (() {})();
+          break;
 
-      case 1:
-        await requestHealthPermission();
-        if (isHealthPermissionGranted.value) {
-          await nextPage();
-        }
-        break;
+        case 1:
+          await requestHealthPermission();
+          isHealthPermissionGranted.value ? await nextPage() : (() {})();
+          break;
 
-      case 2:
-        await requestNotificationPermission();
-        if (isNotificationPermissionGranted.value) {
-          await nextPage();
-        }
-        break;
+        case 2:
+          await requestNotificationPermission();
+          isNotificationPermissionGranted.value ? await nextPage() : (() {})();
+          break;
 
-      case 3:
-        await requestScreenTimePermission();
-        if (isScreenTimePermissionGranted.value) {
-          await navigate();
-        }
-        break;
+        case 3:
+          await requestScreenTimePermission();
+          isScreenTimePermissionGranted.value ? await nextPage() : (() {})();
+          break;
 
-      default:
-        break;
-    }
+        case 4:
+          await requestBatteryOptimizationPermission();
+          isBatteryOptimizationDisabled.value ? await navigate() : (() {})();
+          break;
+
+        default:
+          break;
+      }
+    } else if (Platform.isIOS) {
+      switch (rxCurrentPage.value) {
+        case 0:
+          await requestLocationPermission();
+          isLocationPermissionGranted.value ? await nextPage() : (() {})();
+          break;
+
+        case 1:
+          await requestHealthPermission();
+          isHealthPermissionGranted.value ? await nextPage() : (() {})();
+          break;
+
+        case 2:
+          await requestNotificationPermission();
+          isNotificationPermissionGranted.value ? await navigate() : (() {})();
+          break;
+
+        default:
+          break;
+      }
+    } else {}
 
     return Future<void>.value();
   }

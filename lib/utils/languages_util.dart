@@ -22,6 +22,9 @@ class LanguagesUtil {
   String get introScreenHeading => "introScreenHeading".tr;
   String get introScreenTopDescription => "introScreenTopDescription".tr;
   String get introScreenBtmDescription => "introScreenBtmDescription".tr;
+  String get introBatteryHeading => "introBatteryHeading".tr;
+  String get introBatteryTopDescription => "introBatteryTopDescription".tr;
+  String get introBatteryBtmDescription => "introBatteryBtmDescription".tr;
   String get connectorHeading => "connectorHeading".tr;
   String get connectorTopDescription => "connectorTopDescription".tr;
   String get connectorBtmDescription => "connectorBtmDescription".tr;

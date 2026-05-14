@@ -177,7 +177,7 @@ class SignInController extends GetxController {
     await AuthRefreshService().google(
       navigate: () async {
         await NavigationService().pushNamedAndRemoveUntil(
-          RoutesUtils().dashboardScreen,
+          RoutesUtils().gatherPermissionsScreen,
           arguments: <String, dynamic>{},
           circularTransition: true,
         );
@@ -197,7 +197,7 @@ class SignInController extends GetxController {
     await AuthRefreshService().apple(
       navigate: () async {
         await NavigationService().pushNamedAndRemoveUntil(
-          RoutesUtils().dashboardScreen,
+          RoutesUtils().gatherPermissionsScreen,
           arguments: <String, dynamic>{},
           circularTransition: true,
         );
