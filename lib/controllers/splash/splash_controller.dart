@@ -1,6 +1,6 @@
 import "package:connector/utils/routes_utils.dart";
 import "package:get/get.dart";
-import "package:horizon/models/auth/auth.dart";
+import "package:horizon/models/auth/user.dart";
 import "package:horizon/observer/observer.dart";
 import "package:horizon/services/api_gateway.dart";
 import "package:horizon/services/jwt/auth_db_service.dart";

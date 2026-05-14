@@ -1,5 +1,3 @@
-import "dart:io";
-
 import "package:connector/controllers/onboarding/gather_permissions_controller.dart";
 import "package:connector/utils/languages_util.dart";
 import "package:get/get.dart";
@@ -23,8 +21,11 @@ class GatherPermissionsScreen extends GetView<GatherPermissionsController> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
+              const SizedBox(height: 0.0),
               Expanded(child: customPageView(context)),
+              const SizedBox(height: 0.0),
               buttonWidget(),
+              const SizedBox(height: 0.0),
             ],
           ),
         ),
@@ -35,18 +36,7 @@ class GatherPermissionsScreen extends GetView<GatherPermissionsController> {
   Widget customPageView(final BuildContext context) {
     return CustomPageView<PermissionType>(
       pageController: controller.pageController,
-      items: Platform.isAndroid
-          ? <PermissionType>[
-              PermissionType.location,
-              PermissionType.health,
-              PermissionType.notification,
-              PermissionType.screenTime,
-            ]
-          : <PermissionType>[
-              PermissionType.location,
-              PermissionType.health,
-              PermissionType.notification,
-            ],
+      items: controller.getPermissionTypes,
       itemBuilder: itemBuilder,
       physics: const NeverScrollableScrollPhysics(),
       onPageChanged: (final int index) {

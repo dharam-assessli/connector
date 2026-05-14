@@ -1,16 +1,16 @@
 import "dart:io";
 
-import "package:connector/models/auth/send_otp.dart";
-import "package:connector/repositories/auth/auth_repository.dart";
 import "package:connector/utils/languages_util.dart";
 import "package:connector/utils/routes_utils.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:horizon/models/auth/send_otp.dart";
 import "package:horizon/models/countries/countries.dart";
+import "package:horizon/repositories/auth/auth_repository.dart";
 import "package:horizon/services/country_find_service.dart";
 import "package:horizon/services/identify_service.dart";
-import "package:horizon/services/jwt/auth_refresh_service.dart";
+import "package:horizon/services/jwt/sign_in_service.dart";
 import "package:horizon/services/navigation_service.dart";
 import "package:horizon/services/sms_service.dart";
 import "package:horizon/utils/bottom_sheets/countries_sheet.dart";
@@ -144,7 +144,7 @@ class SignInController extends GetxController {
 
     final SendOTP result = await AuthRepository().sendOTP(<String, dynamic>{
       "method": rxIsAPhoneNumber.value ? "phone" : "email",
-      "destination": rxIsAPhoneNumber.value ? "$dialCode$number" : email,
+      "identifier": rxIsAPhoneNumber.value ? "$dialCode$number" : email,
       "app_signature": signature,
     });
 
@@ -174,7 +174,7 @@ class SignInController extends GetxController {
       return Future<void>.value();
     }
 
-    await AuthRefreshService().google(
+    await SignInService().google(
       navigate: () async {
         await NavigationService().pushNamedAndRemoveUntil(
           RoutesUtils().gatherPermissionsScreen,
@@ -194,7 +194,7 @@ class SignInController extends GetxController {
       return Future<void>.value();
     }
 
-    await AuthRefreshService().apple(
+    await SignInService().apple(
       navigate: () async {
         await NavigationService().pushNamedAndRemoveUntil(
           RoutesUtils().gatherPermissionsScreen,

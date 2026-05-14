@@ -1,22 +1,27 @@
 import "dart:async";
 
-import "package:connector/functions/onboarding/astronomy_functions.dart";
-import "package:connector/functions/onboarding/drink_functions.dart";
-import "package:connector/functions/onboarding/gender_functions.dart";
-import "package:connector/functions/onboarding/height_functions.dart";
-import "package:connector/functions/onboarding/smoke_functions.dart";
-import "package:connector/functions/onboarding/weight_functions.dart";
+import "package:connector/utils/languages_util.dart";
 import "package:connector/utils/routes_utils.dart";
 import "package:cross_file/cross_file.dart";
+import "package:flutter/foundation.dart";
 import "package:flutter/widgets.dart";
 import "package:get/get.dart";
-import "package:horizon/models/auth/auth.dart";
+import "package:horizon/functions/astronomy_functions.dart";
+import "package:horizon/functions/drink_functions.dart";
+import "package:horizon/functions/gender_functions.dart";
+import "package:horizon/functions/height_functions.dart";
+import "package:horizon/functions/smoke_functions.dart";
+import "package:horizon/functions/weight_functions.dart";
+import "package:horizon/models/auth/get_set_user.dart";
+import "package:horizon/models/auth/user.dart";
 import "package:horizon/models/countries/countries.dart";
 import "package:horizon/services/country_find_service.dart";
 import "package:horizon/services/identify_service.dart";
 import "package:horizon/services/jwt/auth_db_service.dart";
+import "package:horizon/services/jwt/user_refresh_service.dart";
 import "package:horizon/services/navigation_service.dart";
 import "package:horizon/utils/bottom_sheets/countries_sheet.dart";
+import "package:horizon/utils/overlays/snack_bar_util.dart";
 
 enum NavigationSource { verify, home }
 
@@ -24,6 +29,8 @@ class YourDetailsController extends GetxController {
   final Rx<NavigationSource> rxNavigationSource = NavigationSource.verify.obs;
 
   final RxString rxId = "".obs;
+
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   final Rx<XFile> rxProfilePictureXFile = XFile("").obs;
   final RxString rxProfilePicturePath = "".obs;
@@ -54,7 +61,7 @@ class YourDetailsController extends GetxController {
   final RxString rxEmail = "".obs;
   final RxBool rxIsEmailVerified = false.obs;
 
-  final Rx<DateTime?> rxDateOfBirth = Rx<DateTime?>(null);
+  final Rx<DateTime> rxDateOfBirth = DateTime(DateTime.now().year - 18).obs;
 
   final RxBool rxIsHeightInFtIn = true.obs;
   final Rx<(int, int)> rxHeightInFt = defaultHeightFt.obs;
@@ -72,8 +79,8 @@ class YourDetailsController extends GetxController {
 
   final Rx<DrinkEnum> rxDrink = defaultDrink.obs;
 
-  void setDateOfBirth(DateTime? date) {
-    rxDateOfBirth.value = date ?? rxDateOfBirth.value;
+  void setDateOfBirth(DateTime date) {
+    rxDateOfBirth.value = date;
 
     return;
   }
@@ -197,28 +204,47 @@ class YourDetailsController extends GetxController {
     if (Get.arguments != null && Get.arguments is Map<String, dynamic>) {
       final Map<String, dynamic> args = Get.arguments as Map<String, dynamic>;
 
-      unawaited(setData(args));
+      if (args.containsKey("navigationSource")) {
+        rxNavigationSource.value = NavigationSource.values.firstWhere(
+          (NavigationSource e) {
+            return args["navigationSource"] == e.name;
+          },
+          orElse: () {
+            return NavigationSource.verify;
+          },
+        );
+      } else {}
     }
   }
 
-  Future<void> setData(Map<String, dynamic> args) async {
-    if (args.containsKey("navigationSource")) {
-      rxNavigationSource.value = NavigationSource.values.firstWhere(
-        (NavigationSource e) {
-          return args["navigationSource"] == e.name;
-        },
-        orElse: () {
-          return NavigationSource.verify;
-        },
-      );
-    } else {}
+  @override
+  Future<void> onReady() async {
+    super.onReady();
 
-    final User user = AuthDBService().user;
+    await getUser();
+  }
 
+  Future<bool> getUser() async {
+    final GetSetUser user = await UserRefreshService().getUser();
+
+    await setData(user.user ?? User());
+
+    return Future<bool>.value(!mapEquals(user.toJson(), GetSetUser().toJson()));
+  }
+
+  Future<bool> setUser() async {
+    final Map<String, dynamic> body = buildJSON();
+
+    final GetSetUser user = await UserRefreshService().setUser(body);
+
+    return Future<bool>.value(!mapEquals(user.toJson(), GetSetUser().toJson()));
+  }
+
+  Future<void> setData(User user) async {
     rxId.value = user.id ?? "";
 
     rxProfilePictureXFile.value = XFile("");
-    rxProfilePicturePath.value = user.profilePictureUrl ?? "";
+    rxProfilePicturePath.value = user.avatarUrl ?? "";
 
     firstNameController.text = user.firstName ?? "";
     rxFirstName.value = user.firstName ?? "";
@@ -226,10 +252,10 @@ class YourDetailsController extends GetxController {
     lastNameController.text = user.lastName ?? "";
     rxLastName.value = user.lastName ?? "";
 
-    usernameController.text = user.username ?? "";
-    rxUsername.value = user.username ?? "";
+    usernameController.text = user.displayName ?? "";
+    rxUsername.value = user.displayName ?? "";
 
-    await read("${user.dialCode ?? ""}${user.phoneNumber ?? ""}");
+    await read(user.phoneE164 ?? "");
     rxIsPhoneVerified.value = user.isPhoneVerified ?? false;
 
     emailController.text = user.email ?? "";
@@ -238,8 +264,8 @@ class YourDetailsController extends GetxController {
 
     setDateOfBirth(
       (user.dateOfBirth != null) && ((user.dateOfBirth ?? "").isNotEmpty)
-          ? DateTime.tryParse(user.dateOfBirth ?? "")
-          : null,
+          ? DateTime.tryParse(user.dateOfBirth ?? "") ?? rxDateOfBirth.value
+          : rxDateOfBirth.value,
     );
 
     rxIsHeightInFtIn.value = true;
@@ -274,7 +300,7 @@ class YourDetailsController extends GetxController {
     setAstronomy(
       AstronomyEnum.values.firstWhere(
         (AstronomyEnum e) {
-          return (user.astronomy ?? "") == e.name;
+          return (user.zodiacSign ?? "") == e.name;
         },
         orElse: () {
           return defaultAstronomy;
@@ -304,10 +330,59 @@ class YourDetailsController extends GetxController {
       ),
     );
 
-    return;
+    update();
+
+    return Future<void>.value();
   }
 
-  // Navigate to the appropriate screen based on the navigation source
+  bool validateForm() {
+    const bool value = false;
+
+    final bool result1 = formKey.currentState?.validate() ?? false;
+    if (!result1) {
+      SnackBarUtil().show(LanguagesUtil().pleaseFillAllFields);
+      return value;
+    }
+
+    return result1;
+  }
+
+  Map<String, dynamic> buildJSON() {
+    final User user = User(
+      id: rxId.value,
+      email: rxEmail.value,
+      isEmailVerified: rxIsEmailVerified.value,
+      phoneE164: "${rxSelectedCountry.value.dialCode ?? ""}${rxNumber.value}",
+      isPhoneVerified: rxIsPhoneVerified.value,
+      firstName: rxFirstName.value,
+      lastName: rxLastName.value,
+      dateOfBirth: rxDateOfBirth.value.toIso8601String(),
+      displayName: rxUsername.value,
+      heightInFt: double.parse(
+        "${rxHeightInFt.value.$1}.${rxHeightInFt.value.$2}",
+      ),
+      heightInCm: double.parse("${rxHeightInCm.value}"),
+      weightInKg: double.parse("${rxWeightInKg.value}"),
+      weightInLb: double.parse("${rxWeightInLb.value}"),
+      gender: rxGender.value.name,
+      zodiacSign: rxAstronomy.value.name,
+      smoke: rxSmoke.value.name,
+      drink: rxDrink.value.name,
+      metadata: AuthDBService().user.metadata,
+      avatarUrl: AuthDBService().user.avatarUrl,
+      bio: AuthDBService().user.bio,
+      timezone: AuthDBService().user.timezone,
+      locale: AuthDBService().user.locale,
+      role: AuthDBService().user.role,
+      isActive: AuthDBService().user.isActive,
+      creditBalance: AuthDBService().user.creditBalance,
+      createdAt: AuthDBService().user.createdAt,
+      updatedAt: AuthDBService().user.updatedAt,
+    );
+
+    return user.toJson();
+  }
+
   Future<void> navigate() async {
     switch (rxNavigationSource.value) {
       case NavigationSource.verify:

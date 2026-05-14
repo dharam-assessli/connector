@@ -476,7 +476,7 @@ class GatherPermissionsController extends GetxController
 
   //
 
-  List<PermissionType> getPermissionTypes() {
+  List<PermissionType> get getPermissionTypes {
     return Platform.isAndroid
         ? <PermissionType>[
             PermissionType.location,
@@ -629,7 +629,7 @@ class GatherPermissionsController extends GetxController
 
   Future<void> navigate() async {
     await NavigationService().pushNamedAndRemoveUntil(
-      RoutesUtils().yourDetailsScreen,
+      RoutesUtils().dashboardScreen,
       arguments: <String, dynamic>{},
       circularTransition: true,
     );

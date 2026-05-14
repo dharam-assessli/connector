@@ -140,20 +140,15 @@ class VerifyOTPScreen extends GetView<VerifyOTPController> {
         ),
       ),
       onCompleted: (String value) async {
+        // Validate form
         final bool isValid = controller.validateForm();
 
         if (!isValid) {
           return Future<void>.value();
         } else {}
 
-        final bool sent = await controller.verifyOTP();
-
-        if (!sent) {
-          return Future<void>.value();
-        } else {}
-
-        // Navigate
-        await controller.navigate();
+        // Verify OTP and navigate if success
+        await controller.verifyOTP();
       },
     );
   }

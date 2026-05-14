@@ -1,15 +1,14 @@
 import "dart:developer";
 
-import "package:connector/controllers/onboarding/your_details_controller.dart";
-import "package:connector/models/auth/send_otp.dart";
-import "package:connector/models/auth/verify_otp.dart";
-import "package:connector/repositories/auth/auth_repository.dart";
 import "package:connector/utils/languages_util.dart";
 import "package:connector/utils/routes_utils.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:horizon/models/auth/send_otp.dart";
 import "package:horizon/models/countries/countries.dart";
+import "package:horizon/repositories/auth/auth_repository.dart";
+import "package:horizon/services/jwt/sign_in_service.dart";
 import "package:horizon/services/navigation_service.dart";
 import "package:horizon/services/sms_service.dart";
 import "package:horizon/utils/overlays/snack_bar_util.dart";
@@ -41,6 +40,7 @@ class VerifyOTPController extends GetxController {
     if (Get.arguments != null && Get.arguments is Map<String, dynamic>) {
       final Map<String, dynamic> args = Get.arguments as Map<String, dynamic>;
 
+      // Set data from arguments
       setData(args);
     }
   }
@@ -52,6 +52,7 @@ class VerifyOTPController extends GetxController {
     await getAppSignature();
   }
 
+  // Set data from arguments
   void setData(Map<String, dynamic> args) {
     if (args.containsKey("selectedCountry")) {
       rxSelectedCountry.value = Countries.fromJson(args["selectedCountry"]);
@@ -99,15 +100,13 @@ class VerifyOTPController extends GetxController {
 
   Future<bool> resendOTP() async {
     final String dialCode = rxSelectedCountry.value.dialCode ?? "";
-
     final String number = rxNumber.value;
     final String email = rxEmail.value;
-
     final String signature = await SMSService().getAppSignature();
 
     final SendOTP result = await AuthRepository().sendOTP(<String, dynamic>{
       "method": rxIsAPhoneNumber.value ? "phone" : "email",
-      "destination": rxIsAPhoneNumber.value ? "$dialCode$number" : email,
+      "identifier": rxIsAPhoneNumber.value ? "$dialCode$number" : email,
       "app_signature": signature,
     });
 
@@ -116,31 +115,22 @@ class VerifyOTPController extends GetxController {
     return Future<bool>.value(value);
   }
 
-  Future<bool> verifyOTP() async {
+  Future<void> verifyOTP() async {
     final String dialCode = rxSelectedCountry.value.dialCode ?? "";
-
     final String number = rxNumber.value;
     final String email = rxEmail.value;
-
     final String code = rxOTP.value;
 
-    final VerifyOTP result = await AuthRepository().verifyOTP(<String, dynamic>{
-      "method": rxIsAPhoneNumber.value ? "phone" : "email",
-      "destination": rxIsAPhoneNumber.value ? "$dialCode$number" : email,
-      "code": code,
-    });
-
-    final bool value = !mapEquals(result.toJson(), VerifyOTP().toJson());
-
-    return Future<bool>.value(value);
-  }
-
-  Future<void> navigate() async {
-    await NavigationService().pushNamedAndRemoveUntil(
-      RoutesUtils().gatherPermissionsScreen,
-      // Provide the navigation source as an argument...
-      arguments: <String, dynamic>{
-        "navigationSource": NavigationSource.verify.name,
+    await SignInService().verify(
+      method: rxIsAPhoneNumber.value ? "phone" : "email",
+      identifier: rxIsAPhoneNumber.value ? "$dialCode$number" : email,
+      code: code,
+      navigate: () async {
+        await NavigationService().pushNamedAndRemoveUntil(
+          RoutesUtils().gatherPermissionsScreen,
+          arguments: <String, dynamic>{},
+          circularTransition: true,
+        );
       },
     );
 

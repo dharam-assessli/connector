@@ -149,18 +149,33 @@ class ConnectorScreen extends GetView<ConnectorController> {
   Widget batteryOptimizationWidget() {
     final bool value = controller.rxisDisabledOptimization.value;
 
-    return CustomContainer(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      onTap: () async {
-        final bool value = await controller.isDisabledOptimization();
-        controller.rxisDisabledOptimization.value = value;
-      },
-      child: CustomText(
-        data: "Battery optimization: ${value ? "disabled" : "enabled"}.",
-        style: const TextStyle(),
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-      ),
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Flexible(
+          child: CustomContainer(
+            padding: const EdgeInsets.all(8),
+            onTap: () async {
+              final bool value = await controller.isDisabledOptimization();
+              controller.rxisDisabledOptimization.value = value;
+            },
+            child: CustomText(
+              data: "Battery optimization: ${value ? "Disabled" : "Enabled"}",
+              style: const TextStyle(),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+        ),
+        const SizedBox(width: 8),
+        CustomContainer(
+          padding: const EdgeInsets.all(8),
+          onTap: () async {
+            await controller.openBatteryOptimizationSettings();
+          },
+          child: const Icon(Icons.settings_outlined, size: 24.0),
+        ),
+      ],
     );
   }
 

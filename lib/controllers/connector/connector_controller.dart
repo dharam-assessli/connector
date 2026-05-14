@@ -15,7 +15,6 @@ import "package:horizon/services/screen_time_service.dart";
 import "package:permission_handler/permission_handler.dart";
 
 class ConnectorController extends GetxController with WidgetsBindingObserver {
-  // Battery Optimization
   final RxBool rxisDisabledOptimization = false.obs;
 
   @override
@@ -195,5 +194,11 @@ class ConnectorController extends GetxController with WidgetsBindingObserver {
     value = await BatteryService().isDisabledOptimization();
 
     return Future<bool>.value(value);
+  }
+
+  Future<void> openBatteryOptimizationSettings() async {
+    await BatteryService().openBatteryOptimizationSettings();
+
+    return Future<void>.value();
   }
 }

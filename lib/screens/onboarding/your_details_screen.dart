@@ -1,24 +1,24 @@
 import "package:connector/controllers/onboarding/your_details_controller.dart";
-import "package:connector/functions/onboarding/astronomy_functions.dart";
-import "package:connector/functions/onboarding/drink_functions.dart";
-import "package:connector/functions/onboarding/gender_functions.dart";
-import "package:connector/functions/onboarding/smoke_functions.dart";
 import "package:connector/utils/languages_util.dart";
-import "package:connector/widgets/cupertino_pickers/astronomy_picker.dart";
-import "package:connector/widgets/cupertino_pickers/dob_picker.dart";
-import "package:connector/widgets/cupertino_pickers/drink_picker.dart";
-import "package:connector/widgets/cupertino_pickers/gender_picker.dart";
-import "package:connector/widgets/cupertino_pickers/height_picker.dart";
-import "package:connector/widgets/cupertino_pickers/smoke_picker.dart";
-import "package:connector/widgets/cupertino_pickers/weight_picker.dart";
 import "package:flutter/services.dart";
 import "package:get/get.dart";
+import "package:horizon/functions/astronomy_functions.dart";
+import "package:horizon/functions/drink_functions.dart";
+import "package:horizon/functions/gender_functions.dart";
+import "package:horizon/functions/smoke_functions.dart";
 import "package:horizon/utils/min_max_length_input_formatter.dart";
 import "package:horizon/widgets/animations/animated_gradient.dart";
 import "package:horizon/widgets/app_bar/custom_app_bar.dart";
 import "package:horizon/widgets/buttons/custom_icon_button.dart";
 import "package:horizon/widgets/buttons/custom_text_button.dart";
 import "package:horizon/widgets/containers/custom_container.dart";
+import "package:horizon/widgets/cupertino_pickers/astronomy_picker.dart";
+import "package:horizon/widgets/cupertino_pickers/dob_picker.dart";
+import "package:horizon/widgets/cupertino_pickers/drink_picker.dart";
+import "package:horizon/widgets/cupertino_pickers/gender_picker.dart";
+import "package:horizon/widgets/cupertino_pickers/height_picker.dart";
+import "package:horizon/widgets/cupertino_pickers/smoke_picker.dart";
+import "package:horizon/widgets/cupertino_pickers/weight_picker.dart";
 import "package:horizon/widgets/fields/custom_text_form_field.dart";
 import "package:horizon/widgets/texts/custom_text.dart";
 import "package:material_ui/material_ui.dart";
@@ -44,31 +44,36 @@ class YourDetailsScreen extends GetView<YourDetailsController> {
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: GetBuilder<YourDetailsController>(
                     builder: (YourDetailsController controller) {
-                      return Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          const SizedBox(height: 16),
-                          firstNameFieldWidget(),
-                          const SizedBox(height: 16),
-                          lastNameFieldWidget(),
-                          const SizedBox(height: 16),
-                          userNameFieldWidget(),
-                          const SizedBox(height: 16),
-                          phoneNumberFieldWidget(context),
-                          const SizedBox(height: 16),
-                          emailFieldWidget(context),
-                          const SizedBox(height: 16),
-                          dateOfBirthWidget(),
-                          const SizedBox(height: 16),
-                          rowHeightWeightWidget(),
-                          const SizedBox(height: 16),
-                          rowGenderAstronomyWidget(),
-                          const SizedBox(height: 16),
-                          rowSmokeDrinkWidget(),
-                          const SizedBox(height: 16),
-                        ],
-                      );
+                      return Obx(() {
+                        return Form(
+                          key: controller.formKey,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              const SizedBox(height: 16),
+                              firstNameFieldWidget(),
+                              const SizedBox(height: 16),
+                              lastNameFieldWidget(),
+                              const SizedBox(height: 16),
+                              userNameFieldWidget(),
+                              const SizedBox(height: 16),
+                              phoneNumberFieldWidget(context),
+                              const SizedBox(height: 16),
+                              emailFieldWidget(context),
+                              const SizedBox(height: 16),
+                              dateOfBirthWidget(),
+                              const SizedBox(height: 16),
+                              rowHeightWeightWidget(),
+                              const SizedBox(height: 16),
+                              rowGenderAstronomyWidget(),
+                              const SizedBox(height: 16),
+                              rowSmokeDrinkWidget(),
+                              const SizedBox(height: 16),
+                            ],
+                          ),
+                        );
+                      });
                     },
                   ),
                 ),
@@ -195,12 +200,17 @@ class YourDetailsScreen extends GetView<YourDetailsController> {
       keyboardType: TextInputType.phone,
       textInputAction: TextInputAction.done,
       validator: (String? value) {
-        final String text = (value ?? "").trim();
-        return text.isEmpty
-            ? LanguagesUtil().required
-            : text.length < controller.minLength
-            ? LanguagesUtil().phoneNumberValidationError
-            : null;
+        // final String text = (value ?? "").trim();
+        // return text.isEmpty
+        //     ? LanguagesUtil().required
+        //     : text.length < controller.minLength
+        //     ? LanguagesUtil().phoneNumberValidationError
+        //     : null;
+
+        //
+        // TODO(souvik): Temporarily disabled validation.
+        return null;
+        //
       },
       autofillHints: const <String>[AutofillHints.telephoneNumber],
       inputFormatters: <TextInputFormatter>[
@@ -264,7 +274,7 @@ class YourDetailsScreen extends GetView<YourDetailsController> {
             width: double.infinity,
             child: Builder(
               builder: (BuildContext context) {
-                final DateTime? v0 = controller.rxDateOfBirth.value;
+                final DateTime v0 = controller.rxDateOfBirth.value;
 
                 return DOBPicker(
                   key: ValueKey<dynamic>(v0),
@@ -589,7 +599,22 @@ class YourDetailsScreen extends GetView<YourDetailsController> {
             borderRadius: BorderRadius.circular(24),
             padding: const EdgeInsets.all(16.0),
             margin: const EdgeInsets.symmetric(horizontal: 16.0),
-            onTap: controller.navigate,
+            onTap: () async {
+              final bool isValid = controller.validateForm();
+
+              if (!isValid) {
+                return Future<void>.value();
+              } else {}
+
+              final bool setUser = await controller.setUser();
+
+              if (!setUser) {
+                return Future<void>.value();
+              } else {}
+
+              // navigate to the appropriate screen based on the nav source.
+              await controller.navigate();
+            },
             child: CustomText(
               data: LanguagesUtil().next,
               style: const TextStyle(),

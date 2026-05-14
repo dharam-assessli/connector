@@ -123,6 +123,11 @@ class DashboardScreen extends GetView<DashboardController> {
           },
           data: const Icon(Icons.link),
         ),
+        // Sign Out
+        CustomIconButton(
+          onPressed: controller.signOut,
+          data: const Icon(Icons.logout_outlined),
+        ),
       ],
       trailingActions: const <SizedBox>[SizedBox(width: 8)],
     );
