@@ -1,5 +1,4 @@
 import "package:connector/utils/help_sheets.dart";
-import "package:flutter/widgets.dart";
 import "package:get/get.dart";
 import "package:horizon/automations/foreground_automations/health_data_automation.dart"
     as health_data_automation;
@@ -14,37 +13,15 @@ import "package:horizon/services/permission_service.dart";
 import "package:horizon/services/screen_time_service.dart";
 import "package:permission_handler/permission_handler.dart";
 
-class ConnectorController extends GetxController with WidgetsBindingObserver {
+class ConnectorController extends GetxController {
   final RxBool rxisDisabledOptimization = false.obs;
-
-  @override
-  void onInit() {
-    super.onInit();
-
-    WidgetsBinding.instance.addObserver(this);
-  }
 
   @override
   Future<void> onReady() async {
     super.onReady();
 
+    // Check battery optimization status on ready and update reactive variable
     rxisDisabledOptimization.value = await isDisabledOptimization();
-  }
-
-  @override
-  Future<void> didChangeAppLifecycleState(final AppLifecycleState state) async {
-    super.didChangeAppLifecycleState(state);
-
-    if (state == AppLifecycleState.resumed) {
-      rxisDisabledOptimization.value = await isDisabledOptimization();
-    }
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-
-    WidgetsBinding.instance.removeObserver(this);
   }
 
   Future<void> onItemTapLocation() async {
@@ -189,9 +166,7 @@ class ConnectorController extends GetxController with WidgetsBindingObserver {
   //
 
   Future<bool> isDisabledOptimization() async {
-    bool value = false;
-
-    value = await BatteryService().isDisabledOptimization();
+    final bool value = await BatteryService().isBatteryOptimizationDisabled();
 
     return Future<bool>.value(value);
   }

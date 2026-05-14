@@ -15,6 +15,7 @@ import "package:horizon/services/permission_service.dart";
 import "package:horizon/services/screen_time_service.dart";
 import "package:permission_handler/permission_handler.dart";
 
+// enum for permission types to manage the different permissions in a structured way
 enum PermissionType {
   location,
   health,
@@ -23,8 +24,7 @@ enum PermissionType {
   batteryOptimization,
 }
 
-class GatherPermissionsController extends GetxController
-    with WidgetsBindingObserver {
+class GatherPermissionsController extends GetxController {
   final PageController pageController = PageController();
 
   final RxInt rxCurrentPage = 0.obs;
@@ -40,45 +40,6 @@ class GatherPermissionsController extends GetxController
   final RxBool hasRequestedNotificationPermission = false.obs;
   final RxBool hasRequestedScreenTimePermission = false.obs;
   final RxBool hasRequestedBatteryOptimization = false.obs;
-
-  @override
-  void onInit() {
-    super.onInit();
-
-    WidgetsBinding.instance.addObserver(this);
-  }
-
-  @override
-  Future<void> didChangeAppLifecycleState(final AppLifecycleState state) async {
-    super.didChangeAppLifecycleState(state);
-
-    state == AppLifecycleState.resumed ? await onResume() : (() {})();
-  }
-
-  @override
-  void onClose() {
-    WidgetsBinding.instance.removeObserver(this);
-
-    super.onClose();
-  }
-
-  Future<void> onResume() async {
-    final List<bool> results = await Future.wait(<Future<bool>>[
-      checkLocationPermission(request: false),
-      checkHealthPermission(request: false),
-      checkNotificationPermission(request: false),
-      checkScreenTimePermission(request: false),
-      checkBatteryOptimizationPermission(request: false),
-    ]);
-
-    isLocationPermissionGranted.value = results[0];
-    isHealthPermissionGranted.value = results[1];
-    isNotificationPermissionGranted.value = results[2];
-    isScreenTimePermissionGranted.value = results[3];
-    isBatteryOptimizationDisabled.value = results[4];
-
-    return Future<void>.value();
-  }
 
   Future<void> requestLocationPermission() async {
     try {
@@ -305,13 +266,11 @@ class GatherPermissionsController extends GetxController
     bool value = false;
 
     try {
-      final bool condition = await ScreenTimeService().hasPermission();
-      if (!condition) {
-        // SnackBarUtil().show("Screen Time permission is not granted.");
-        return Future<bool>.value(value);
+      if (request) {
+        await ScreenTimeService().requestPermission();
       }
 
-      value = condition;
+      value = await ScreenTimeService().hasPermission();
     } on Exception catch (error, stackTrace) {
       log("Exception", error: error, stackTrace: stackTrace);
     } finally {}
@@ -325,13 +284,11 @@ class GatherPermissionsController extends GetxController
     bool value = false;
 
     try {
-      final bool condition = await BatteryService().isDisabledOptimization();
-      if (!condition) {
-        // SnackBarUtil().show("Battery optimization is not disabled.");
-        return Future<bool>.value(value);
+      if (request) {
+        await BatteryService().optimize();
       }
 
-      value = condition;
+      value = await BatteryService().isBatteryOptimizationDisabled();
     } on Exception catch (error, stackTrace) {
       log("Exception", error: error, stackTrace: stackTrace);
     } finally {}
@@ -461,7 +418,7 @@ class GatherPermissionsController extends GetxController
 
   Future<void> openBatteryOptimizationPermission() async {
     try {
-      final bool condition = await BatteryService().isDisabledOptimization();
+      final bool condition = await BatteryService().isBatteryOptimizationDisabled();
       if (!condition) {
         await BatteryService().openBatteryOptimizationSettings();
         // SnackBarUtil().show("Opening battery optimization settings");
@@ -567,27 +524,32 @@ class GatherPermissionsController extends GetxController
       switch (rxCurrentPage.value) {
         case 0:
           await requestLocationPermission();
-          isLocationPermissionGranted.value ? await nextPage() : (() {})();
+          // isLocationPermissionGranted.value ? await nextPage() : (() {})();
+          await nextPage();
           break;
 
         case 1:
           await requestHealthPermission();
-          isHealthPermissionGranted.value ? await nextPage() : (() {})();
+          // isHealthPermissionGranted.value ? await nextPage() : (() {})();
+          await nextPage();
           break;
 
         case 2:
           await requestNotificationPermission();
-          isNotificationPermissionGranted.value ? await nextPage() : (() {})();
+          // isNotificationPermissionGranted.value ? await nextPage() : (() {})();
+          await nextPage();
           break;
 
         case 3:
           await requestScreenTimePermission();
-          isScreenTimePermissionGranted.value ? await nextPage() : (() {})();
+          // isScreenTimePermissionGranted.value ? await nextPage() : (() {})();
+          await nextPage();
           break;
 
         case 4:
           await requestBatteryOptimizationPermission();
-          isBatteryOptimizationDisabled.value ? await navigate() : (() {})();
+          // isBatteryOptimizationDisabled.value ? await navigate() : (() {})();
+          await navigate();
           break;
 
         default:
@@ -597,17 +559,20 @@ class GatherPermissionsController extends GetxController
       switch (rxCurrentPage.value) {
         case 0:
           await requestLocationPermission();
-          isLocationPermissionGranted.value ? await nextPage() : (() {})();
+          // isLocationPermissionGranted.value ? await nextPage() : (() {})();
+          await nextPage();
           break;
 
         case 1:
           await requestHealthPermission();
-          isHealthPermissionGranted.value ? await nextPage() : (() {})();
+          // isHealthPermissionGranted.value ? await nextPage() : (() {})();
+          await nextPage();
           break;
 
         case 2:
           await requestNotificationPermission();
-          isNotificationPermissionGranted.value ? await navigate() : (() {})();
+          // isNotificationPermissionGranted.value ? await navigate() : (() {})();
+          await navigate();
           break;
 
         default:

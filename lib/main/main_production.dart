@@ -45,8 +45,8 @@ Future<void> deferredInitialization() async {
 
     await DeviceInfoService().init();
 
-    // NotificationService: full initialization in main isolate
-    await NotificationService().initialize();
+    // NotificationService: startPlugin in deferred initialization
+    await NotificationService().startPlugin();
 
     // WorkManager: configureBundleID must complete before initialize/registerTasks
     await WorkManagerService().configureBundleID();

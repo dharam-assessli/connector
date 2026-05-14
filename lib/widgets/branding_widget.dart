@@ -1,40 +1,13 @@
 import "package:connector/constants/images_constants.dart";
 import "package:connector/utils/languages_util.dart";
+import "package:flutter/material.dart";
 import "package:horizon/utils/shine_animation.dart";
 import "package:horizon/widgets/gradient/custom_gradient_text.dart";
 import "package:horizon/widgets/media/custom_media_viewer.dart";
-import "package:material_ui/material_ui.dart";
 
-class BrandingWidget extends StatefulWidget {
+// This widget is used to display the branding of the app.
+class BrandingWidget extends StatelessWidget {
   const BrandingWidget({super.key});
-
-  @override
-  State<BrandingWidget> createState() => _BrandingWidgetState();
-}
-
-class _BrandingWidgetState extends State<BrandingWidget>
-    with SingleTickerProviderStateMixin {
-  late AnimationController controller;
-
-  final Duration duration = const Duration(seconds: 60);
-
-  @override
-  void initState() {
-    super.initState();
-
-    controller = AnimationController(duration: duration, vsync: this);
-
-    WidgetsBinding.instance.addPostFrameCallback((Duration timeStamp) async {
-      await controller.repeat();
-    });
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-
-    super.dispose();
-  }
 
   @override
   Widget build(final BuildContext context) {
@@ -59,13 +32,10 @@ class _BrandingWidgetState extends State<BrandingWidget>
   Widget customMediaViewer(final BuildContext context) {
     return ShineAnimation(
       color: ShineColor.primaryContainer,
-      child: RotationTransition(
-        turns: controller,
-        child: CustomMediaViewer(
-          data: ImagesConstants().appIcon,
-          height: kToolbarHeight * 3,
-          width: kToolbarHeight * 3,
-        ),
+      child: CustomMediaViewer(
+        data: ImagesConstants().appIcon,
+        height: kToolbarHeight * 3,
+        width: kToolbarHeight * 3,
       ),
     );
   }
