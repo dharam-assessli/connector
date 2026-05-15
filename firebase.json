@@ -1,106 +1,121 @@
 {
-    "flutter": {
-        "platforms": {
-            "android": {
-                "buildConfigurations": {
-                    "src/development": {
-                        "projectId": "assei-apps-development",
-                        "appId": "1:799296776426:android:985e89756615be1fc88f93",
-                        "fileOutput": "android/app/src/development/google-services.json"
-                    },
-                    "src/staging": {
-                        "projectId": "assei-apps-staging",
-                        "appId": "1:1047961685171:android:2b7b6ce3a638c41f5e34c6",
-                        "fileOutput": "android/app/src/staging/google-services.json"
-                    },
-                    "src/production": {
-                        "projectId": "assei-apps-production",
-                        "appId": "1:153074686205:android:c20eee800183a24717c694",
-                        "fileOutput": "android/app/src/production/google-services.json"
-                    }
-                }
-            },
-            "ios": {
-                "buildConfigurations": {
-                    "Debug-development": {
-                        "projectId": "assei-apps-development",
-                        "appId": "1:799296776426:ios:bf24ec3f86a3b682c88f93",
-                        "uploadDebugSymbols": true,
-                        "fileOutput": "ios/flavors/development/GoogleService-Info.plist"
-                    },
-                    "Profile-development": {
-                        "projectId": "assei-apps-development",
-                        "appId": "1:799296776426:ios:bf24ec3f86a3b682c88f93",
-                        "uploadDebugSymbols": true,
-                        "fileOutput": "ios/flavors/development/GoogleService-Info.plist"
-                    },
-                    "Release-development": {
-                        "projectId": "assei-apps-development",
-                        "appId": "1:799296776426:ios:bf24ec3f86a3b682c88f93",
-                        "uploadDebugSymbols": true,
-                        "fileOutput": "ios/flavors/development/GoogleService-Info.plist"
-                    },
-                    "Debug-staging": {
-                        "projectId": "assei-apps-staging",
-                        "appId": "1:1047961685171:ios:d8762fb6293a51c35e34c6",
-                        "uploadDebugSymbols": true,
-                        "fileOutput": "ios/flavors/staging/GoogleService-Info.plist"
-                    },
-                    "Profile-staging": {
-                        "projectId": "assei-apps-staging",
-                        "appId": "1:1047961685171:ios:d8762fb6293a51c35e34c6",
-                        "uploadDebugSymbols": true,
-                        "fileOutput": "ios/flavors/staging/GoogleService-Info.plist"
-                    },
-                    "Release-staging": {
-                        "projectId": "assei-apps-staging",
-                        "appId": "1:1047961685171:ios:d8762fb6293a51c35e34c6",
-                        "uploadDebugSymbols": true,
-                        "fileOutput": "ios/flavors/staging/GoogleService-Info.plist"
-                    },
-                    "Debug-production": {
-                        "projectId": "assei-apps-production",
-                        "appId": "1:153074686205:ios:27a3d6f472e0bade17c694",
-                        "uploadDebugSymbols": true,
-                        "fileOutput": "ios/flavors/production/GoogleService-Info.plist"
-                    },
-                    "Profile-production": {
-                        "projectId": "assei-apps-production",
-                        "appId": "1:153074686205:ios:27a3d6f472e0bade17c694",
-                        "uploadDebugSymbols": true,
-                        "fileOutput": "ios/flavors/production/GoogleService-Info.plist"
-                    },
-                    "Release-production": {
-                        "projectId": "assei-apps-production",
-                        "appId": "1:153074686205:ios:27a3d6f472e0bade17c694",
-                        "uploadDebugSymbols": true,
-                        "fileOutput": "ios/flavors/production/GoogleService-Info.plist"
-                    }
-                }
-            },
-            "dart": {
-                "lib/firebase_options/firebase_options_development.dart": {
-                    "projectId": "assei-apps-development",
-                    "configurations": {
-                        "android": "1:799296776426:android:985e89756615be1fc88f93",
-                        "ios": "1:799296776426:ios:bf24ec3f86a3b682c88f93"
-                    }
-                },
-                "lib/firebase_options/firebase_options_staging.dart": {
-                    "projectId": "assei-apps-staging",
-                    "configurations": {
-                        "android": "1:1047961685171:android:2b7b6ce3a638c41f5e34c6",
-                        "ios": "1:1047961685171:ios:d8762fb6293a51c35e34c6"
-                    }
-                },
-                "lib/firebase_options/firebase_options_production.dart": {
-                    "projectId": "assei-apps-production",
-                    "configurations": {
-                        "android": "1:153074686205:android:c20eee800183a24717c694",
-                        "ios": "1:153074686205:ios:27a3d6f472e0bade17c694"
-                    }
-                }
-            }
+  "flutter": {
+    "platforms": {
+      "android": {
+        "buildConfigurations": {
+          "src/development": {
+            "projectId": "assei-apps-development",
+            "appId": "1:799296776426:android:985e89756615be1fc88f93",
+            "fileOutput": "android/app/src/development/google-services.json"
+          },
+          "src/staging": {
+            "projectId": "assei-apps-staging",
+            "appId": "1:1047961685171:android:2b7b6ce3a638c41f5e34c6",
+            "fileOutput": "android/app/src/staging/google-services.json"
+          },
+          "src/production": {
+            "projectId": "assei-apps-production",
+            "appId": "1:153074686205:android:c20eee800183a24717c694",
+            "fileOutput": "android/app/src/production/google-services.json"
+          }
         }
+      },
+      "ios": {
+        "buildConfigurations": {
+          "Debug-development": {
+            "projectId": "assei-apps-development",
+            "appId": "1:799296776426:ios:bf24ec3f86a3b682c88f93",
+            "uploadDebugSymbols": true,
+            "fileOutput": "ios/flavors/development/GoogleService-Info.plist"
+          },
+          "Profile-development": {
+            "projectId": "assei-apps-development",
+            "appId": "1:799296776426:ios:bf24ec3f86a3b682c88f93",
+            "uploadDebugSymbols": true,
+            "fileOutput": "ios/flavors/development/GoogleService-Info.plist"
+          },
+          "Release-development": {
+            "projectId": "assei-apps-development",
+            "appId": "1:799296776426:ios:bf24ec3f86a3b682c88f93",
+            "uploadDebugSymbols": true,
+            "fileOutput": "ios/flavors/development/GoogleService-Info.plist"
+          },
+          "Debug-staging": {
+            "projectId": "assei-apps-staging",
+            "appId": "1:1047961685171:ios:d8762fb6293a51c35e34c6",
+            "uploadDebugSymbols": true,
+            "fileOutput": "ios/flavors/staging/GoogleService-Info.plist"
+          },
+          "Profile-staging": {
+            "projectId": "assei-apps-staging",
+            "appId": "1:1047961685171:ios:d8762fb6293a51c35e34c6",
+            "uploadDebugSymbols": true,
+            "fileOutput": "ios/flavors/staging/GoogleService-Info.plist"
+          },
+          "Release-staging": {
+            "projectId": "assei-apps-staging",
+            "appId": "1:1047961685171:ios:d8762fb6293a51c35e34c6",
+            "uploadDebugSymbols": true,
+            "fileOutput": "ios/flavors/staging/GoogleService-Info.plist"
+          },
+          "Debug-production": {
+            "projectId": "assei-apps-production",
+            "appId": "1:153074686205:ios:27a3d6f472e0bade17c694",
+            "uploadDebugSymbols": true,
+            "fileOutput": "ios/flavors/production/GoogleService-Info.plist"
+          },
+          "Profile-production": {
+            "projectId": "assei-apps-production",
+            "appId": "1:153074686205:ios:27a3d6f472e0bade17c694",
+            "uploadDebugSymbols": true,
+            "fileOutput": "ios/flavors/production/GoogleService-Info.plist"
+          },
+          "Release-production": {
+            "projectId": "assei-apps-production",
+            "appId": "1:153074686205:ios:27a3d6f472e0bade17c694",
+            "uploadDebugSymbols": true,
+            "fileOutput": "ios/flavors/production/GoogleService-Info.plist"
+          }
+        }
+      },
+      "dart": {
+        "lib/firebase_options/firebase_options_development.dart": {
+          "projectId": "assei-apps-development",
+          "configurations": {
+            "android": "1:799296776426:android:985e89756615be1fc88f93",
+            "ios": "1:799296776426:ios:bf24ec3f86a3b682c88f93"
+          }
+        },
+        "lib/firebase_options/firebase_options_staging.dart": {
+          "projectId": "assei-apps-staging",
+          "configurations": {
+            "android": "1:1047961685171:android:2b7b6ce3a638c41f5e34c6",
+            "ios": "1:1047961685171:ios:d8762fb6293a51c35e34c6"
+          }
+        },
+        "lib/firebase_options/firebase_options_production.dart": {
+          "projectId": "assei-apps-production",
+          "configurations": {
+            "android": "1:153074686205:android:c20eee800183a24717c694",
+            "ios": "1:153074686205:ios:27a3d6f472e0bade17c694"
+          }
+        }
+      }
     }
+  },
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "disallowLegacyRuntimeConfig": true,
+      "ignore": [
+        ".dart_tool",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.local"
+      ],
+      "runtime": "dart3"
+    }
+  ]
 }

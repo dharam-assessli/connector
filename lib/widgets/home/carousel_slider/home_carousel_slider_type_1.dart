@@ -49,9 +49,9 @@ class HomeCarouselSliderType1 extends StatelessWidget {
                         right: kToolbarHeight / 2,
                         bottom: kToolbarHeight / 6,
                         child: CustomMediaViewer(
-                          data: "https://i.postimg.cc/fTLLBcyF/moon.png",
-                          height: kToolbarHeight - 8,
-                          width: kToolbarHeight - 8,
+                          data: "https://i.postimg.cc/W1VLGj55/salad.png",
+                          height: kToolbarHeight - 0,
+                          width: kToolbarHeight - 0,
                           color: Theme.of(context).textTheme.bodyMedium?.color,
                         ),
                       ),
@@ -65,7 +65,7 @@ class HomeCarouselSliderType1 extends StatelessWidget {
                             children: <Widget>[
                               const SizedBox(height: 8.0),
                               CustomText(
-                                data: "Lorem ipsum Lorem ipsum",
+                                data: "Now",
                                 style: TextStyle(
                                   fontSize: 16.0,
                                   fontWeight: FontWeight.normal,
@@ -77,7 +77,7 @@ class HomeCarouselSliderType1 extends StatelessWidget {
                               const SizedBox(height: 8.0),
                               const CustomGradientText(
                                 animation: false,
-                                data: "Lorem ipsum Lorem ipsum",
+                                data: "Light Food",
                                 style: TextStyle(
                                   fontSize: 24.0,
                                   fontWeight: FontWeight.bold,

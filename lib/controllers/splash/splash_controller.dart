@@ -23,7 +23,7 @@ class SplashController extends GetxController with WidgetsBindingObserver {
   Future<void> onReady() async {
     super.onReady();
 
-    await Future<void>.delayed(const Duration(seconds: 3));
+    // await Future<void>.delayed(const Duration(seconds: 3));
     await procedure();
     await preChecks();
   }

@@ -1,73 +1,89 @@
-// package com.assessli.connector
+package com.assessli.connector
 
-// import android.content.BroadcastReceiver
-// import android.content.Context
-// import android.content.Intent
-// import android.util.Log
-// import androidx.work.*
-// import java.util.concurrent.TimeUnit
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.util.Log
+import androidx.work.*
+import java.util.concurrent.TimeUnit
 
-// class BootReceiver : BroadcastReceiver() {
-//     override fun onReceive(context: Context, intent: Intent) {
-//         if (
-//             intent.action == Intent.ACTION_BOOT_COMPLETED ||
-//             intent.action == Intent.ACTION_MY_PACKAGE_REPLACED
-//         ) {
-//             Log.d("BootReceiver", "Re-registering WorkManager tasks")
-//             registerTasks(context)
-//         }
-//     }
+class BootReceiver : BroadcastReceiver() {
 
-//     private fun registerTasks(context: Context) {
-//         val workManager = WorkManager.getInstance(context)
+    data class WorkerConfig(
+        val workerClass: Class<out ListenableWorker>,
+        val dartTaskKey: String
+    )
 
-//         @Suppress("UNCHECKED_CAST")
-//         val workerClass = Class.forName("be.tramckrijte.workmanager.BackgroundWorker")
-//             .asSubclass(ListenableWorker::class.java)
+    override fun onReceive(context: Context, intent: Intent) {
+        if (
+            intent.action == Intent.ACTION_BOOT_COMPLETED ||
+            intent.action == Intent.ACTION_MY_PACKAGE_REPLACED
+        ) {
+            Log.d("BootReceiver", "Re-registering WorkManager tasks")
+            registerTasks(context)
+        }
+    }
 
-//         val constraints = Constraints.Builder()
-//             .setRequiredNetworkType(NetworkType.NOT_REQUIRED)
-//             .setRequiresBatteryNotLow(false)
-//             .setRequiresCharging(false)
-//             .setRequiresDeviceIdle(false)
-//             .setRequiresStorageNotLow(false)
-//             .build()
+    private fun resolveWorkerConfig(): WorkerConfig? {
+        val candidates = listOf(
+            "dev.fluttercommunity.workmanager.BackgroundWorker" to "dev.fluttercommunity.workmanager.DART_TASK",
+            "be.tramckrijte.workmanager.BackgroundWorker"       to "be.tramckrijte.workmanager.DART_TASK"
+        )
+        for ((className, dartTaskKey) in candidates) {
+            try {
+                val workerClass = Class.forName(className).asSubclass(ListenableWorker::class.java)
+                Log.d("BootReceiver", "Resolved worker: $className")
+                return WorkerConfig(workerClass, dartTaskKey)
+            } catch (e: ClassNotFoundException) {
+                Log.w("BootReceiver", "Worker class not found: $className")
+            }
+        }
+        return null
+    }
 
-//         // One-off task
-//         val oneOffRequest = OneTimeWorkRequest.Builder(workerClass)
-//             .setConstraints(constraints)
-//             .setInputData(
-//                 workDataOf(
-//                     "be.tramckrijte.workmanager.DART_TASK" to "androidOneOffTask"
-//                 )
-//             )
-//             .build()
+    private fun registerTasks(context: Context) {
+        val config = resolveWorkerConfig() ?: run {
+            Log.e("BootReceiver", "No WorkManager worker class found. Aborting.")
+            return
+        }
 
-//         workManager.enqueueUniqueWork(
-//             "androidOneOffTask",
-//             ExistingWorkPolicy.KEEP,
-//             oneOffRequest
-//         )
+        val workManager = WorkManager.getInstance(context)
 
-//         // Periodic task
-//         val periodicRequest = PeriodicWorkRequest.Builder(
-//             workerClass,
-//             15, TimeUnit.MINUTES
-//         )
-//             .setConstraints(constraints)
-//             .setInputData(
-//                 workDataOf(
-//                     "be.tramckrijte.workmanager.DART_TASK" to "androidPeriodicTask"
-//                 )
-//             )
-//             .build()
+        val constraints = Constraints.Builder()
+            .setRequiredNetworkType(NetworkType.NOT_REQUIRED)
+            .setRequiresBatteryNotLow(false)
+            .setRequiresCharging(false)
+            .setRequiresDeviceIdle(false)
+            .setRequiresStorageNotLow(false)
+            .build()
 
-//         workManager.enqueueUniquePeriodicWork(
-//             "androidPeriodicTask",
-//             ExistingPeriodicWorkPolicy.KEEP,
-//             periodicRequest
-//         )
+        // One-off task
+        val oneOffRequest = OneTimeWorkRequest.Builder(config.workerClass)
+            .setConstraints(constraints)
+            .setInputData(workDataOf(config.dartTaskKey to "androidOneOffTask"))
+            .build()
 
-//         Log.d("BootReceiver", "Tasks re-registered successfully")
-//     }
-// }
+        workManager.enqueueUniqueWork(
+            "androidOneOffTask",
+            ExistingWorkPolicy.KEEP,
+            oneOffRequest
+        )
+
+        // Periodic task
+        val periodicRequest = PeriodicWorkRequest.Builder(
+            config.workerClass,
+            30, TimeUnit.MINUTES
+        )
+            .setConstraints(constraints)
+            .setInputData(workDataOf(config.dartTaskKey to "androidPeriodicTask"))
+            .build()
+
+        workManager.enqueueUniquePeriodicWork(
+            "androidPeriodicTask",
+            ExistingPeriodicWorkPolicy.KEEP,
+            periodicRequest
+        )
+
+        Log.d("BootReceiver", "Tasks re-registered successfully")
+    }
+}

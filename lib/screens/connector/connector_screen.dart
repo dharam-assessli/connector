@@ -3,7 +3,6 @@ import "dart:io";
 import "package:connector/controllers/connector/connector_controller.dart";
 import "package:connector/utils/languages_util.dart";
 import "package:connector/widgets/category_container.dart";
-import "package:font_awesome_flutter/font_awesome_flutter.dart";
 import "package:get/get.dart";
 import "package:horizon/widgets/animations/animated_gradient.dart";
 import "package:horizon/widgets/app_bar/custom_app_bar.dart";
@@ -26,6 +25,7 @@ class ConnectorScreen extends GetView<ConnectorController> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
+              const SizedBox(height: 0),
               introductionWidget(context),
               const SizedBox(height: 16),
               Expanded(
@@ -93,17 +93,17 @@ class ConnectorScreen extends GetView<ConnectorController> {
           children: <Widget>[
             Expanded(
               child: CategoryContainer(
-                icon: const FaIcon(FontAwesomeIcons.mapLocationDot, size: 56.0),
+                icon: const Icon(Icons.location_on_outlined, size: 56.0),
                 heading: LanguagesUtil().location,
                 onItemTap: controller.onItemTapLocation,
-                onHelpTap: controller.onHelpTapLocation,
+                onHelpTap: controller.onHelpTapLocationForeground,
                 onSettingsTap: controller.onSettingsTapLocation,
               ),
             ),
             const SizedBox(width: 16),
             Expanded(
               child: CategoryContainer(
-                icon: const FaIcon(FontAwesomeIcons.heartPulse, size: 56.0),
+                icon: const Icon(Icons.favorite_border, size: 56.0),
                 heading: LanguagesUtil().health,
                 onItemTap: controller.onItemTapHealth,
                 onHelpTap: controller.onHelpTapHealth,
@@ -120,7 +120,7 @@ class ConnectorScreen extends GetView<ConnectorController> {
           children: <Widget>[
             Expanded(
               child: CategoryContainer(
-                icon: const FaIcon(FontAwesomeIcons.bell, size: 56.0),
+                icon: const Icon(Icons.notifications_outlined, size: 56.0),
                 heading: LanguagesUtil().notifications,
                 onItemTap: controller.onItemTapNotification,
                 onHelpTap: controller.onHelpTapNotification,
@@ -131,7 +131,7 @@ class ConnectorScreen extends GetView<ConnectorController> {
             if (Platform.isAndroid)
               Expanded(
                 child: CategoryContainer(
-                  icon: const FaIcon(FontAwesomeIcons.chartColumn, size: 56.0),
+                  icon: const Icon(Icons.hourglass_empty_outlined, size: 56.0),
                   heading: LanguagesUtil().screenTime,
                   onItemTap: controller.onItemTapScreenTime,
                   onHelpTap: controller.onHelpTapScreenTime,
@@ -187,7 +187,7 @@ class ConnectorScreen extends GetView<ConnectorController> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          const FaIcon(FontAwesomeIcons.circleInfo, size: 16.0),
+          const Icon(Icons.info_outline, size: 16.0),
           const SizedBox(width: 8),
           Flexible(
             child: CustomText(

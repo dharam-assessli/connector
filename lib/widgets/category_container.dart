@@ -31,7 +31,7 @@ class CategoryContainer extends StatelessWidget {
       onTap: onItemTap,
       child: Stack(
         children: <Widget>[
-          Positioned(left: -16, child: topLWidget()),
+          // Positioned(left: -16, child: topLWidget()),
           Positioned(right: 00, child: topRWidget()),
           Positioned(child: bodyWidget()),
         ],
@@ -41,7 +41,8 @@ class CategoryContainer extends StatelessWidget {
 
   Widget topLWidget() {
     return Transform.rotate(
-      angle: -32.0,
+      // angle: -32.0,
+      angle: 0.0,
       child: Opacity(opacity: 0.5, child: icon),
     );
   }
@@ -67,7 +68,11 @@ class CategoryContainer extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        const SizedBox(height: 32),
+        const SizedBox(height: 16),
+        //
+        topLWidget(),
+        //
+        const SizedBox(height: 16),
         CustomText(
           data: heading,
           style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
@@ -81,7 +86,7 @@ class CategoryContainer extends StatelessWidget {
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
-        const SizedBox(height: 32),
+        const SizedBox(height: 16),
         const Divider(height: 0),
         CustomTextButton(
           data: LanguagesUtil().openSettings,

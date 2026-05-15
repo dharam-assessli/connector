@@ -20,9 +20,10 @@ class AINoteWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 const SizedBox(height: kToolbarHeight),
-                middleWaveWidget(context),
-                const SizedBox(height: 8),
+
                 bottomWaveWidget(context),
+
+                const SizedBox(height: 0),
               ],
             ),
           ),
@@ -40,18 +41,22 @@ class AINoteWidget extends StatelessWidget {
           ),
         ),
         Positioned(
-          bottom: 8,
-          left: 16,
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(360),
-              color: Theme.of(context).scaffoldBackgroundColor,
-            ),
-            child: CustomContainer(
-              borderRadius: BorderRadius.circular(360),
-              child: const Padding(
-                padding: EdgeInsets.all(4.0),
-                child: Icon(Icons.play_arrow, size: 16),
+          top: 0,
+          bottom: 0,
+          left: 0,
+          right: 0,
+          child: Center(
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(360),
+                color: Theme.of(context).scaffoldBackgroundColor,
+              ),
+              child: CustomContainer(
+                borderRadius: BorderRadius.circular(360),
+                child: const Padding(
+                  padding: EdgeInsets.all(4.0),
+                  child: Icon(Icons.play_arrow, size: 32),
+                ),
               ),
             ),
           ),

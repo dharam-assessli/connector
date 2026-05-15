@@ -18,7 +18,10 @@ dependencies:
     git:
       url: https://github.com/Assessli-tech/horizon-flutter.git
       ref: main
-
+  workmanager: ^0.9.0+3
+  workmanager_android: ^0.9.0+2
+  workmanager_apple: ^0.9.1+2
+  
 dev_dependencies:
   flutter_lints: 6.0.0
   flutter_test:

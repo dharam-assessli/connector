@@ -36,7 +36,7 @@ class HomeCarouselSliderType3 extends StatelessWidget {
                             children: <Widget>[
                               const SizedBox(height: 8.0),
                               CustomText(
-                                data: "Lorem ipsum Lorem ipsum",
+                                data: "Goal for this month",
                                 style: TextStyle(
                                   fontSize: 16.0,
                                   fontWeight: FontWeight.normal,
@@ -48,7 +48,32 @@ class HomeCarouselSliderType3 extends StatelessWidget {
                               const SizedBox(height: 8.0),
                               CustomListView<String>(
                                 items: List<String>.generate(10, (int index) {
-                                  return "Item $index";
+                                  // return "Item $index";
+
+                                  switch (index) {
+                                    case 0:
+                                      return "Walk 10,000 steps";
+                                    case 1:
+                                      return "Drink 2L of water";
+                                    case 2:
+                                      return "Sleep 7+ hours";
+                                    case 3:
+                                      return "Meditate 10 mins";
+                                    case 4:
+                                      return "Eat 5 fruit & veg servings";
+                                    case 5:
+                                      return "Limit screen time to 2hrs";
+                                    case 6:
+                                      return "Write 3 gratitudes";
+                                    case 7:
+                                      return "Call a loved one";
+                                    case 8:
+                                      return "Learn something new";
+                                    case 9:
+                                      return "Do one self-care activity";
+                                    default:
+                                      return "Item $index";
+                                  }
                                 }),
                                 itemBuilder:
                                     (BuildContext p0, int p1, String p2) {

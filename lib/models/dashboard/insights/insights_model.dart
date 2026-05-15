@@ -1,4 +1,6 @@
-// ignore_for_file: lines_longer_than_80_chars
+import "dart:math";
+
+import "package:horizon/utils/timeago_util.dart";
 
 class InsightsModel {
   InsightsModel({required this.value, required this.label});
@@ -11,7 +13,9 @@ final List<InsightsModel> insightsData = List<InsightsModel>.generate(10, (
   int index,
 ) {
   return InsightsModel(
-    value: (index + 1) * 10000,
-    label: "Lorem ipsum dolor sit amet ${index + 1}",
+    value: Random().nextInt(10000) + 1000,
+    label: TimeagoUtil().timeAgo(
+      DateTime.now().subtract(Duration(days: index + 1)),
+    ),
   );
 });

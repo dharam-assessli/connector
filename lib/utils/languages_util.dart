@@ -13,9 +13,16 @@ class LanguagesUtil {
   String get signInWithApple => "signInWithApple".tr;
   String get byContinuingYouAgreeToOur => "byContinuingYouAgreeToOur".tr;
   String get termsOfService => "termsOfService".tr;
-  String get introLocationHeading => "introLocationHeading".tr;
-  String get introLocationTopDescription => "introLocationTopDescription".tr;
-  String get introLocationBtmDescription => "introLocationBtmDescription".tr;
+  String get introLocationHeadingFG => "introLocationHeadingFG".tr;
+  String get introLocationTopDescriptionFG =>
+      "introLocationTopDescriptionFG".tr;
+  String get introLocationBtmDescriptionFG =>
+      "introLocationBtmDescriptionFG".tr;
+  String get introLocationHeadingBG => "introLocationHeadingBG".tr;
+  String get introLocationTopDescriptionBG =>
+      "introLocationTopDescriptionBG".tr;
+  String get introLocationBtmDescriptionBG =>
+      "introLocationBtmDescriptionBG".tr;
   String get introHealthHeading => "introHealthHeading".tr;
   String get introHealthTopDescription => "introHealthTopDescription".tr;
   String get introHealthBtmDescription => "introHealthBtmDescription".tr;

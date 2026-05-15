@@ -37,7 +37,7 @@ class HomeCarouselSliderType0 extends StatelessWidget {
                           child: ShineAnimation(
                             color: ShineColor.primary,
                             child: CustomMediaViewer(
-                              data: "https://i.postimg.cc/fTLLBcyF/moon.png",
+                              data: "https://i.postimg.cc/52kKK3sf/zzz.png",
                               height: kToolbarHeight - 8,
                               width: kToolbarHeight - 8,
                               color: Theme.of(
@@ -72,7 +72,7 @@ class HomeCarouselSliderType0 extends StatelessWidget {
                               ),
                               const SizedBox(height: 8.0),
                               CustomText(
-                                data: "Lorem ipsum Lorem ipsum",
+                                data: "Weekly",
                                 style: TextStyle(
                                   fontSize: 16.0,
                                   fontWeight: FontWeight.normal,
@@ -81,22 +81,22 @@ class HomeCarouselSliderType0 extends StatelessWidget {
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                               ),
-                              const SizedBox(height: 8.0),
+                              const SizedBox(height: 4.0),
                               const CustomGradientText(
                                 animation: false,
-                                data: "Lorem ipsum Lorem ipsum",
+                                data: "90%",
                                 style: TextStyle(
-                                  fontSize: 24.0,
+                                  fontSize: 32.0,
                                   fontWeight: FontWeight.bold,
                                 ),
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                               ),
-                              const SizedBox(height: 8.0),
+                              const SizedBox(height: 4.0),
                               CustomText(
-                                data: "Lorem ipsum Lorem ipsum",
+                                data: "Doing great! Keep it up.",
                                 style: TextStyle(
-                                  fontSize: 16.0,
+                                  fontSize: 12.0,
                                   fontWeight: FontWeight.normal,
                                   color: Theme.of(
                                     context,

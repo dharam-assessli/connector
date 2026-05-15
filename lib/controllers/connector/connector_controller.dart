@@ -52,8 +52,14 @@ class ConnectorController extends GetxController {
 
   //
 
-  Future<void> onHelpTapLocation() async {
-    await introLocationSheet();
+  Future<void> onHelpTapLocationForeground() async {
+    await introLocationForegroundSheet();
+
+    return Future<void>.value();
+  }
+
+    Future<void> onHelpTapLocationBackgroud() async {
+    await introLocationBackgroundSheet();
 
     return Future<void>.value();
   }

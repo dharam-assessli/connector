@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "development": "assei-apps-development",
+    "staging": "assei-apps-staging",
+    "production": "assei-apps-production"
+  }
+}

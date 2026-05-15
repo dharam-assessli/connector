@@ -408,7 +408,21 @@ class ShortcutGrid extends StatelessWidget {
         Expanded(
           child: CustomListView<String>(
             items: List<String>.generate(length, (int index) {
-              return "Goal ${index + 1}";
+              // return "Goal ${index + 1}";
+
+              switch (index) {
+                case 0:
+                  return "Meditation";
+
+                case 1:
+                  return "Drink Water";
+
+                case 2:
+                  return "Walk";
+
+                default:
+                  return "Goal ${index + 1}";
+              }
             }),
             itemBuilder: (BuildContext context, int index, String item) {
               Color color = ColorsConstants().transparent;
@@ -502,6 +516,29 @@ class ShortcutGrid extends StatelessWidget {
               return "Goal ${index + 1}";
             }),
             itemBuilder: (BuildContext context, int index, String item) {
+              const String eventName1 = "Yoga Session";
+              const String eventName2 = "Anime Club";
+              const String eventName3 = "Cooking Workshop";
+
+              String eventName = "";
+
+              switch (index) {
+                case 0:
+                  eventName = eventName1;
+                  break;
+
+                case 1:
+                  eventName = eventName2;
+                  break;
+
+                case 2:
+                  eventName = eventName3;
+                  break;
+
+                default:
+                  eventName = "Event ${index + 1}";
+              }
+
               return Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -511,7 +548,7 @@ class ShortcutGrid extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       CustomText(
-                        data: "Event ${index + 1}",
+                        data: eventName,
                         style: const TextStyle(fontWeight: FontWeight.bold),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
@@ -584,6 +621,29 @@ class ShortcutGrid extends StatelessWidget {
               return "Medical ${index + 1}";
             }),
             itemBuilder: (BuildContext context, int index, String item) {
+              const String calendarEvent1 = "Doctor's Appointment";
+              const String calendarEvent2 = "Team Meeting";
+              const String calendarEvent3 = "Dinner with Friends";
+
+              String calendarEvent = "";
+
+              switch (index) {
+                case 0:
+                  calendarEvent = calendarEvent1;
+                  break;
+
+                case 1:
+                  calendarEvent = calendarEvent2;
+                  break;
+
+                case 2:
+                  calendarEvent = calendarEvent3;
+                  break;
+
+                default:
+                  calendarEvent = "Event ${index + 1}";
+              }
+
               Color color = ColorsConstants().transparent;
 
               switch (index) {
@@ -619,7 +679,7 @@ class ShortcutGrid extends StatelessWidget {
                       const SizedBox(width: 8),
                       Flexible(
                         child: CustomText(
-                          data: item,
+                          data: calendarEvent,
                           style: const TextStyle(fontWeight: FontWeight.bold),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
@@ -667,6 +727,38 @@ class ShortcutGrid extends StatelessWidget {
               return "Goal ${index + 1}";
             }),
             itemBuilder: (BuildContext context, int index, String item) {
+              const String name0 = "John";
+              const String name1 = "Alex";
+              const String name2 = "Emily";
+
+              const String category1 = "UI/UX";
+              const String category2 = "Development";
+              const String category3 = "Marketing";
+
+              String name = "";
+
+              final List<String> categoryList = <String>[
+                category1,
+                category2,
+                category3,
+              ];
+
+              switch (index) {
+                case 0:
+                  name = name0;
+                  break;
+
+                case 1:
+                  name = name1;
+                  break;
+
+                case 2:
+                  name = name2;
+                  break;
+
+                default:
+                  name = "User $index";
+              }
               return Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -681,7 +773,7 @@ class ShortcutGrid extends StatelessWidget {
                             height: kToolbarHeight - 24,
                             width: kToolbarHeight - 24,
                             child: CustomMediaViewer(
-                              data: "https://ui-avatars.com/api/?name=$item",
+                              data: "https://ui-avatars.com/api/?name=$name",
                             ),
                           ),
                         ),
@@ -691,17 +783,17 @@ class ShortcutGrid extends StatelessWidget {
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              const CustomTextRich(
+                              CustomTextRich(
                                 textSpan: TextSpan(
                                   children: <InlineSpan>[
                                     TextSpan(
-                                      text: "Name",
-                                      style: TextStyle(
+                                      text: name,
+                                      style: const TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.normal,
                                       ),
                                     ),
-                                    TextSpan(
+                                    const TextSpan(
                                       text: " | ",
                                       style: TextStyle(
                                         fontSize: 16,
@@ -709,8 +801,8 @@ class ShortcutGrid extends StatelessWidget {
                                       ),
                                     ),
                                     TextSpan(
-                                      text: "22",
-                                      style: TextStyle(
+                                      text: "${index + 20}",
+                                      style: const TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -723,7 +815,8 @@ class ShortcutGrid extends StatelessWidget {
                               CustomListView<String>(
                                 scrollDirection: Axis.horizontal,
                                 items: List<String>.generate(5, (int index) {
-                                  return "Item ${index + 1}";
+                                  return categoryList[index %
+                                      categoryList.length];
                                 }),
                                 itemBuilder:
                                     (
@@ -794,6 +887,29 @@ class ShortcutGrid extends StatelessWidget {
               return "Medical ${index + 1}";
             }),
             itemBuilder: (BuildContext context, int index, String item) {
+              const String med1 = "Diabetes";
+              const String med2 = "Blood Pressure";
+              const String med3 = "Cholesterol";
+
+              String med = "";
+
+              switch (index) {
+                case 0:
+                  med = med1;
+                  break;
+
+                case 1:
+                  med = med2;
+                  break;
+
+                case 2:
+                  med = med3;
+                  break;
+
+                default:
+                  med = "Medication ${index + 1}";
+              }
+
               Color color = ColorsConstants().transparent;
 
               switch (index) {
@@ -835,7 +951,7 @@ class ShortcutGrid extends StatelessWidget {
                       const SizedBox(width: 8),
                       Flexible(
                         child: CustomText(
-                          data: item,
+                          data: med,
                           style: const TextStyle(fontWeight: FontWeight.bold),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,

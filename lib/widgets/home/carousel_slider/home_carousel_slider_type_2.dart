@@ -88,7 +88,7 @@ class HomeCarouselSliderType2 extends StatelessWidget {
                           children: <Widget>[
                             Flexible(
                               child: CustomText(
-                                data: "Kadubeesanhalli",
+                                data: "HSR Layoyt",
                                 style: TextStyle(
                                   fontSize: 10.0,
                                   fontWeight: FontWeight.normal,
@@ -100,7 +100,7 @@ class HomeCarouselSliderType2 extends StatelessWidget {
                             ),
                             Flexible(
                               child: CustomText(
-                                data: "Kadubeesanhalli",
+                                data: "Koramangala",
                                 style: TextStyle(
                                   fontSize: 10.0,
                                   fontWeight: FontWeight.normal,
@@ -141,7 +141,7 @@ class HomeCarouselSliderType2 extends StatelessWidget {
                             children: <Widget>[
                               const SizedBox(height: 8.0),
                               CustomText(
-                                data: "Lorem ipsum Lorem ipsum",
+                                data: "This month's goal",
                                 style: TextStyle(
                                   fontSize: 16.0,
                                   fontWeight: FontWeight.normal,

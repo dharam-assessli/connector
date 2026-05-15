@@ -17,11 +17,18 @@ class IntroductionModel {
   final String bottomDescription;
 }
 
-final IntroductionModel introLocation = IntroductionModel(
+final IntroductionModel introLocationForeground = IntroductionModel(
   icon: const FaIcon(FontAwesomeIcons.mapLocationDot, size: 56.0),
-  heading: LanguagesUtil().introLocationHeading,
-  topDescription: LanguagesUtil().introLocationTopDescription,
-  bottomDescription: LanguagesUtil().introLocationBtmDescription,
+  heading: LanguagesUtil().introLocationHeadingFG,
+  topDescription: LanguagesUtil().introLocationTopDescriptionFG,
+  bottomDescription: LanguagesUtil().introLocationBtmDescriptionFG,
+);
+
+final IntroductionModel introLocationBackground = IntroductionModel(
+  icon: const FaIcon(FontAwesomeIcons.mapLocationDot, size: 56.0),
+  heading: LanguagesUtil().introLocationHeadingBG,
+  topDescription: LanguagesUtil().introLocationTopDescriptionBG,
+  bottomDescription: LanguagesUtil().introLocationBtmDescriptionBG,
 );
 
 final IntroductionModel introHealth = IntroductionModel(

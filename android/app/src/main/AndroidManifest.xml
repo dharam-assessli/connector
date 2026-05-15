@@ -365,14 +365,24 @@
             android:value="${MAPS_API_KEY}"/>
         
         <!-- BootReceiver to reschedule WorkManager tasks on device reboot or app update -->
-        <!-- <receiver -->
-            <!-- android:name=".BootReceiver" -->
-            <!-- android:exported="true"> -->
-            <!-- <intent-filter> -->
-                <!-- <action android:name="android.intent.action.BOOT_COMPLETED"/> -->
-                <!-- <action android:name="android.intent.action.MY_PACKAGE_REPLACED"/> -->
-            <!-- </intent-filter> -->
-        <!-- </receiver> -->
+        <receiver
+            android:name=".BootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED"/>
+            </intent-filter>
+        </receiver>
+        
+        <!-- Firebase Messaging Service -->
+        <!-- Ensure background handler is kept alive -->
+        <service
+            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+            android:exported="false">
+                <intent-filter>
+                    <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                </intent-filter>
+        </service>
 
     </application>
 

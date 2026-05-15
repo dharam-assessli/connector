@@ -6,8 +6,12 @@ import "package:horizon/utils/overlays/custom_bottom_sheet.dart";
 import "package:horizon/widgets/texts/custom_text.dart";
 import "package:material_ui/material_ui.dart";
 
-Future<void> introLocationSheet() async {
-  return openIntroductionBottomSheet(introLocation);
+Future<void> introLocationForegroundSheet() async {
+  return openIntroductionBottomSheet(introLocationForeground);
+}
+
+Future<void> introLocationBackgroundSheet() async {
+  return openIntroductionBottomSheet(introLocationBackground);
 }
 
 Future<void> introHealthSheet() async {

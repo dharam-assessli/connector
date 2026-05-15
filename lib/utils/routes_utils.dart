@@ -7,7 +7,6 @@ import "package:connector/bindings/dashboard/tab_community_binding.dart";
 import "package:connector/bindings/dashboard/tab_feed_binding.dart";
 import "package:connector/bindings/dashboard/tab_home_binding.dart";
 import "package:connector/bindings/dashboard/tab_hub_binding.dart";
-import "package:connector/bindings/introduction/introduction_binding.dart";
 import "package:connector/bindings/onboarding/gather_permissions_binding.dart";
 import "package:connector/bindings/onboarding/your_details_binding.dart";
 import "package:connector/bindings/splash/splash_binding.dart";
@@ -21,7 +20,6 @@ import "package:connector/screens/dashboard/tab_community_screen.dart";
 import "package:connector/screens/dashboard/tab_feed_screen.dart";
 import "package:connector/screens/dashboard/tab_home_screen.dart";
 import "package:connector/screens/dashboard/tab_hub_screen.dart";
-import "package:connector/screens/introduction/introduction_screen.dart";
 import "package:connector/screens/onboarding/gather_permissions_screen.dart";
 import "package:connector/screens/onboarding/your_details_screen.dart";
 import "package:connector/screens/splash/splash_screen.dart";
@@ -41,8 +39,6 @@ class RoutesUtils {
 
   // Known Pages
   String get splashScreen => "/splashScreen";
-
-  String get introductionScreen => "/introductionScreen";
 
   String get signInScreen => "/signInScreen";
   String get verifyOTPScreen => "/verifyOTPScreen";
@@ -73,11 +69,6 @@ class RoutesUtils {
       name: splashScreen,
       page: SplashScreen.new,
       binding: SplashBinding(),
-    );
-    final GetPage<dynamic> introductionRoute = GetPage<dynamic>(
-      name: introductionScreen,
-      page: IntroductionScreen.new,
-      binding: IntroductionBinding(),
     );
     final GetPage<dynamic> signInRoute = GetPage<dynamic>(
       name: signInScreen,
@@ -137,7 +128,6 @@ class RoutesUtils {
 
     return <GetPage<dynamic>>[
       splashRoute,
-      introductionRoute,
       signInRoute,
       verifyOTPRoute,
       yourDetailsRoute,

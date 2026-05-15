@@ -113,8 +113,8 @@ class QuickStartWidget extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Row(
           children: <Widget>[
-            const FlutterLogo(size: kToolbarHeight * 2),
-            const SizedBox(width: 8.0),
+            // const FlutterLogo(size: kToolbarHeight * 2),
+            // const SizedBox(width: 8.0),
             Expanded(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
