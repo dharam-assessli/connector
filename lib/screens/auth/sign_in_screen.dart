@@ -1,3 +1,5 @@
+import "dart:io";
+
 import "package:connector/constants/images_constants.dart";
 import "package:connector/constants/strings_constants.dart";
 import "package:connector/controllers/auth/sign_in_controller.dart";
@@ -224,6 +226,7 @@ class SignInScreen extends GetView<SignInController> {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
+        const SizedBox(width: 0),
         Expanded(
           child: SizedBox(
             height: kToolbarHeight,
@@ -239,26 +242,28 @@ class SignInScreen extends GetView<SignInController> {
             ),
           ),
         ),
-        const SizedBox(width: 16),
-        Expanded(
-          child: SizedBox(
-            height: kToolbarHeight,
-            width: double.infinity,
-            child: CustomOutlinedButton(
-              onPressed: controller.signInWithApple,
-              data: "",
-              fullWidth: true,
-              customChild: CustomMediaViewer(
-                data: ImagesConstants().signInWithApple,
-                height: 24,
-                colorFilter: ColorFilter.mode(
-                  Theme.of(context).dividerColor,
-                  BlendMode.srcIn,
+        if (Platform.isIOS) const SizedBox(width: 16),
+        if (Platform.isIOS)
+          Expanded(
+            child: SizedBox(
+              height: kToolbarHeight,
+              width: double.infinity,
+              child: CustomOutlinedButton(
+                onPressed: controller.signInWithApple,
+                data: "",
+                fullWidth: true,
+                customChild: CustomMediaViewer(
+                  data: ImagesConstants().signInWithApple,
+                  height: 24,
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).dividerColor,
+                    BlendMode.srcIn,
+                  ),
                 ),
               ),
             ),
           ),
-        ),
+        const SizedBox(width: 0),
       ],
     );
   }
