@@ -39,10 +39,11 @@ class RoutesUtils {
 
   // Known Pages
   String get splashScreen => "/splashScreen";
-
   String get signInScreen => "/signInScreen";
   String get verifyOTPScreen => "/verifyOTPScreen";
   String get yourDetailsScreen => "/yourDetailsScreen";
+  String get connectorScreen => "/connectorScreen";
+  String get gatherPermissionsScreen => "/gatherPermissionsScreen";
 
   String get dashboardScreen => "/dashboardScreen";
   String get tabHomeScreen => "/tabHomeScreen";
@@ -50,9 +51,6 @@ class RoutesUtils {
   String get tabChatScreen => "/tabChatScreen";
   String get tabCommunityScreen => "/tabCommunityScreen";
   String get tabHubScreen => "/tabHubScreen";
-
-  String get connectorScreen => "/connectorScreen";
-  String get gatherPermissionsScreen => "/gatherPermissionsScreen";
 
   // Unknown Page
   GetPage<dynamic> get getUnknownPage {
@@ -85,6 +83,17 @@ class RoutesUtils {
       page: YourDetailsScreen.new,
       binding: YourDetailsBinding(),
     );
+    final GetPage<dynamic> connectorRoute = GetPage<dynamic>(
+      name: connectorScreen,
+      page: ConnectorScreen.new,
+      binding: ConnectorBinding(),
+    );
+    final GetPage<dynamic> gatherPermissionsRoute = GetPage<dynamic>(
+      name: gatherPermissionsScreen,
+      page: GatherPermissionsScreen.new,
+      binding: GatherPermissionsBinding(),
+    );
+
     final GetPage<dynamic> dashboardRoute = GetPage<dynamic>(
       name: dashboardScreen,
       page: DashboardScreen.new,
@@ -115,30 +124,21 @@ class RoutesUtils {
       page: TabHubScreen.new,
       binding: TabHubBinding(),
     );
-    final GetPage<dynamic> connectorRoute = GetPage<dynamic>(
-      name: connectorScreen,
-      page: ConnectorScreen.new,
-      binding: ConnectorBinding(),
-    );
-    final GetPage<dynamic> gatherPermissionsRoute = GetPage<dynamic>(
-      name: gatherPermissionsScreen,
-      page: GatherPermissionsScreen.new,
-      binding: GatherPermissionsBinding(),
-    );
 
     return <GetPage<dynamic>>[
       splashRoute,
       signInRoute,
       verifyOTPRoute,
       yourDetailsRoute,
+      connectorRoute,
+      gatherPermissionsRoute,
+
       dashboardRoute,
       tabHomeRoute,
       tabFeedRoute,
       tabChatRoute,
       tabCommunityRoute,
       tabHubRoute,
-      connectorRoute,
-      gatherPermissionsRoute,
     ];
   }
 }

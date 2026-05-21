@@ -4,7 +4,10 @@ import "package:connector/utils/bottom_nav_util.dart";
 import "package:connector/utils/routes_utils.dart";
 import "package:flutter/widgets.dart";
 import "package:get/get.dart";
+import "package:horizon/functions/mood_functions.dart";
 import "package:horizon/models/auth/verify_otp.dart";
+import "package:horizon/models/draggable_scrollable_sheet/insights_model.dart";
+import "package:horizon/models/draggable_scrollable_sheet/quick_start_model.dart";
 import "package:horizon/repositories/auth/auth_repository.dart";
 import "package:horizon/services/jwt/auth_db_service.dart";
 import "package:horizon/services/navigation_service.dart";
@@ -17,6 +20,14 @@ class DashboardController extends GetxController {
   final RxList<GetView<dynamic>> getViews = BottomNavUtil().getViews;
   final RxList<BottomNavigationBarItem> tabWidgets = BottomNavUtil().tabWidgets;
   final RxInt rxIndex = BottomNavUtil().rxIndex;
+
+  final Rx<Mood> rxMood = Mood.sunny.obs;
+  final Rx<num> rxSelectedMoodIndex = 0.obs;
+
+  final RxList<QuickStartModelOuter> rxQuickStart = quickStartData.obs;
+  final Rx<num> rxSelectedQuickStartIndex = 0.obs;
+
+  final RxList<InsightsModel> rxInsights = insightsData.obs;
 
   @override
   void onInit() {

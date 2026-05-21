@@ -16,6 +16,7 @@ import "package:horizon/widgets/app_bar/custom_app_bar.dart";
 import "package:horizon/widgets/builders/custom_page_view.dart";
 import "package:horizon/widgets/buttons/custom_icon_button.dart";
 import "package:horizon/widgets/containers/custom_container.dart";
+import "package:horizon/widgets/draggable_scrollable_sheet/custom_draggable_scrollable_sheet.dart";
 import "package:horizon/widgets/media/custom_media_viewer.dart";
 import "package:horizon/widgets/texts/custom_text.dart";
 import "package:pie_menu/pie_menu.dart";
@@ -116,9 +117,9 @@ class DashboardScreen extends GetView<DashboardController> {
         // Connector
         CustomIconButton(
           onPressed: () async {
-            // final String route = RoutesUtils().connectorScreen;
+            final String route = RoutesUtils().connectorScreen;
 
-            // await NavigationService().pushNamed(route);
+            await NavigationService().pushNamed(route);
           },
           data: const Icon(Icons.link),
         ),
@@ -136,7 +137,23 @@ class DashboardScreen extends GetView<DashboardController> {
     return Stack(
       children: <Widget>[
         Positioned.fill(child: customPageView(context)),
-        const Positioned.fill(child: SizedBox()),
+        Positioned.fill(
+          child: CustomDraggableScrollableSheet(
+            rxMood: controller.rxMood,
+            rxSelectedMoodIndex: controller.rxSelectedMoodIndex,
+            onMoodChanged: (num value) async {
+              controller.rxSelectedMoodIndex.value = value;
+              controller.rxSelectedMoodIndex.refresh();
+            },
+            rxQuickStart: controller.rxQuickStart,
+            rxSelectedQuickStartIndex: controller.rxSelectedQuickStartIndex,
+            onQuickStartChanged: (num value) async {
+              controller.rxSelectedQuickStartIndex.value = value;
+              controller.rxSelectedQuickStartIndex.refresh();
+            },
+            rxInsights: controller.rxInsights,
+          ),
+        ),
       ],
     );
   }
