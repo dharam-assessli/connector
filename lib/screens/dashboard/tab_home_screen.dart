@@ -35,7 +35,7 @@ class TabHomeScreen extends GetView<TabHomeController> {
           shortcutGrid(),
           const SizedBox(height: 8.0),
           mapsWidget(),
-          const SizedBox(height: kToolbarHeight - 16),
+          const SizedBox(height: (kToolbarHeight * 3) - 40),
         ],
       ),
     );

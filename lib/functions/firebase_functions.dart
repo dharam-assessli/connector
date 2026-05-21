@@ -1,3 +1,5 @@
+import "dart:developer";
+
 import "package:connector/firebase_options/firebase_options_development.dart"
     as development;
 import "package:connector/firebase_options/firebase_options_production.dart"
@@ -12,43 +14,56 @@ import "package:horizon/services/firebase_core_service.dart";
 import "package:horizon/services/remote_config_service.dart";
 
 Future<void> initCore() async {
-  FirebaseOptions? options;
+  try {
+    FirebaseOptions? options;
 
-  switch (Flavor().getFlavor) {
-    case FlavorsEnum.development:
-      options = development.DefaultFirebaseOptions.currentPlatform;
-      break;
+    switch (Flavor().getFlavor) {
+      case FlavorsEnum.development:
+        options = development.DefaultFirebaseOptions.currentPlatform;
+        break;
 
-    case FlavorsEnum.staging:
-      options = staging.DefaultFirebaseOptions.currentPlatform;
-      break;
+      case FlavorsEnum.staging:
+        options = staging.DefaultFirebaseOptions.currentPlatform;
+        break;
 
-    case FlavorsEnum.production:
-      options = production.DefaultFirebaseOptions.currentPlatform;
-      break;
+      case FlavorsEnum.production:
+        options = production.DefaultFirebaseOptions.currentPlatform;
+        break;
 
-    case FlavorsEnum.unknown:
-      break;
-  }
+      case FlavorsEnum.unknown:
+        break;
+    }
 
-  if (options != null) {
-    await FirebaseCoreService().initializeApp(options);
-  } else {}
+    if (options != null) {
+      await FirebaseCoreService().initializeApp(options);
+    } else {}
+  } on Exception catch (error, stackTrace) {
+    log("Exception", error: error, stackTrace: stackTrace);
+  } finally {}
 
   return Future<void>.value();
 }
 
 Future<void> initCrashlytics() async {
-  FlutterError.onError = CrashlyticsService().recordFlutterFatalError;
-  PlatformDispatcher.instance.onError = (Object error, StackTrace stack) {
-    return CrashlyticsService().recordError(error, stack);
-  };
+  try {
+    FlutterError.onError = CrashlyticsService().recordFlutterFatalError;
+    
+    PlatformDispatcher.instance.onError = (Object error, StackTrace stack) {
+      return CrashlyticsService().recordError(error, stack);
+    };
+  } on Exception catch (error, stackTrace) {
+    log("Exception", error: error, stackTrace: stackTrace);
+  } finally {}
 
   return Future<void>.value();
 }
 
 Future<void> initRemoteConfig() async {
-  await RemoteConfigService().initialize();
+  try {
+    await RemoteConfigService().initialize();
+  } on Exception catch (error, stackTrace) {
+    log("Exception", error: error, stackTrace: stackTrace);
+  } finally {}
 
   return Future<void>.value();
 }
