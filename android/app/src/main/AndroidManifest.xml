@@ -1,4 +1,5 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+<manifest 
+    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Network -->
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -321,7 +322,11 @@
         <service
             android:name="androidx.work.impl.foreground.SystemForegroundService"
             android:foregroundServiceType="location|health|dataSync|connectedDevice|specialUse|microphone|camera|mediaPlayback|mediaProjection|phoneCall"
-            tools:node="merge"/>
+            tools:node="merge">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Periodic background sync of user health, activity, and connected-device data via WorkManager"/>
+        </service>
 
         <service
             android:label="notifications"
