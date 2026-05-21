@@ -5,7 +5,6 @@ import "package:horizon/utils/shine_animation.dart";
 import "package:horizon/widgets/gradient/custom_gradient_text.dart";
 import "package:horizon/widgets/media/custom_media_viewer.dart";
 
-// This widget is used to display the branding of the app.
 class BrandingWidget extends StatelessWidget {
   const BrandingWidget({super.key});
 
@@ -36,6 +35,7 @@ class BrandingWidget extends StatelessWidget {
         data: ImagesConstants().appIcon,
         height: kToolbarHeight * 3,
         width: kToolbarHeight * 3,
+        color: Theme.of(context).textTheme.bodyMedium?.color,
       ),
     );
   }
