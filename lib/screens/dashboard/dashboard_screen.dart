@@ -6,7 +6,6 @@ import "package:connector/controllers/dashboard/dashboard_controller.dart";
 import "package:connector/utils/languages_util.dart";
 import "package:connector/utils/routes_utils.dart";
 import "package:connector/utils/theme_data_util.dart";
-import "package:connector/widgets/home/draggable_scrollable_sheet/custom_draggable_scrollable_sheet.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:horizon/functions/greetings_functions.dart";
@@ -117,9 +116,9 @@ class DashboardScreen extends GetView<DashboardController> {
         // Connector
         CustomIconButton(
           onPressed: () async {
-            final String route = RoutesUtils().connectorScreen;
+            // final String route = RoutesUtils().connectorScreen;
 
-            await NavigationService().pushNamed(route);
+            // await NavigationService().pushNamed(route);
           },
           data: const Icon(Icons.link),
         ),
@@ -137,7 +136,7 @@ class DashboardScreen extends GetView<DashboardController> {
     return Stack(
       children: <Widget>[
         Positioned.fill(child: customPageView(context)),
-        Positioned.fill(child: customDraggableScrollableSheet(context)),
+        const Positioned.fill(child: SizedBox()),
       ],
     );
   }
@@ -152,22 +151,6 @@ class DashboardScreen extends GetView<DashboardController> {
       onPageChanged: (int index) async {
         await controller.updateIndex(index: index, animate: false);
       },
-    );
-  }
-
-  Widget customDraggableScrollableSheet(BuildContext context) {
-    return CustomDraggableScrollableSheet(
-      rxMood: controller.rxMood,
-      rxSelectedMoodIndex: controller.rxSelectedMoodIndex,
-      onMoodChanged: (num value) async {
-        controller.rxSelectedMoodIndex.value = value;
-      },
-      rxQuickStart: controller.rxQuickStart,
-      rxSelectedQuickStartIndex: controller.rxSelectedQuickStartIndex,
-      onQuickStartChanged: (num value) async {
-        controller.rxSelectedQuickStartIndex.value = value;
-      },
-      rxInsights: controller.rxInsights,
     );
   }
 

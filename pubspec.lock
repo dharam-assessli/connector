@@ -209,14 +209,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.1"
-  checked_yaml:
-    dependency: transitive
-    description:
-      name: checked_yaml
-      sha256: "959525d3162f249993882720d52b7e0c833978df229be20702b33d48d91de70f"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.4"
   chewie:
     dependency: transitive
     description:
@@ -241,14 +233,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.2"
-  cli_util:
-    dependency: transitive
-    description:
-      name: cli_util
-      sha256: ff6785f7e9e3c38ac98b2fb035701789de90154024a75b6cb926445e83197d1c
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.4.2"
   clock:
     dependency: transitive
     description:
@@ -718,14 +702,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.0.7"
-  flutter_launcher_icons:
-    dependency: "direct main"
-    description:
-      name: flutter_launcher_icons
-      sha256: "10f13781741a2e3972126fae08393d3c4e01fa4cd7473326b94b72cf594195e7"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.14.4"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -1025,10 +1001,10 @@ packages:
     dependency: transitive
     description:
       name: google_sign_in_android
-      sha256: be0d0733a6a7c5da165879d844a239aa87587a3c767a9163faedde581f731f76
+      sha256: df5c15533814ed20b7d9e1c5a40a73f174e5d5017bd2669b1c72fb6596fde812
       url: "https://pub.dev"
     source: hosted
-    version: "7.2.10"
+    version: "7.2.11"
   google_sign_in_ios:
     dependency: transitive
     description:
@@ -1098,7 +1074,7 @@ packages:
     description:
       path: "."
       ref: main
-      resolved-ref: "02938e3890d915ac08ddbcf10ce484cab13bed23"
+      resolved-ref: "44ac72072182317d66b43948d97a95d9c69cfca5"
       url: "https://github.com/Assessli-tech/horizon-flutter.git"
     source: git
     version: "1.0.0+1"
@@ -1126,14 +1102,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.1.2"
-  image:
-    dependency: transitive
-    description:
-      name: image
-      sha256: f9881ff4998044947ec38d098bc7c8316ae1186fa786eddffdb867b9bc94dfce
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.8.0"
   image_picker:
     dependency: transitive
     description:
@@ -1802,8 +1770,8 @@ packages:
     dependency: transitive
     description:
       path: "packages/screen_time_plugin"
-      ref: "02938e3890d915ac08ddbcf10ce484cab13bed23"
-      resolved-ref: "02938e3890d915ac08ddbcf10ce484cab13bed23"
+      ref: "44ac72072182317d66b43948d97a95d9c69cfca5"
+      resolved-ref: "44ac72072182317d66b43948d97a95d9c69cfca5"
       url: "https://github.com/Assessli-tech/horizon-flutter.git"
     source: git
     version: "0.0.1"
@@ -2000,10 +1968,10 @@ packages:
     dependency: transitive
     description:
       name: sqflite_common
-      sha256: f8a08a13fb8f0f8c590df89d745000bed44a673ed94bac846739e1a016875c21
+      sha256: "1581ffbf7a0e333b380d6a30737d78516b826cb35beb7fb0bf8a3ea0c678b465"
       url: "https://pub.dev"
     source: hosted
-    version: "2.5.7"
+    version: "2.5.8"
   sqflite_darwin:
     dependency: transitive
     description:
@@ -2176,10 +2144,10 @@ packages:
     dependency: transitive
     description:
       name: url_launcher_android
-      sha256: "3bb000251e55d4a209aa0e2e563309dc9bb2befea2295fd0cec1f51760aac572"
+      sha256: "17bc677f0b301615530dd1d67e0a9828cafa2d0b6b6eae4cd3679b7eac4a273c"
       url: "https://pub.dev"
     source: hosted
-    version: "6.3.29"
+    version: "6.3.30"
   url_launcher_ios:
     dependency: transitive
     description:
@@ -2240,10 +2208,10 @@ packages:
     dependency: transitive
     description:
       name: vector_graphics
-      sha256: "4d35a36400983c3457c289d4d553b5308f506ea84f7e51c7a564651b5525209a"
+      sha256: "2306c03da2ba81724afeb589c351ebbc0aa7d86005925be8f8735856dbe5e42d"
       url: "https://pub.dev"
     source: hosted
-    version: "1.2.1"
+    version: "1.2.2"
   vector_graphics_codec:
     dependency: transitive
     description:
@@ -2256,10 +2224,10 @@ packages:
     dependency: transitive
     description:
       name: vector_graphics_compiler
-      sha256: "98e7e94de127b46a86ef46197fff84ff99f3d3b80a708390d717ad731efef598"
+      sha256: b9b3f391857781aa96acacef96066f2f49b4cd03cf9fce3ca4d8da2ef5ea129e
       url: "https://pub.dev"
     source: hosted
-    version: "1.2.2"
+    version: "1.2.3"
   vector_math:
     dependency: transitive
     description:
@@ -2296,10 +2264,10 @@ packages:
     dependency: transitive
     description:
       name: video_player_avfoundation
-      sha256: a39d6f28f8069564d8cc17396472f958dd9eaddf2d5c8e90aad4d793ac369bf3
+      sha256: "9338f3ec22774f88146b22f13273a446719b1da010fd200c4d1d97802156ac58"
       url: "https://pub.dev"
     source: hosted
-    version: "2.9.6"
+    version: "2.9.7"
   video_player_platform_interface:
     dependency: transitive
     description:
@@ -2429,7 +2397,7 @@ packages:
     source: hosted
     version: "2.1.0"
   workmanager:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: workmanager
       sha256: "065673b2a465865183093806925419d311a9a5e0995aa74ccf8920fd695e2d10"
@@ -2437,7 +2405,7 @@ packages:
     source: hosted
     version: "0.9.0+3"
   workmanager_android:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: workmanager_android
       sha256: "9ae744db4ef891f5fcd2fb8671fccc712f4f96489a487a1411e0c8675e5e8cb7"
@@ -2445,7 +2413,7 @@ packages:
     source: hosted
     version: "0.9.0+2"
   workmanager_apple:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: workmanager_apple
       sha256: "1cc12ae3cbf5535e72f7ba4fde0c12dd11b757caf493a28e22d684052701f2ca"
