@@ -82,24 +82,24 @@
 		<key>NSAllowsLocalNetworking</key>
 		<true/>
 	</dict>
-	<key>NSAppleMusicUsageDescription</key>
-	<string>Used to play and manage your Apple Music library directly within the app, giving you seamless access to your songs and playlists.</string>
-	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>Used to discover and connect to nearby devices, enabling seamless pairing and communication with compatible accessories.</string>
-	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>Used to discover and connect to nearby devices, enabling seamless pairing and communication with compatible accessories.</string>
-	<key>NSCalendarsFullAccessUsageDescription</key>
-	<string>Allows the app to read and write events to your calendar, helping you schedule tasks, set reminders, and sync important dates without leaving the app.</string>
-	<key>NSCalendarsUsageDescription</key>
-	<string>Allows the app to read and write events to your calendar, helping you schedule tasks, set reminders, and sync important dates without leaving the app.</string>
-	<key>NSCalendarsWriteOnlyAccessUsageDescription</key>
-	<string>Allows the app to add events and reminders to your calendar so you can keep your schedule up to date without leaving the app.</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Required to take photos, scan QR codes, and record videos directly within the app. Your camera is only activated when you initiate these actions.</string>
-	<key>NSContactsUsageDescription</key>
-	<string>Used to help you quickly find and connect with people you know, auto-fill recipient details, and share content with your connections seamlessly.</string>
-	<key>NSFaceIDUsageDescription</key>
-	<string>Used to securely authenticate you with Face ID so you can unlock the app and approve sensitive actions without entering a password.</string>
+	<!-- <key>NSAppleMusicUsageDescription</key> -->
+	<!-- <string>Used to play and manage your Apple Music library directly within the app, giving you seamless access to your songs and playlists.</string> -->
+	<!-- <key>NSBluetoothAlwaysUsageDescription</key> -->
+	<!-- <string>Used to discover and connect to nearby devices, enabling seamless pairing and communication with compatible accessories.</string> -->
+	<!-- <key>NSBluetoothPeripheralUsageDescription</key> -->
+	<!-- <string>Used to discover and connect to nearby devices, enabling seamless pairing and communication with compatible accessories.</string> -->
+	<!-- <key>NSCalendarsFullAccessUsageDescription</key> -->
+	<!-- <string>Allows the app to read and write events to your calendar, helping you schedule tasks, set reminders, and sync important dates without leaving the app.</string> -->
+	<!-- <key>NSCalendarsUsageDescription</key> -->
+	<!-- <string>Allows the app to read and write events to your calendar, helping you schedule tasks, set reminders, and sync important dates without leaving the app.</string> -->
+	<!-- <key>NSCalendarsWriteOnlyAccessUsageDescription</key> -->
+	<!-- <string>Allows the app to add events and reminders to your calendar so you can keep your schedule up to date without leaving the app.</string> -->
+	<!-- <key>NSCameraUsageDescription</key> -->
+	<!-- <string>Required to take photos, scan QR codes, and record videos directly within the app. Your camera is only activated when you initiate these actions.</string> -->
+	<!-- <key>NSContactsUsageDescription</key> -->
+	<!-- <string>Used to help you quickly find and connect with people you know, auto-fill recipient details, and share content with your connections seamlessly.</string> -->
+	<!-- <key>NSFaceIDUsageDescription</key> -->
+	<!-- <string>Used to securely authenticate you with Face ID so you can unlock the app and approve sensitive actions without entering a password.</string> -->
 	<key>NSHealthClinicalHealthRecordsShareUsageDescription</key>
 	<string>Used to read your clinical health records from Apple Health to give you a complete view of your wellness, lab results, medications, and conditions.</string>
 	<key>NSHealthShareUsageDescription</key>
@@ -121,14 +121,14 @@
 	<string>Used to deliver location-aware features such as nearby recommendations, accurate mapping, and region-specific content. Your location data is never shared without your consent.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Used to deliver location-aware features such as nearby recommendations, accurate mapping, and region-specific content while you are using the app.</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Needed to record audio messages, enable voice commands, and support video calls. The microphone is only accessed during active recording sessions.</string>
+	<!-- <key>NSMicrophoneUsageDescription</key> -->
+	<!-- <string>Needed to record audio messages, enable voice commands, and support video calls. The microphone is only accessed during active recording sessions.</string> -->
 	<key>NSMotionUsageDescription</key>
 	<string>Accesses motion sensors and activity data to track your physical activity, detect movement patterns, and provide personalized health and fitness insights.</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Allows the app to save photos and videos you create in the app to your device library.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Grants access to your photos, videos, and audio files so you can upload, share, and manage your media content directly from your device library.</string>
+	<!-- <key>NSPhotoLibraryAddUsageDescription</key> -->
+	<!-- <string>Allows the app to save photos and videos you create in the app to your device library.</string> -->
+	<!-- <key>NSPhotoLibraryUsageDescription</key> -->
+	<!-- <string>Grants access to your photos, videos, and audio files so you can upload, share, and manage your media content directly from your device library.</string> -->
 	<key>NSPrivacyAccessedAPITypes</key>
 	<array>
 		<dict>
@@ -164,18 +164,18 @@
 			</array>
 		</dict>
 	</array>
-	<key>NSRemindersFullAccessUsageDescription</key>
-	<string>Allows the app to read and write reminders so you can manage tasks, follow-ups, and time-based notes alongside your calendar events.</string>
-	<key>NSRemindersUsageDescription</key>
-	<string>Allows the app to read and write reminders so you can manage tasks, follow-ups, and time-based notes alongside your calendar events.</string>
-	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>Used to convert your spoken input into text for voice commands, dictation, and accessibility features.</string>
+	<!-- <key>NSRemindersFullAccessUsageDescription</key> -->
+	<!-- <string>Allows the app to read and write reminders so you can manage tasks, follow-ups, and time-based notes alongside your calendar events.</string> -->
+	<!-- <key>NSRemindersUsageDescription</key> -->
+	<!-- <string>Allows the app to read and write reminders so you can manage tasks, follow-ups, and time-based notes alongside your calendar events.</string> -->
+	<!-- <key>NSSpeechRecognitionUsageDescription</key> -->
+	<!-- <string>Used to convert your spoken input into text for voice commands, dictation, and accessibility features.</string> -->
 	<key>NSUserNotificationUsageDescription</key>
 	<string>Enables real-time alerts for messages, reminders, and important updates. You can customize notification preferences anytime in your device settings.</string>
 	<key>NSUserTrackingUsageDescription</key>
 	<string>Allows the app to link your activity across other apps and websites for more relevant ads and analytics. You can opt out at any time without affecting core app functionality.</string>
-	<key>NSSiriUsageDescription</key>
-	<string>Dotsin uses Siri to let you trigger quick actions and shortcuts hands-free.</string>
+	<!-- <key>NSSiriUsageDescription</key> -->
+	<!-- <string>Dotsin uses Siri to let you trigger quick actions and shortcuts hands-free.</string> -->
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -205,11 +205,11 @@
 		<string>processing</string>
 		<string>location</string>
 		<string>remote-notification</string>
-		<string>audio</string>
-		<string>bluetooth-central</string>
-		<string>bluetooth-peripheral</string>
-		<string>voip</string>
-		<string>external-accessory</string>
+		<!-- <string>audio</string> -->
+		<!-- <string>bluetooth-central</string> -->
+		<!-- <string>bluetooth-peripheral</string> -->
+		<!-- <string>voip</string> -->
+		<!-- <string>external-accessory</string> -->
 	</array>
 	<key>UIDeviceFamily</key>
 	<array>

@@ -53,17 +53,17 @@ post_install do |installer|
         '$(inherited)',
 
         # Camera & microphone
-        'PERMISSION_CAMERA=1',
-        'PERMISSION_MICROPHONE=1',
-        'PERMISSION_SPEECH_RECOGNIZER=1',
+        # 'PERMISSION_CAMERA=1',
+        # 'PERMISSION_MICROPHONE=1',
+        # 'PERMISSION_SPEECH_RECOGNIZER=1',
 
         # Photos / media library
-        'PERMISSION_PHOTOS=1',
-        'PERMISSION_PHOTOS_ADD_ONLY=1',
-        'PERMISSION_MEDIA_LIBRARY=1',
+        # 'PERMISSION_PHOTOS=1',
+        # 'PERMISSION_PHOTOS_ADD_ONLY=1',
+        # 'PERMISSION_MEDIA_LIBRARY=1',
 
         # Bluetooth
-        'PERMISSION_BLUETOOTH=1',
+        # 'PERMISSION_BLUETOOTH=1',
 
         # Location
         'PERMISSION_LOCATION=1',
@@ -79,18 +79,18 @@ post_install do |installer|
         'PERMISSION_SENSORS=1',
 
         # Calendar & reminders
-        'PERMISSION_EVENTS=1',
-        'PERMISSION_EVENTS_FULL_ACCESS=1',
-        'PERMISSION_REMINDERS=1',
+        # 'PERMISSION_EVENTS=1',
+        # 'PERMISSION_EVENTS_FULL_ACCESS=1',
+        # 'PERMISSION_REMINDERS=1',
 
         # Contacts
-        'PERMISSION_CONTACTS=1',
+        # 'PERMISSION_CONTACTS=1',
 
         # Tracking transparency
         'PERMISSION_APP_TRACKING_TRANSPARENCY=1',
 
         # iOS-specific extras
-        'PERMISSION_ASSISTANT=1',
+        # 'PERMISSION_ASSISTANT=1',
       ]
     end
   end
