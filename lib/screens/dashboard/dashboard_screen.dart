@@ -43,7 +43,13 @@ class DashboardScreen extends GetView<DashboardController> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: appBar(context),
-      body: AnimatedGradient(child: SafeArea(child: body(context))),
+      body: AnimatedGradient(
+        child: SafeArea(
+          child: Obx(() {
+            return body(context);
+          }),
+        ),
+      ),
       bottomNavigationBar: bottomNavigationBar(context),
       backgroundColor: isDark
           ? dataLight.textTheme.bodyMedium?.color
@@ -137,23 +143,27 @@ class DashboardScreen extends GetView<DashboardController> {
     return Stack(
       children: <Widget>[
         Positioned.fill(child: customPageView(context)),
-        Positioned.fill(
-          child: CustomDraggableScrollableSheet(
-            rxMood: controller.rxMood,
-            rxSelectedMoodIndex: controller.rxSelectedMoodIndex,
-            onMoodChanged: (num value) async {
-              controller.rxSelectedMoodIndex.value = value;
-              controller.rxSelectedMoodIndex.refresh();
-            },
-            rxQuickStart: controller.rxQuickStart,
-            rxSelectedQuickStartIndex: controller.rxSelectedQuickStartIndex,
-            onQuickStartChanged: (num value) async {
-              controller.rxSelectedQuickStartIndex.value = value;
-              controller.rxSelectedQuickStartIndex.refresh();
-            },
-            rxInsights: controller.rxInsights,
+        
+        //
+        // Only show on Home tab
+        if (controller.rxIndex.value == 0)
+          Positioned.fill(
+            child: CustomDraggableScrollableSheet(
+              rxMood: controller.rxMood,
+              rxSelectedMoodIndex: controller.rxSelectedMoodIndex,
+              onMoodChanged: (num value) async {
+                controller.rxSelectedMoodIndex.value = value;
+                controller.rxSelectedMoodIndex.refresh();
+              },
+              rxQuickStart: controller.rxQuickStart,
+              rxSelectedQuickStartIndex: controller.rxSelectedQuickStartIndex,
+              onQuickStartChanged: (num value) async {
+                controller.rxSelectedQuickStartIndex.value = value;
+                controller.rxSelectedQuickStartIndex.refresh();
+              },
+              rxInsights: controller.rxInsights,
+            ),
           ),
-        ),
       ],
     );
   }
