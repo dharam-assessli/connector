@@ -18,6 +18,7 @@ import "package:connector/utils/languages_util.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:horizon/widgets/media/custom_media_viewer.dart";
+import "package:horizon/widgets/others/infinite_rotate_widget.dart";
 
 class BottomNavUtil {
   factory BottomNavUtil() {
@@ -92,15 +93,19 @@ class BottomNavUtil {
       BottomNavigationBarItem(
         // activeIcon: const Icon(Icons.mic, size: 24.0),
         // icon: const Icon(Icons.mic_none_outlined, size: 24.0),
-        activeIcon: CustomMediaViewer(
-          data: ImagesConstants().navVoice,
-          height: kToolbarHeight - 24,
-          width: kToolbarHeight - 24,
+        activeIcon: InfiniteRotateWidget(
+          widget: CustomMediaViewer(
+            data: ImagesConstants().navVoice,
+            height: kToolbarHeight - 24,
+            width: kToolbarHeight - 24,
+          ),
         ),
-        icon: CustomMediaViewer(
-          data: ImagesConstants().navVoice,
-          height: kToolbarHeight - 24,
-          width: kToolbarHeight - 24,
+        icon: InfiniteRotateWidget(
+          widget: CustomMediaViewer(
+            data: ImagesConstants().navVoice,
+            height: kToolbarHeight - 24,
+            width: kToolbarHeight - 24,
+          ),
         ),
         label: LanguagesUtil().tabVoice,
       ),
