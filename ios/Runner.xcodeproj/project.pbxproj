@@ -557,7 +557,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-production";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 9M2B6NVYX2;
 				ENABLE_BITCODE = NO;
 				GOOGLE_CLIENT_ID = "153074686205-b4dd3ar94sb0tgd4fir7mvacj9trcjn8.apps.googleusercontent.com";
@@ -567,6 +567,7 @@
 					"@executable_path/Frameworks",
 				);
 				MAPS_API_KEY = "AIzaSyDf7k7tRdUZvGS0ehW-VB19kFwPxzQj5v0";
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.assessli.connector;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REVERSED_CLIENT_ID = "com.googleusercontent.apps.153074686205-b4dd3ar94sb0tgd4fir7mvacj9trcjn8";
@@ -630,7 +631,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = AppIcon-production;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = "AppIcon-production";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -691,7 +692,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-development";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 9M2B6NVYX2;
 				ENABLE_BITCODE = NO;
 				GOOGLE_CLIENT_ID = "799296776426-515pacq7e5u1cak96mobk6k68q1lhtel.apps.googleusercontent.com";
@@ -701,6 +702,7 @@
 					"@executable_path/Frameworks",
 				);
 				MAPS_API_KEY = "AIzaSyDf7k7tRdUZvGS0ehW-VB19kFwPxzQj5v0";
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.assessli.connector.development;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REVERSED_CLIENT_ID = "com.googleusercontent.apps.799296776426-515pacq7e5u1cak96mobk6k68q1lhtel";
@@ -733,7 +735,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = AppIcon-development;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = "AppIcon-development";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -789,7 +791,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-development";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 9M2B6NVYX2;
 				ENABLE_BITCODE = NO;
 				GOOGLE_CLIENT_ID = "799296776426-515pacq7e5u1cak96mobk6k68q1lhtel.apps.googleusercontent.com";
@@ -799,6 +801,7 @@
 					"@executable_path/Frameworks",
 				);
 				MAPS_API_KEY = "AIzaSyDf7k7tRdUZvGS0ehW-VB19kFwPxzQj5v0";
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.assessli.connector.development;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REVERSED_CLIENT_ID = "com.googleusercontent.apps.799296776426-515pacq7e5u1cak96mobk6k68q1lhtel";
@@ -828,7 +831,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = AppIcon-development;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = "AppIcon-development";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -886,7 +889,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-development";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 9M2B6NVYX2;
 				ENABLE_BITCODE = NO;
 				GOOGLE_CLIENT_ID = "799296776426-515pacq7e5u1cak96mobk6k68q1lhtel.apps.googleusercontent.com";
@@ -896,6 +899,7 @@
 					"@executable_path/Frameworks",
 				);
 				MAPS_API_KEY = "AIzaSyDf7k7tRdUZvGS0ehW-VB19kFwPxzQj5v0";
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.assessli.connector.development;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REVERSED_CLIENT_ID = "com.googleusercontent.apps.799296776426-515pacq7e5u1cak96mobk6k68q1lhtel";
@@ -925,7 +929,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = AppIcon-development;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = "AppIcon-development";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -986,7 +990,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-staging";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 9M2B6NVYX2;
 				ENABLE_BITCODE = NO;
 				GOOGLE_CLIENT_ID = "1047961685171-khp0r43j4efp7nnrqt2tmutafh7p2l4r.apps.googleusercontent.com";
@@ -996,6 +1000,7 @@
 					"@executable_path/Frameworks",
 				);
 				MAPS_API_KEY = "AIzaSyDf7k7tRdUZvGS0ehW-VB19kFwPxzQj5v0";
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.assessli.connector.staging;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REVERSED_CLIENT_ID = "com.googleusercontent.apps.1047961685171-khp0r43j4efp7nnrqt2tmutafh7p2l4r";
@@ -1028,7 +1033,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = AppIcon-staging;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = "AppIcon-staging";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1084,7 +1089,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-staging";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 9M2B6NVYX2;
 				ENABLE_BITCODE = NO;
 				GOOGLE_CLIENT_ID = "1047961685171-khp0r43j4efp7nnrqt2tmutafh7p2l4r.apps.googleusercontent.com";
@@ -1094,6 +1099,7 @@
 					"@executable_path/Frameworks",
 				);
 				MAPS_API_KEY = "AIzaSyDf7k7tRdUZvGS0ehW-VB19kFwPxzQj5v0";
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.assessli.connector.staging;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REVERSED_CLIENT_ID = "com.googleusercontent.apps.1047961685171-khp0r43j4efp7nnrqt2tmutafh7p2l4r";
@@ -1123,7 +1129,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = AppIcon-staging;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = "AppIcon-staging";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1181,7 +1187,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-staging";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 9M2B6NVYX2;
 				ENABLE_BITCODE = NO;
 				GOOGLE_CLIENT_ID = "1047961685171-khp0r43j4efp7nnrqt2tmutafh7p2l4r.apps.googleusercontent.com";
@@ -1191,6 +1197,7 @@
 					"@executable_path/Frameworks",
 				);
 				MAPS_API_KEY = "AIzaSyDf7k7tRdUZvGS0ehW-VB19kFwPxzQj5v0";
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.assessli.connector.staging;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REVERSED_CLIENT_ID = "com.googleusercontent.apps.1047961685171-khp0r43j4efp7nnrqt2tmutafh7p2l4r";
@@ -1220,7 +1227,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = AppIcon-staging;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = "AppIcon-staging";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1277,7 +1284,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = AppIcon-staging;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = "AppIcon-staging";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1335,7 +1342,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-production";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 9M2B6NVYX2;
 				ENABLE_BITCODE = NO;
 				GOOGLE_CLIENT_ID = "153074686205-b4dd3ar94sb0tgd4fir7mvacj9trcjn8.apps.googleusercontent.com";
@@ -1345,6 +1352,7 @@
 					"@executable_path/Frameworks",
 				);
 				MAPS_API_KEY = "AIzaSyDf7k7tRdUZvGS0ehW-VB19kFwPxzQj5v0";
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.assessli.connector;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REVERSED_CLIENT_ID = "com.googleusercontent.apps.153074686205-b4dd3ar94sb0tgd4fir7mvacj9trcjn8";
@@ -1363,7 +1371,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-production";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 9M2B6NVYX2;
 				ENABLE_BITCODE = NO;
 				GOOGLE_CLIENT_ID = "153074686205-b4dd3ar94sb0tgd4fir7mvacj9trcjn8.apps.googleusercontent.com";
@@ -1373,6 +1381,7 @@
 					"@executable_path/Frameworks",
 				);
 				MAPS_API_KEY = "AIzaSyDf7k7tRdUZvGS0ehW-VB19kFwPxzQj5v0";
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.assessli.connector;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REVERSED_CLIENT_ID = "com.googleusercontent.apps.153074686205-b4dd3ar94sb0tgd4fir7mvacj9trcjn8";

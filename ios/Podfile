@@ -58,7 +58,7 @@ post_install do |installer|
         # 'PERMISSION_SPEECH_RECOGNIZER=1',
 
         # Photos / media library
-        # 'PERMISSION_PHOTOS=1',
+        'PERMISSION_PHOTOS=1',
         # 'PERMISSION_PHOTOS_ADD_ONLY=1',
         # 'PERMISSION_MEDIA_LIBRARY=1',
 
@@ -87,7 +87,7 @@ post_install do |installer|
         # 'PERMISSION_CONTACTS=1',
 
         # Tracking transparency
-        'PERMISSION_APP_TRACKING_TRANSPARENCY=1',
+        # 'PERMISSION_APP_TRACKING_TRANSPARENCY=1',
 
         # iOS-specific extras
         # 'PERMISSION_ASSISTANT=1',

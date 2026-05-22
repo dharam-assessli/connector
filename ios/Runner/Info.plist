@@ -127,8 +127,8 @@
 	<string>Accesses motion sensors and activity data to track your physical activity, detect movement patterns, and provide personalized health and fitness insights.</string>
 	<!-- <key>NSPhotoLibraryAddUsageDescription</key> -->
 	<!-- <string>Allows the app to save photos and videos you create in the app to your device library.</string> -->
-	<!-- <key>NSPhotoLibraryUsageDescription</key> -->
-	<!-- <string>Grants access to your photos, videos, and audio files so you can upload, share, and manage your media content directly from your device library.</string> -->
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Grants access to your photos, videos, and audio files so you can upload, share, and manage your media content directly from your device library.</string>
 	<key>NSPrivacyAccessedAPITypes</key>
 	<array>
 		<dict>
@@ -172,8 +172,8 @@
 	<!-- <string>Used to convert your spoken input into text for voice commands, dictation, and accessibility features.</string> -->
 	<key>NSUserNotificationUsageDescription</key>
 	<string>Enables real-time alerts for messages, reminders, and important updates. You can customize notification preferences anytime in your device settings.</string>
-	<key>NSUserTrackingUsageDescription</key>
-	<string>Allows the app to link your activity across other apps and websites for more relevant ads and analytics. You can opt out at any time without affecting core app functionality.</string>
+	<!-- <key>NSUserTrackingUsageDescription</key> -->
+	<!-- <string>Allows the app to link your activity across other apps and websites for more relevant ads and analytics. You can opt out at any time without affecting core app functionality.</string> -->
 	<!-- <key>NSSiriUsageDescription</key> -->
 	<!-- <string>Dotsin uses Siri to let you trigger quick actions and shortcuts hands-free.</string> -->
 	<key>UIApplicationSceneManifest</key>
