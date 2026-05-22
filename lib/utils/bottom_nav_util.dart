@@ -3,6 +3,7 @@ import "package:connector/bindings/dashboard/tab_community_binding.dart";
 import "package:connector/bindings/dashboard/tab_feed_binding.dart";
 import "package:connector/bindings/dashboard/tab_home_binding.dart";
 import "package:connector/bindings/dashboard/tab_hub_binding.dart";
+import "package:connector/constants/images_constants.dart";
 import "package:connector/controllers/dashboard/tab_chat_controller.dart";
 import "package:connector/controllers/dashboard/tab_community_controller.dart";
 import "package:connector/controllers/dashboard/tab_feed_controller.dart";
@@ -16,6 +17,7 @@ import "package:connector/screens/dashboard/tab_hub_screen.dart";
 import "package:connector/utils/languages_util.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:horizon/widgets/media/custom_media_viewer.dart";
 
 class BottomNavUtil {
   factory BottomNavUtil() {
@@ -58,28 +60,78 @@ class BottomNavUtil {
   RxList<BottomNavigationBarItem> get tabWidgets {
     return <BottomNavigationBarItem>[
       BottomNavigationBarItem(
-        activeIcon: const Icon(Icons.home, size: 24.0),
-        icon: const Icon(Icons.home_outlined, size: 24.0),
+        // activeIcon: const Icon(Icons.home, size: 24.0),
+        // icon: const Icon(Icons.home_outlined, size: 24.0),
+        activeIcon: CustomMediaViewer(
+          data: ImagesConstants().navHome,
+          height: kToolbarHeight - 24,
+          width: kToolbarHeight - 24,
+        ),
+        icon: CustomMediaViewer(
+          data: ImagesConstants().navHome,
+          height: kToolbarHeight - 24,
+          width: kToolbarHeight - 24,
+        ),
         label: LanguagesUtil().tabHome,
       ),
       BottomNavigationBarItem(
-        activeIcon: const Icon(Icons.feed, size: 24.0),
-        icon: const Icon(Icons.feed_outlined, size: 24.0),
+        // activeIcon: const Icon(Icons.feed, size: 24.0),
+        // icon: const Icon(Icons.feed_outlined, size: 24.0),
+        activeIcon: CustomMediaViewer(
+          data: ImagesConstants().navFeed,
+          height: kToolbarHeight - 24,
+          width: kToolbarHeight - 24,
+        ),
+        icon: CustomMediaViewer(
+          data: ImagesConstants().navFeed,
+          height: kToolbarHeight - 24,
+          width: kToolbarHeight - 24,
+        ),
         label: LanguagesUtil().tabFeed,
       ),
       BottomNavigationBarItem(
-        activeIcon: const Icon(Icons.mic, size: 24.0),
-        icon: const Icon(Icons.mic_none_outlined, size: 24.0),
+        // activeIcon: const Icon(Icons.mic, size: 24.0),
+        // icon: const Icon(Icons.mic_none_outlined, size: 24.0),
+        activeIcon: CustomMediaViewer(
+          data: ImagesConstants().navVoice,
+          height: kToolbarHeight - 24,
+          width: kToolbarHeight - 24,
+        ),
+        icon: CustomMediaViewer(
+          data: ImagesConstants().navVoice,
+          height: kToolbarHeight - 24,
+          width: kToolbarHeight - 24,
+        ),
         label: LanguagesUtil().tabVoice,
       ),
       BottomNavigationBarItem(
-        activeIcon: const Icon(Icons.people, size: 24.0),
-        icon: const Icon(Icons.people_outline, size: 24.0),
+        // activeIcon: const Icon(Icons.people, size: 24.0),
+        // icon: const Icon(Icons.people_outline, size: 24.0),
+        activeIcon: CustomMediaViewer(
+          data: ImagesConstants().navCommunity,
+          height: kToolbarHeight - 24,
+          width: kToolbarHeight - 24,
+        ),
+        icon: CustomMediaViewer(
+          data: ImagesConstants().navCommunity,
+          height: kToolbarHeight - 24,
+          width: kToolbarHeight - 24,
+        ),
         label: LanguagesUtil().tabCommunity,
       ),
       BottomNavigationBarItem(
-        activeIcon: const Icon(Icons.hub, size: 24.0),
-        icon: const Icon(Icons.hub_outlined, size: 24.0),
+        // activeIcon: const Icon(Icons.hub, size: 24.0),
+        // icon: const Icon(Icons.hub_outlined, size: 24.0),
+        activeIcon: CustomMediaViewer(
+          data: ImagesConstants().navHub,
+          height: kToolbarHeight - 24,
+          width: kToolbarHeight - 24,
+        ),
+        icon: CustomMediaViewer(
+          data: ImagesConstants().navHub,
+          height: kToolbarHeight - 24,
+          width: kToolbarHeight - 24,
+        ),
         label: LanguagesUtil().tabHub,
       ),
     ].obs;

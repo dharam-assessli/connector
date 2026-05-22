@@ -12,4 +12,12 @@ class ImagesConstants {
 
   // Home Tab Images
   String get homeHuman => "assets/images/home_human.png";
+
+  // Navigation Bar Images
+  String get navHome => "assets/images/nav_home.png";
+  String get navFeed => "assets/images/nav_feed.png";
+  String get navVoice => "assets/images/nav_voice.png";
+  String get navCommunity => "assets/images/nav_community.png";
+  String get navHub => "assets/images/nav_hub.png";
+  String get navTwin => "assets/images/nav_twin.png";
 }
