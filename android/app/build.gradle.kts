@@ -3,10 +3,8 @@ import java.io.FileInputStream
 
 plugins {
     id("com.android.application")
-    // START: FlutterFire Configuration
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
-    // END: FlutterFire Configuration
     id("kotlin-android")
     id("dev.flutter.flutter-gradle-plugin")
 }
@@ -19,7 +17,7 @@ android {
     }
 
     namespace = "com.assessli.connector"
-    compileSdk = 36
+    compileSdk = 37
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
@@ -28,14 +26,10 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17.toString()
-    }
-
     defaultConfig {
         applicationId = "com.assessli.connector"
         minSdk = 26
-        targetSdk = 36
+        targetSdk = 37
         versionCode = flutter.versionCode
         versionName = flutter.versionName
         multiDexEnabled = true
@@ -90,7 +84,7 @@ android {
             applicationIdSuffix = ".staging"
             manifestPlaceholders["MAPS_API_KEY"] = "AIzaSyDf7k7tRdUZvGS0ehW-VB19kFwPxzQj5v0"
         }
-        
+
         create("production") {
             dimension = "default"
             resValue("string", "app_name", "Dotsin Connector")
@@ -116,23 +110,24 @@ android {
     }
 }
 
+kotlin {
+    compilerOptions {
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
+    }
+}
+
 flutter {
     source = "../.."
 }
 
 dependencies {
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
-
-    implementation("androidx.window:window:1.3.0")
-    implementation("androidx.window:window-java:1.3.0")
-
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
+    implementation("androidx.window:window:1.5.1")
+    implementation("androidx.window:window-java:1.5.1")
     implementation("androidx.multidex:multidex:2.0.1")
-
-    implementation("androidx.health.connect:connect-client:1.1.0-alpha07")
-
-    implementation("androidx.work:work-runtime-ktx:2.10.0")
-
-    implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
+    implementation("androidx.health.connect:connect-client:1.1.0")
+    implementation("androidx.work:work-runtime-ktx:2.11.2")
+    implementation(platform("com.google.firebase:firebase-bom:34.13.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-crashlytics")
     implementation("com.google.firebase:firebase-messaging")

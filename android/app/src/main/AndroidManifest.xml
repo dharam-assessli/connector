@@ -368,7 +368,12 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="${MAPS_API_KEY}"/>
-        
+
+        <!-- HC++ for platform views (Maps, WebView, etc.) -->
+        <meta-data
+            android:name="io.flutter.embedding.android.EnableHcpp"
+            android:value="true" />
+
         <!-- BootReceiver to reschedule WorkManager tasks on device reboot or app update -->
         <receiver
             android:name=".BootReceiver"
