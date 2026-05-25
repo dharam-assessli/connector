@@ -108,6 +108,10 @@ android {
             useLegacyPackaging = true
         }
     }
+
+    buildFeatures {
+        resValues = true
+    }
 }
 
 kotlin {

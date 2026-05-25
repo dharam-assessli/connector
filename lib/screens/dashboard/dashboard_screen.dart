@@ -143,7 +143,7 @@ class DashboardScreen extends GetView<DashboardController> {
     return Stack(
       children: <Widget>[
         Positioned.fill(child: customPageView(context)),
-        
+
         //
         // Only show on Home tab
         if (controller.rxIndex.value == 0)
@@ -183,71 +183,126 @@ class DashboardScreen extends GetView<DashboardController> {
 
   Widget bottomNavigationBar(BuildContext context) {
     return Obx(() {
-      return CustomContainer(
-        borderRadius: BorderRadius.circular(100),
-        padding: const EdgeInsets.all(8),
-        margin: EdgeInsets.only(
-          bottom: Platform.isAndroid
-              ? kBottomNavigationBarHeight + 8
-              : Platform.isIOS
-              ? kBottomNavigationBarHeight - 32
-              : 0,
-          left: 8,
-          right: 8,
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: List<Widget>.generate(controller.tabWidgets.length, (
-            int index,
-          ) {
-            final InkWell child = InkWell(
+      return Stack(
+        clipBehavior: Clip.none,
+        children: <Widget>[
+          Positioned(
+            child: CustomContainer(
               borderRadius: BorderRadius.circular(100),
-              onTap: () async {
-                await controller.updateIndex(index: index, animate: true);
-              },
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  const SizedBox(height: 8),
-                  controller.tabWidgets[index].icon,
-                  CustomText(
-                    data: controller.tabWidgets[index].label ?? "",
-                    style: const TextStyle(fontSize: 10),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  const SizedBox(height: 8),
-                ],
+              padding: const EdgeInsets.all(8),
+              margin: EdgeInsets.only(
+                bottom: Platform.isAndroid
+                    ? kBottomNavigationBarHeight + 8
+                    : Platform.isIOS
+                    ? kBottomNavigationBarHeight - 32
+                    : 0,
+                left: 8,
+                right: 8,
               ),
-            );
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: List<Widget>.generate(controller.tabWidgets.length, (
+                  int index,
+                ) {
+                  final InkWell child = InkWell(
+                    borderRadius: BorderRadius.circular(100),
+                    onTap: () async {
+                      await controller.updateIndex(index: index, animate: true);
+                    },
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: <Widget>[
+                        const SizedBox(height: 8),
+                        Visibility(
+                          visible: controller.rxIndex.value != index,
+                          maintainSize: true,
+                          maintainAnimation: true,
+                          maintainState: true,
+                          child: controller.tabWidgets[index].icon,
+                        ),
+                        CustomText(
+                          data: controller.tabWidgets[index].label ?? "",
+                          style: const TextStyle(fontSize: 10),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        const SizedBox(height: 8),
+                      ],
+                    ),
+                  );
 
-            final StatelessWidget menu = index == 2
-                ? PieMenu(
-                    theme: PieTheme(brightness: ThemeDataUtil().brightness),
-                    onPressed: () {},
-                    actions: <PieAction>[
-                      PieAction(
-                        tooltip: const SizedBox(),
-                        onSelect: () {},
-                        child: const Icon(Icons.camera),
+                  final StatelessWidget menu = index == 2
+                      ? PieMenu(
+                          theme: PieTheme(
+                            brightness: ThemeDataUtil().brightness,
+                          ),
+                          onPressed: () {},
+                          actions: <PieAction>[
+                            PieAction(
+                              tooltip: const SizedBox(),
+                              onSelect: () {},
+                              child: const Icon(Icons.camera),
+                            ),
+                          ],
+                          child: child,
+                        )
+                      : child;
+
+                  return Expanded(
+                    child: controller.rxIndex.value == index ? menu : menu,
+                  );
+                }),
+              ),
+            ),
+          ),
+
+          Positioned(
+            top: -24,
+            left: 16,
+            right: 16,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: List<Widget>.generate(controller.tabWidgets.length, (
+                int index,
+              ) {
+                // Only show active icon for the selected tab
+                final bool isSelected = controller.rxIndex.value == index;
+
+                return IgnorePointer(
+                  ignoring: !isSelected,
+                  child: AnimatedScale(
+                    duration: const Duration(seconds: 1),
+                    curve: Curves.bounceInOut,
+                    scale: isSelected ? 1.0 : 0.0,
+                    child: AnimatedOpacity(
+                      duration: const Duration(seconds: 1),
+                      curve: Curves.bounceInOut,
+                      opacity: isSelected ? 1.0 : 0.0,
+                      child: Card.outlined(
+                        color: Theme.of(context).scaffoldBackgroundColor,
+                        shape: OvalBorder(
+                          side: BorderSide(
+                            color: Theme.of(context).hintColor,
+                            width: 0,
+                          ),
+                        ),
+                        margin: const EdgeInsets.all(4.0),
+                        child: Padding(
+                          padding: const EdgeInsets.all(16),
+                          child: controller.tabWidgets[index].icon,
+                        ),
                       ),
-                    ],
-                    child: child,
-                  )
-                : child;
-
-            return Expanded(
-              child: controller.rxIndex.value == index
-                  ? CustomContainer(
-                      borderRadius: BorderRadius.circular(100),
-                      child: menu,
-                    )
-                  : menu,
-            );
-          }),
-        ),
+                    ),
+                  ),
+                );
+              }),
+            ),
+          ),
+        ],
       );
     });
   }

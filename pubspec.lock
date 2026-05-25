@@ -181,10 +181,10 @@ packages:
     dependency: transitive
     description:
       name: calendar_date_picker2
-      sha256: "9c9b5586fb512bf1181d7f3a6273bffa9e65a4e16689902e112771e7d71d063b"
+      sha256: d6ea697c7fc0eebc64c62ad2ac6232a8c38795010bd8466b687bfebcbbdd872e
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.1"
+    version: "3.0.0"
   carousel_slider:
     dependency: transitive
     description:
@@ -670,6 +670,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "7.2.0"
+  flutter_cupertino_datetime_picker:
+    dependency: transitive
+    description:
+      name: flutter_cupertino_datetime_picker
+      sha256: "631fbd3abed4d1151888e053d2153d905663a3b33ff24bdfa64afbcf750682cb"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0"
   flutter_custom_tabs:
     dependency: transitive
     description:
@@ -815,10 +823,10 @@ packages:
     dependency: transitive
     description:
       name: flutter_streaming_text_markdown
-      sha256: e7b331ec0eb953117291bd93ea31662d8925c21389ba1ce6ba0e45c51e180fa9
+      sha256: "6adbf88aa938b20196b92a5cbfd577b8ed9b8469099e04c28918d646b06d48a9"
       url: "https://pub.dev"
     source: hosted
-    version: "1.7.2"
+    version: "1.8.0"
   flutter_svg:
     dependency: transitive
     description:
@@ -1090,7 +1098,7 @@ packages:
     description:
       path: "."
       ref: main
-      resolved-ref: efe63cea8c7e191909b2437fefd85b6da81c6b37
+      resolved-ref: "4f4882b0815dc3abb6f79a3f2532a86491936e78"
       url: "https://github.com/Assessli-tech/horizon-flutter.git"
     source: git
     version: "1.0.0+1"
@@ -1242,10 +1250,10 @@ packages:
     dependency: transitive
     description:
       name: language_code
-      sha256: b9110f05112cb40648b04da0f8eead57d70b6cd5cd3e9b17e968a34770097bf5
+      sha256: "43eddc2fe2f8d1189b4eeffd10dffcc456ccb754623a2c3b4c753adf4b7c4993"
       url: "https://pub.dev"
     source: hosted
-    version: "0.6.0"
+    version: "0.7.0"
   leak_tracker:
     dependency: transitive
     description:
@@ -1682,50 +1690,50 @@ packages:
     dependency: transitive
     description:
       name: record
-      sha256: d5b6b334f3ab02460db6544e08583c942dbf23e3504bf1e14fd4cbe3d9409277
+      sha256: "10911465138fafacef459a780564e883e01bd48eabf87ab20543684884492870"
       url: "https://pub.dev"
     source: hosted
-    version: "6.2.0"
+    version: "6.2.1"
   record_android:
     dependency: transitive
     description:
       name: record_android
-      sha256: "94783f08403aed33ffb68797bf0715b0812eb852f3c7985644c945faea462ba1"
+      sha256: eb1732e42d0d2a1895b8db86e4fc917287e6d8491b6ed59918aea8bed6c69de4
       url: "https://pub.dev"
     source: hosted
-    version: "1.5.1"
+    version: "1.5.2"
   record_ios:
     dependency: transitive
     description:
       name: record_ios
-      sha256: "8df7c136131bd05efc19256af29b2ba6ccc000ccc2c80d4b6b6d7a8d21a3b5a9"
+      sha256: c051fb48edd7a0e265daafb9108730dc827c27b551728a3fdfb3ef69efd89c73
       url: "https://pub.dev"
     source: hosted
-    version: "1.2.0"
+    version: "1.2.1"
   record_linux:
     dependency: transitive
     description:
       name: record_linux
-      sha256: c31a35cc158cd666fc6395f7f56fc054f31685571684be6b97670a27649ce5c7
+      sha256: "31181787bf7eccb0e298835836b69b3cd0a903863b75d70e937de3dec71cd8f3"
       url: "https://pub.dev"
     source: hosted
-    version: "1.3.0"
+    version: "1.3.1"
   record_macos:
     dependency: transitive
     description:
       name: record_macos
-      sha256: "084902e63fc9c0c224c29203d6c75f0bdf9b6a40536c9d916393c8f4c4256488"
+      sha256: cfe1b61435e27db418bf513dc36820d10c9f7eb1843786c2c9a52e07e2f4f627
       url: "https://pub.dev"
     source: hosted
-    version: "1.2.1"
+    version: "1.2.2"
   record_platform_interface:
     dependency: transitive
     description:
       name: record_platform_interface
-      sha256: "8a81dbc4e14e1272a285bbfef6c9136d070a47d9b0d1f40aa6193516253ee2f6"
+      sha256: "8e56cbe06c6984137fb86132ff03459f29938d927496d9b2d0962e2d6345d488"
       url: "https://pub.dev"
     source: hosted
-    version: "1.5.0"
+    version: "1.6.0"
   record_use:
     dependency: transitive
     description:
@@ -1758,6 +1766,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.8"
+  retry:
+    dependency: transitive
+    description:
+      name: retry
+      sha256: "822e118d5b3aafed083109c72d5f484c6dc66707885e07c0fbcb8b986bba7efc"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.1.2"
   rxdart:
     dependency: transitive
     description:
@@ -1786,8 +1802,8 @@ packages:
     dependency: transitive
     description:
       path: "packages/screen_time_plugin"
-      ref: efe63cea8c7e191909b2437fefd85b6da81c6b37
-      resolved-ref: efe63cea8c7e191909b2437fefd85b6da81c6b37
+      ref: "4f4882b0815dc3abb6f79a3f2532a86491936e78"
+      resolved-ref: "4f4882b0815dc3abb6f79a3f2532a86491936e78"
       url: "https://github.com/Assessli-tech/horizon-flutter.git"
     source: git
     version: "0.0.1"
@@ -2040,18 +2056,18 @@ packages:
     dependency: transitive
     description:
       name: syncfusion_flutter_core
-      sha256: "25f2e349bc14a1a4f9da95f24484ea1751de2ab13dc11a2d4d96f54c4c7a030a"
+      sha256: ae6c13a42ea7012963418b8963b1e097592340eeae1c3421aa8adfc095309492
       url: "https://pub.dev"
     source: hosted
-    version: "33.2.5"
+    version: "33.2.7"
   syncfusion_flutter_sliders:
     dependency: transitive
     description:
       name: syncfusion_flutter_sliders
-      sha256: "672bf73566595520602335f7c6ffe1f4282a8dc7b3b458a43f3f39db51648ca9"
+      sha256: "59ed73bca311bbe1dca4824bd8c805052b625e3f861d3f5aa2573282a8f18678"
       url: "https://pub.dev"
     source: hosted
-    version: "33.2.5"
+    version: "33.2.7"
   synchronized:
     dependency: transitive
     description:
@@ -2144,10 +2160,10 @@ packages:
     dependency: transitive
     description:
       name: upgrader
-      sha256: a9ab8cabe01c98c12b3c381a3bc8693413cb64a2a3ec7395ce0f53844ef30a2f
+      sha256: e05ddce3799a73b76470d8d239951038f5759f116e89fe0c909e30ac2856310b
       url: "https://pub.dev"
     source: hosted
-    version: "13.2.0"
+    version: "13.3.0"
   url_launcher:
     dependency: transitive
     description:

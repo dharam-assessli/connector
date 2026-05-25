@@ -97,11 +97,7 @@ class DashboardController extends GetxController {
     BottomNavUtil().updateIndex(index);
 
     if (animate) {
-      await pageController.animateToPage(
-        index,
-        duration: const Duration(milliseconds: 600),
-        curve: Curves.linear,
-      );
+      pageController.jumpToPage(index);
     } else {}
 
     return Future<void>.value();

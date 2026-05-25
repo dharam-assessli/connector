@@ -2,10 +2,13 @@ import "dart:io";
 
 import "package:connector/controllers/connector/connector_controller.dart";
 import "package:connector/utils/languages_util.dart";
+import "package:connector/utils/routes_utils.dart";
 import "package:connector/widgets/category_container.dart";
 import "package:get/get.dart";
+import "package:horizon/services/navigation_service.dart";
 import "package:horizon/widgets/animations/animated_gradient.dart";
 import "package:horizon/widgets/app_bar/custom_app_bar.dart";
+import "package:horizon/widgets/buttons/custom_icon_button.dart";
 import "package:horizon/widgets/containers/custom_container.dart";
 import "package:horizon/widgets/texts/custom_text.dart";
 import "package:material_ui/material_ui.dart";
@@ -17,7 +20,19 @@ class ConnectorScreen extends GetView<ConnectorController> {
   Widget build(final BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: const CustomAppBar(),
+      appBar: CustomAppBar(
+        trailingActions: <Widget>[
+          CustomIconButton(
+            onPressed: () async {
+              final String route = RoutesUtils().manualSyncScreen;
+              final Map<String, dynamic> arguments = <String, dynamic>{};
+
+              await NavigationService().pushNamed(route, arguments: arguments);
+            },
+            data: const Icon(Icons.sync),
+          ),
+        ],
+      ),
       body: AnimatedGradient(
         child: SafeArea(
           child: Column(
