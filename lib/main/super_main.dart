@@ -15,6 +15,7 @@ import "package:horizon/utils/custom_listenable.dart";
 import "package:horizon/utils/keyboard_dismiss_util.dart";
 import "package:horizon/utils/overlays/circular_overlay.dart";
 import "package:horizon/utils/overlays/loader_overlay_util.dart";
+import "package:overlay_support/overlay_support.dart";
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -78,12 +79,16 @@ class MyApp extends StatelessWidget {
     );
   }
 
+  // Builder for overlapping widgets like loaders, snack bars, etc.
   Widget builder(BuildContext context, Widget? child) {
-    final Widget newChild = child ?? const SizedBox();
-    final Widget circular = CircularOverlay().wrapWithCircular(newChild);
-    final Widget loader = LoaderOverlayUtil().globalLoader(child: circular);
-    final Widget keyboardDismiss = KeyboardDismissUtil(child: loader);
+    final Widget app = child ?? const SizedBox();
 
-    return keyboardDismiss;
+    return OverlaySupport.global(
+      child: LoaderOverlayUtil().globalLoader(
+        child: KeyboardDismissUtil(
+          child: CircularOverlay().wrapWithCircular(app),
+        ),
+      ),
+    );
   }
 }
