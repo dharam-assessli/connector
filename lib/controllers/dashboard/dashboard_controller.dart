@@ -97,7 +97,7 @@ class DashboardController extends GetxController {
     BottomNavUtil().updateIndex(index);
 
     if (animate) {
-      pageController.jumpToPage(index);
+      pageController.hasClients ? pageController.jumpToPage(index) : (() {})();
     } else {}
 
     return Future<void>.value();

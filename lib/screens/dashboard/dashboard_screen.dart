@@ -13,7 +13,6 @@ import "package:horizon/services/gradient_service.dart";
 import "package:horizon/services/navigation_service.dart";
 import "package:horizon/widgets/animations/animated_gradient.dart";
 import "package:horizon/widgets/app_bar/custom_app_bar.dart";
-import "package:horizon/widgets/builders/custom_page_view.dart";
 import "package:horizon/widgets/buttons/custom_icon_button.dart";
 import "package:horizon/widgets/containers/custom_container.dart";
 import "package:horizon/widgets/draggable_scrollable_sheet/custom_draggable_scrollable_sheet.dart";
@@ -168,17 +167,28 @@ class DashboardScreen extends GetView<DashboardController> {
     );
   }
 
+  // Old
+  // Widget customPageView(BuildContext context) {
+  //   return CustomPageView<GetView<dynamic>>(
+  //     pageController: controller.pageController,
+  //     items: controller.getViews,
+  //     itemBuilder: (BuildContext context, int index, GetView<dynamic> item) {
+  //       return item;
+  //     },
+  //     onPageChanged: (int index) async {
+  //       await controller.updateIndex(index: index, animate: false);
+  //     },
+  //   );
+  // }
+
+  // New
   Widget customPageView(BuildContext context) {
-    return CustomPageView<GetView<dynamic>>(
-      pageController: controller.pageController,
-      items: controller.getViews,
-      itemBuilder: (BuildContext context, int index, GetView<dynamic> item) {
-        return item;
-      },
-      onPageChanged: (int index) async {
-        await controller.updateIndex(index: index, animate: false);
-      },
-    );
+    return Obx(() {
+      return IndexedStack(
+        index: controller.rxIndex.value,
+        children: controller.getViews,
+      );
+    });
   }
 
   Widget bottomNavigationBar(BuildContext context) {
@@ -260,42 +270,52 @@ class DashboardScreen extends GetView<DashboardController> {
           ),
 
           Positioned(
-            top: -24,
-            left: 16,
-            right: 16,
+            top: -8,
+            left: 24,
+            right: 24,
             child: Row(
-              mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: List<Widget>.generate(controller.tabWidgets.length, (
                 int index,
               ) {
-                // Only show active icon for the selected tab
                 final bool isSelected = controller.rxIndex.value == index;
 
-                return IgnorePointer(
-                  ignoring: !isSelected,
-                  child: AnimatedScale(
-                    duration: const Duration(seconds: 1),
-                    curve: Curves.bounceInOut,
-                    scale: isSelected ? 1.0 : 0.0,
-                    child: AnimatedOpacity(
-                      duration: const Duration(seconds: 1),
-                      curve: Curves.bounceInOut,
-                      opacity: isSelected ? 1.0 : 0.0,
-                      child: Card.outlined(
-                        color: Theme.of(context).scaffoldBackgroundColor,
-                        shape: OvalBorder(
-                          side: BorderSide(
-                            color: Theme.of(context).hintColor,
-                            width: 0,
-                          ),
-                        ),
-                        margin: const EdgeInsets.all(4.0),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16),
-                          child: controller.tabWidgets[index].icon,
-                        ),
-                      ),
+                return Expanded(
+                  child: Center(
+                    child: AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 320),
+                      switchInCurve: Curves.easeOutCubic,
+                      switchOutCurve: Curves.easeInCubic,
+                      transitionBuilder:
+                          (Widget child, Animation<double> animation) {
+                            return FadeTransition(
+                              opacity: animation,
+                              child: SlideTransition(
+                                position: Tween<Offset>(
+                                  begin: const Offset(0, 0.4),
+                                  end: Offset.zero,
+                                ).animate(animation),
+                                child: child,
+                              ),
+                            );
+                          },
+                      child: isSelected
+                          ? Card.outlined(
+                              key: ValueKey<int>(index),
+                              color: Theme.of(context).scaffoldBackgroundColor,
+                              shape: OvalBorder(
+                                side: BorderSide(
+                                  color: Theme.of(context).hintColor,
+                                  width: 0,
+                                ),
+                              ),
+                              margin: EdgeInsets.zero,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: controller.tabWidgets[index].icon,
+                              ),
+                            )
+                          : const SizedBox.shrink(),
                     ),
                   ),
                 );
