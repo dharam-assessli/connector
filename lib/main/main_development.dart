@@ -7,6 +7,8 @@ import "package:connector/main/super_main.dart";
 import "package:firebase_messaging/firebase_messaging.dart";
 import "package:horizon/services/device_info_service.dart";
 import "package:horizon/services/languages_service.dart";
+import "package:horizon/services/location_service.dart";
+import "package:horizon/services/location_service_2.dart";
 import "package:horizon/services/notification_service.dart";
 import "package:horizon/services/package_info_service.dart";
 import "package:horizon/services/storage_service.dart";
@@ -27,7 +29,6 @@ Future<void> main() async {
   await initRemoteConfig();
 
   await StorageService().init();
-
   await PackageInfoService().init();
 
   await DeviceInfoService().init();
@@ -44,6 +45,10 @@ Future<void> main() async {
   await WorkManagerService().configureBundleID();
   await WorkManagerService().initialize();
   await WorkManagerService().registerTasks();
+
+  await LocationService().getPositionStream();
+  await LocationService2().enableBackgroundMode();
+  await LocationService2().getPositionStream();
 
   runApp(const MyApp());
 }

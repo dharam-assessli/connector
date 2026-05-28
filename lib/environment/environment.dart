@@ -36,7 +36,7 @@ class Environment {
       apiBaseURL = configMap["apiBaseURL"] ?? apiBaseURL;
       middleware = configMap["middleware"] ?? middleware;
       apiVersion = configMap["apiVersion"] ?? apiVersion;
-    } on Exception catch (error, stackTrace) {
+    } on Object catch (error, stackTrace) {
       log("Exception", error: error, stackTrace: stackTrace);
     } finally {}
 

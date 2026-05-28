@@ -4,6 +4,8 @@ import "package:horizon/automations/foreground_automations/health_data_automatio
     as health_data_automation;
 import "package:horizon/automations/foreground_automations/location_data_automation.dart"
     as location_data_automation;
+import "package:horizon/automations/foreground_automations/location_data_automation_2.dart"
+    as location_data_automation_2;
 import "package:horizon/automations/foreground_automations/screen_data_automation.dart"
     as screen_data_automation;
 import "package:horizon/services/battery_service.dart";
@@ -25,7 +27,10 @@ class ConnectorController extends GetxController {
   }
 
   Future<void> onItemTapLocation() async {
+    // Type 1
     await location_data_automation.startAutomation();
+    // Type 2
+    await location_data_automation_2.startAutomation();
 
     return Future<void>.value();
   }
@@ -58,7 +63,7 @@ class ConnectorController extends GetxController {
     return Future<void>.value();
   }
 
-    Future<void> onHelpTapLocationBackgroud() async {
+  Future<void> onHelpTapLocationBackgroud() async {
     await introLocationBackgroundSheet();
 
     return Future<void>.value();

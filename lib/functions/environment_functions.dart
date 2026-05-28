@@ -9,7 +9,7 @@ void setEnvironmentConfig() {
     final String jsonString = jsonEncode(current.Environment().toMap());
 
     structure.Environment().loadFromJson(jsonString);
-  } on Exception catch (error, stackTrace) {
+  } on Object catch (error, stackTrace) {
     log("Exception", error: error, stackTrace: stackTrace);
   } finally {}
 

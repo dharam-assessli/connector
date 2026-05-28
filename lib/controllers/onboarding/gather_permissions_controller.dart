@@ -56,7 +56,7 @@ class GatherPermissionsController extends GetxController {
       isLocationForegroundPermissionGranted.value =
           await checkLocationForegroundPermission(request: true);
       hasRequestedLocationForegroundPermission.value = true;
-    } on Exception catch (error, stackTrace) {
+    } on Object catch (error, stackTrace) {
       log("Exception", error: error, stackTrace: stackTrace);
     }
 
@@ -75,7 +75,7 @@ class GatherPermissionsController extends GetxController {
       isLocationBackgroundPermissionGranted.value =
           await checkLocationBackgroundPermission(request: true);
       hasRequestedLocationBackgroundPermission.value = true;
-    } on Exception catch (error, stackTrace) {
+    } on Object catch (error, stackTrace) {
       log("Exception", error: error, stackTrace: stackTrace);
     }
 
@@ -96,7 +96,7 @@ class GatherPermissionsController extends GetxController {
         request: true,
       );
       hasRequestedHealthPermission.value = true;
-    } on Exception catch (error, stackTrace) {
+    } on Object catch (error, stackTrace) {
       log("Exception", error: error, stackTrace: stackTrace);
     }
 
@@ -116,7 +116,7 @@ class GatherPermissionsController extends GetxController {
         request: true,
       );
       hasRequestedNotificationPermission.value = true;
-    } on Exception catch (error, stackTrace) {
+    } on Object catch (error, stackTrace) {
       log("Exception", error: error, stackTrace: stackTrace);
     }
 
@@ -137,7 +137,7 @@ class GatherPermissionsController extends GetxController {
         request: true,
       );
       hasRequestedScreenTimePermission.value = true;
-    } on Exception catch (error, stackTrace) {
+    } on Object catch (error, stackTrace) {
       log("Exception", error: error, stackTrace: stackTrace);
     }
 
@@ -156,7 +156,7 @@ class GatherPermissionsController extends GetxController {
       isBatteryOptimizationDisabled.value =
           await checkBatteryOptimizationPermission(request: true);
       hasRequestedBatteryOptimization.value = true;
-    } on Exception catch (error, stackTrace) {
+    } on Object catch (error, stackTrace) {
       log("Exception", error: error, stackTrace: stackTrace);
     }
 
@@ -186,7 +186,7 @@ class GatherPermissionsController extends GetxController {
       }
 
       value = condition1 && condition2;
-    } on Exception catch (error, stackTrace) {
+    } on Object catch (error, stackTrace) {
       log("Exception", error: error, stackTrace: stackTrace);
     } finally {}
 
@@ -216,7 +216,7 @@ class GatherPermissionsController extends GetxController {
       }
 
       value = condition1 && condition2;
-    } on Exception catch (error, stackTrace) {
+    } on Object catch (error, stackTrace) {
       log("Exception", error: error, stackTrace: stackTrace);
     } finally {}
 
@@ -278,7 +278,7 @@ class GatherPermissionsController extends GetxController {
                 condition5 &&
                 condition6
           : condition1 && condition2 && condition3 && condition6;
-    } on Exception catch (error, stackTrace) {
+    } on Object catch (error, stackTrace) {
       log("Exception", error: error, stackTrace: stackTrace);
     } finally {}
 
@@ -299,7 +299,7 @@ class GatherPermissionsController extends GetxController {
       }
 
       value = condition;
-    } on Exception catch (error, stackTrace) {
+    } on Object catch (error, stackTrace) {
       log("Exception", error: error, stackTrace: stackTrace);
     } finally {}
 
@@ -315,7 +315,7 @@ class GatherPermissionsController extends GetxController {
       }
 
       value = await ScreenTimeService().hasPermission();
-    } on Exception catch (error, stackTrace) {
+    } on Object catch (error, stackTrace) {
       log("Exception", error: error, stackTrace: stackTrace);
     } finally {}
 
@@ -333,7 +333,7 @@ class GatherPermissionsController extends GetxController {
       }
 
       value = await BatteryService().isBatteryOptimizationDisabled();
-    } on Exception catch (error, stackTrace) {
+    } on Object catch (error, stackTrace) {
       log("Exception", error: error, stackTrace: stackTrace);
     } finally {}
 
@@ -359,7 +359,7 @@ class GatherPermissionsController extends GetxController {
         // SnackBarUtil().show("Opening app settings");
         return Future<void>.value();
       }
-    } on Exception catch (error, stackTrace) {
+    } on Object catch (error, stackTrace) {
       log("Exception", error: error, stackTrace: stackTrace);
     } finally {}
 
@@ -385,7 +385,7 @@ class GatherPermissionsController extends GetxController {
         // SnackBarUtil().show("Opening app settings");
         return Future<void>.value();
       }
-    } on Exception catch (error, stackTrace) {
+    } on Object catch (error, stackTrace) {
       log("Exception", error: error, stackTrace: stackTrace);
     } finally {}
 
@@ -437,7 +437,7 @@ class GatherPermissionsController extends GetxController {
         await HealthService().openHealth();
         return Future<void>.value();
       }
-    } on Exception catch (error, stackTrace) {
+    } on Object catch (error, stackTrace) {
       log("Exception", error: error, stackTrace: stackTrace);
     } finally {}
 
@@ -455,7 +455,7 @@ class GatherPermissionsController extends GetxController {
         // SnackBarUtil().show("Opening app settings");
         return Future<void>.value();
       }
-    } on Exception catch (error, stackTrace) {
+    } on Object catch (error, stackTrace) {
       log("Exception", error: error, stackTrace: stackTrace);
     } finally {}
 
@@ -470,7 +470,7 @@ class GatherPermissionsController extends GetxController {
         // SnackBarUtil().show("Requesting screen time permission");
         return Future<void>.value();
       }
-    } on Exception catch (error, stackTrace) {
+    } on Object catch (error, stackTrace) {
       log("Exception", error: error, stackTrace: stackTrace);
     } finally {}
 
@@ -486,7 +486,7 @@ class GatherPermissionsController extends GetxController {
         // SnackBarUtil().show("Opening battery optimization settings");
         return Future<void>.value();
       }
-    } on Exception catch (error, stackTrace) {
+    } on Object catch (error, stackTrace) {
       log("Exception", error: error, stackTrace: stackTrace);
     } finally {}
 

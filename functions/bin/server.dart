@@ -31,7 +31,7 @@ Future<void> main() async {
 
         try {
           response = Response(200, body: "Hello from Dart Functions!");
-        } on Exception catch (error, stackTrace) {
+        } on Object catch (error, stackTrace) {
           print("Exception | error: $error, stackTrace: $stackTrace");
           response = Response(500, body: "Failed to process request.");
         } finally {}
@@ -53,7 +53,7 @@ Future<void> main() async {
           await sendFcmTrigger();
 
           response = Response(200, body: "Trigger sent successfully!");
-        } on Exception catch (error, stackTrace) {
+        } on Object catch (error, stackTrace) {
           print("Exception | error: $error, stackTrace: $stackTrace");
           response = Response(500, body: "Failed to process request.");
         } finally {}
@@ -68,7 +68,7 @@ Future<void> main() async {
     //     try {
     //       print("Scheduler fired at: ${DateTime.now().toIso8601String()}");
     //       await sendFcmTrigger();
-    //     } on Exception catch (error, stackTrace) {
+    //     } on Object catch (error, stackTrace) {
     //       print("Exception | error: $error, stackTrace: $stackTrace");
     //     } finally {}
     //   },
@@ -97,7 +97,7 @@ Future<String> getAccessToken() async {
     } else {
       print("Access token retrieval failure [${res.statusCode}]: ${res.body}");
     }
-  } on Exception catch (error, stackTrace) {
+  } on Object catch (error, stackTrace) {
     print("Exception | error: $error, stackTrace: $stackTrace");
   } finally {}
 
@@ -171,7 +171,7 @@ Future<bool> sendFcmTrigger() async {
     } else {
       print("FCM trigger sent failure [${res.statusCode}]: ${res.body}");
     }
-  } on Exception catch (error, stackTrace) {
+  } on Object catch (error, stackTrace) {
     print("Exception | error: $error, stackTrace: $stackTrace");
   } finally {}
 

@@ -61,7 +61,7 @@ Future<void> openIntroductionBottomSheet(final IntroductionModel item) async {
       needConfirmButton: true,
       textConfirmButton: LanguagesUtil().understood,
     );
-  } on Exception catch (error, stackTrace) {
+  } on Object catch (error, stackTrace) {
     log("Exception", error: error, stackTrace: stackTrace);
   } finally {}
 

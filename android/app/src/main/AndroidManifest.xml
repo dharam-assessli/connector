@@ -1,5 +1,4 @@
-<manifest 
-    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Network -->
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -384,8 +383,7 @@
             </intent-filter>
         </receiver>
         
-        <!-- Firebase Messaging Service -->
-        <!-- Ensure background handler is kept alive -->
+        <!-- Firebase Messaging Service - Ensure background handler is kept alive -->
         <service
             android:name="com.google.firebase.messaging.FirebaseMessagingService"
             android:exported="false">
@@ -393,6 +391,18 @@
                     <action android:name="com.google.firebase.MESSAGING_EVENT"/>
                 </intent-filter>
         </service>
+
+        <!-- Geolocator foreground location service — required for ForegroundNotificationConfig -->
+        <service
+            android:name="com.baseflow.geolocator.ForegroundLocationService"
+            android:foregroundServiceType="location"
+            android:exported="false"/>
+
+        <!-- Location plugin foreground service (com.lyokone.location) -->
+        <service
+            android:name="com.lyokone.location.LocationService"
+            android:foregroundServiceType="location"
+            android:exported="false"/>
 
     </application>
 

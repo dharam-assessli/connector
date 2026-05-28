@@ -21,7 +21,7 @@ class TabFeedController extends GetxController {
       await controller.setJavaScriptMode(JavaScriptMode.unrestricted);
       // Load the initial URL
       await controller.loadRequest(Uri.parse("https://example.com"));
-    } on Exception catch (error, stackTrace) {
+    } on Object catch (error, stackTrace) {
       log("Exception", error: error, stackTrace: stackTrace);
     } finally {}
 

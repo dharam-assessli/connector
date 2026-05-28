@@ -5,6 +5,8 @@ import "package:horizon/automations/manual_automations/health_data_automation.da
     as health_data_automation;
 import "package:horizon/automations/manual_automations/location_data_automation.dart"
     as location_data_automation;
+import "package:horizon/automations/manual_automations/location_data_automation_2.dart"
+    as location_data_automation_2;
 import "package:horizon/automations/manual_automations/screen_data_automation.dart"
     as screen_data_automation;
 import "package:horizon/models/connector/get_health.dart";
@@ -33,8 +35,11 @@ class ManualSyncController extends GetxController {
 
   Future<void> syncLocationData() async {
     try {
+      // Type 1
       await location_data_automation.startAutomation();
-    } on Exception catch (error, stackTrace) {
+      // Type 2
+      await location_data_automation_2.startAutomation();
+    } on Object catch (error, stackTrace) {
       log("Exception", error: error, stackTrace: stackTrace);
     } finally {}
 
@@ -44,7 +49,7 @@ class ManualSyncController extends GetxController {
   Future<void> syncHealthData() async {
     try {
       final GetHealth get = GetHealth(
-        // requestId: const Uuid().v1(),
+        // requestId: null,
         windowStart: rxStrDateTime.value.toIso8601String(),
         windowEnd: rxEndDateTime.value.toIso8601String(),
         intervals: 3600,
@@ -52,7 +57,7 @@ class ManualSyncController extends GetxController {
       );
 
       await health_data_automation.startAutomation(get: get);
-    } on Exception catch (error, stackTrace) {
+    } on Object catch (error, stackTrace) {
       log("Exception", error: error, stackTrace: stackTrace);
     } finally {}
 
@@ -62,7 +67,7 @@ class ManualSyncController extends GetxController {
   Future<void> syncScreenData() async {
     try {
       final GetScreen get = GetScreen(
-        // requestId: const Uuid().v1(),
+        // requestId: null,
         windowStart: rxStrDateTime.value.toIso8601String(),
         windowEnd: rxEndDateTime.value.toIso8601String(),
         intervals: 3600,
@@ -70,7 +75,7 @@ class ManualSyncController extends GetxController {
       );
 
       await screen_data_automation.startAutomation(get: get);
-    } on Exception catch (error, stackTrace) {
+    } on Object catch (error, stackTrace) {
       log("Exception", error: error, stackTrace: stackTrace);
     } finally {}
 

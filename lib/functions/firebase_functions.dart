@@ -37,7 +37,7 @@ Future<void> initCore() async {
     if (options != null) {
       await FirebaseCoreService().initializeApp(options);
     } else {}
-  } on Exception catch (error, stackTrace) {
+  } on Object catch (error, stackTrace) {
     log("Exception", error: error, stackTrace: stackTrace);
   } finally {}
 
@@ -47,11 +47,11 @@ Future<void> initCore() async {
 Future<void> initCrashlytics() async {
   try {
     FlutterError.onError = CrashlyticsService().recordFlutterFatalError;
-    
+
     PlatformDispatcher.instance.onError = (Object error, StackTrace stack) {
       return CrashlyticsService().recordError(error, stack);
     };
-  } on Exception catch (error, stackTrace) {
+  } on Object catch (error, stackTrace) {
     log("Exception", error: error, stackTrace: stackTrace);
   } finally {}
 
@@ -61,7 +61,7 @@ Future<void> initCrashlytics() async {
 Future<void> initRemoteConfig() async {
   try {
     await RemoteConfigService().initialize();
-  } on Exception catch (error, stackTrace) {
+  } on Object catch (error, stackTrace) {
     log("Exception", error: error, stackTrace: stackTrace);
   } finally {}
 
