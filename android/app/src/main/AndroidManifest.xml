@@ -356,7 +356,7 @@
         <!-- Default notification channel -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
-            android:value="high_importance_channel"/>
+            android:value="low_importance_channel"/>
 
         <!-- Default notification icon -->
         <meta-data
