@@ -34,7 +34,7 @@ class BottomNavBgSelector {
       case 3:
         return AnimatedGradientType.main;
       case 4:
-        return AnimatedGradientType.main;
+        return AnimatedGradientType.calendar;
       default:
         return AnimatedGradientType.main;
     }

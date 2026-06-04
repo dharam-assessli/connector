@@ -64,7 +64,7 @@ class DashboardScreen extends GetView<DashboardController> {
           children: <Widget>[
             Flexible(
               child: CustomText(
-                data: "${LanguagesUtil().hi}, ${controller.firstName}!",
+                data: "${LanguagesUtil().hi} ${controller.firstName}",
                 style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
