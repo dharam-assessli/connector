@@ -2,23 +2,11 @@ import "package:connector/controllers/onboarding/your_details_controller.dart";
 import "package:connector/utils/languages_util.dart";
 import "package:flutter/services.dart";
 import "package:get/get.dart";
-import "package:horizon/functions/astronomy_functions.dart";
-import "package:horizon/functions/drink_functions.dart";
-import "package:horizon/functions/gender_functions.dart";
-import "package:horizon/functions/smoke_functions.dart";
 import "package:horizon/utils/min_max_length_input_formatter.dart";
 import "package:horizon/widgets/animations/animated_gradient.dart";
 import "package:horizon/widgets/app_bar/custom_app_bar.dart";
-import "package:horizon/widgets/buttons/custom_icon_button.dart";
 import "package:horizon/widgets/buttons/custom_text_button.dart";
 import "package:horizon/widgets/containers/custom_container.dart";
-import "package:horizon/widgets/cupertino_pickers/astronomy_picker.dart";
-import "package:horizon/widgets/cupertino_pickers/dob_picker.dart";
-import "package:horizon/widgets/cupertino_pickers/drink_picker.dart";
-import "package:horizon/widgets/cupertino_pickers/gender_picker.dart";
-import "package:horizon/widgets/cupertino_pickers/height_picker.dart";
-import "package:horizon/widgets/cupertino_pickers/smoke_picker.dart";
-import "package:horizon/widgets/cupertino_pickers/weight_picker.dart";
 import "package:horizon/widgets/fields/custom_text_form_field.dart";
 import "package:horizon/widgets/texts/custom_text.dart";
 import "package:material_ui/material_ui.dart";
@@ -79,7 +67,7 @@ class YourDetailsScreen extends GetView<YourDetailsController> {
                 ),
               ),
               const SizedBox(height: 0),
-              nextButton(),
+              continueButton(),
               const SizedBox(height: 16),
             ],
           ),
@@ -255,38 +243,23 @@ class YourDetailsScreen extends GetView<YourDetailsController> {
   }
 
   Widget dateOfBirthWidget() {
-    return CustomContainer(
-      borderRadius: BorderRadius.circular(24),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          const SizedBox(height: 8),
-          CustomText(
-            data: LanguagesUtil().dateOfBirth,
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-          ),
-          const SizedBox(height: 4),
-          SizedBox(
-            height: kToolbarHeight * 2,
-            width: double.infinity,
-            child: Builder(
-              builder: (BuildContext context) {
-                final DateTime v0 = controller.rxDateOfBirth.value;
-
-                return DOBPicker(
-                  key: ValueKey<dynamic>(v0),
-                  initialDateTime: controller.rxDateOfBirth.value,
-                  onDateTimeChanged: controller.setDateOfBirth,
-                );
-              },
-            ),
-          ),
-          const SizedBox(height: 8),
-        ],
-      ),
+    return CustomTextFormField(
+      controller: controller.dateOfBirthController,
+      onChanged: controller.rxDateOfBirthString.call,
+      keyboardType: TextInputType.text,
+      textInputAction: TextInputAction.done,
+      validator: (String? value) {
+        final String text = (value ?? "").trim();
+        return text.isEmpty ? LanguagesUtil().required : null;
+      },
+      autofillHints: const <String>[AutofillHints.birthdayDay],
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.singleLineFormatter,
+      ],
+      labelText: LanguagesUtil().dateOfBirth,
+      hintText: LanguagesUtil().dateOfBirthHint,
+      readOnly: true,
+      onTap: controller.onTapDOB,
     );
   }
 
@@ -303,122 +276,44 @@ class YourDetailsScreen extends GetView<YourDetailsController> {
   }
 
   Widget heightWidget() {
-    return Stack(
-      children: <Widget>[
-        Positioned(
-          child: CustomContainer(
-            borderRadius: BorderRadius.circular(24),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                const SizedBox(height: 8),
-                CustomText(
-                  data: LanguagesUtil().height,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                const SizedBox(height: 4),
-                SizedBox(
-                  height: kToolbarHeight * 2,
-                  width: double.infinity,
-                  child: Builder(
-                    builder: (BuildContext context) {
-                      final bool v0 = controller.rxIsHeightInFtIn.value;
-                      final (int, int) v1 = controller.rxHeightInFt.value;
-                      final int v2 = controller.rxHeightInCm.value;
-
-                      return HeightPicker(
-                        key: ValueKey<dynamic>("${v0}_${v1}_$v2"),
-                        isHeightInFt: controller.rxIsHeightInFtIn.value,
-                        heightInFt: controller.rxHeightInFt.value,
-                        heightInCm: controller.rxHeightInCm.value,
-                        onHeightChangedFt: controller.setHeightInFt,
-                        onHeightChangedCm: controller.setHeightInCm,
-                      );
-                    },
-                  ),
-                ),
-                const SizedBox(height: 8),
-              ],
-            ),
-          ),
-        ),
-        Positioned(
-          top: -4,
-          right: -4,
-          child: CustomIconButton(
-            onPressed: () async {
-              controller.toggleHeightUnit();
-            },
-            data: const Icon(Icons.sync, size: 16),
-          ),
-        ),
+    return CustomTextFormField(
+      controller: controller.heightController,
+      onChanged: controller.rxHeight.call,
+      keyboardType: TextInputType.text,
+      textInputAction: TextInputAction.done,
+      validator: (String? value) {
+        final String text = (value ?? "").trim();
+        return text.isEmpty ? LanguagesUtil().required : null;
+      },
+      autofillHints: const <String>[],
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.singleLineFormatter,
       ],
+      labelText: LanguagesUtil().height,
+      hintText: LanguagesUtil().heightHint,
+      readOnly: true,
+      onTap: controller.onTapHeight,
     );
   }
 
   Widget weightWidget() {
-    return Stack(
-      children: <Widget>[
-        Positioned(
-          child: CustomContainer(
-            borderRadius: BorderRadius.circular(24),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                const SizedBox(height: 8),
-                CustomText(
-                  data: LanguagesUtil().weight,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                const SizedBox(height: 4),
-                SizedBox(
-                  height: kToolbarHeight * 2,
-                  width: double.infinity,
-                  child: Builder(
-                    builder: (BuildContext context) {
-                      final bool v0 = controller.rxIsWeightInKg.value;
-                      final int v1 = controller.rxWeightInKg.value;
-                      final int v2 = controller.rxWeightInLb.value;
-
-                      return WeightPicker(
-                        key: ValueKey<dynamic>("${v0}_${v1}_$v2"),
-                        isWeightInKg: controller.rxIsWeightInKg.value,
-                        weightInKg: controller.rxWeightInKg.value,
-                        weightInLb: controller.rxWeightInLb.value,
-                        onWeightChangedKg: controller.setWeightInKg,
-                        onWeightChangedLb: controller.setWeightInLb,
-                      );
-                    },
-                  ),
-                ),
-                const SizedBox(height: 8),
-              ],
-            ),
-          ),
-        ),
-        Positioned(
-          top: -4,
-          right: -4,
-          child: CustomIconButton(
-            onPressed: () async {
-              controller.toggleWeightUnit();
-            },
-            data: const Icon(Icons.sync, size: 16),
-          ),
-        ),
+    return CustomTextFormField(
+      controller: controller.weightController,
+      onChanged: controller.rxWeight.call,
+      keyboardType: TextInputType.text,
+      textInputAction: TextInputAction.done,
+      validator: (String? value) {
+        final String text = (value ?? "").trim();
+        return text.isEmpty ? LanguagesUtil().required : null;
+      },
+      autofillHints: const <String>[],
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.singleLineFormatter,
       ],
+      labelText: LanguagesUtil().weight,
+      hintText: LanguagesUtil().weightHint,
+      readOnly: true,
+      onTap: controller.onTapWeight,
     );
   }
 
@@ -435,74 +330,44 @@ class YourDetailsScreen extends GetView<YourDetailsController> {
   }
 
   Widget genderWidget() {
-    return CustomContainer(
-      borderRadius: BorderRadius.circular(24),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          const SizedBox(height: 8),
-          CustomText(
-            data: LanguagesUtil().gender,
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-          ),
-          const SizedBox(height: 4),
-          SizedBox(
-            height: kToolbarHeight * 2,
-            width: double.infinity,
-            child: Builder(
-              builder: (BuildContext context) {
-                final GenderEnum v0 = controller.rxGender.value;
-
-                return GenderPicker(
-                  key: ValueKey<dynamic>(v0),
-                  gender: controller.rxGender.value,
-                  onGenderChanged: controller.setGender,
-                );
-              },
-            ),
-          ),
-          const SizedBox(height: 8),
-        ],
-      ),
+    return CustomTextFormField(
+      controller: controller.genderController,
+      onChanged: controller.rxGenderString.call,
+      keyboardType: TextInputType.text,
+      textInputAction: TextInputAction.done,
+      validator: (String? value) {
+        final String text = (value ?? "").trim();
+        return text.isEmpty ? LanguagesUtil().required : null;
+      },
+      autofillHints: const <String>[],
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.singleLineFormatter,
+      ],
+      labelText: LanguagesUtil().gender,
+      hintText: LanguagesUtil().genderHint,
+      readOnly: true,
+      onTap: controller.onTapGender,
     );
   }
 
   Widget astronomyWidget() {
-    return CustomContainer(
-      borderRadius: BorderRadius.circular(24),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          const SizedBox(height: 8),
-          CustomText(
-            data: LanguagesUtil().astronomy,
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-          ),
-          const SizedBox(height: 4),
-          SizedBox(
-            height: kToolbarHeight * 2,
-            width: double.infinity,
-            child: Builder(
-              builder: (BuildContext context) {
-                final AstronomyEnum v0 = controller.rxAstronomy.value;
-
-                return AstronomyPicker(
-                  key: ValueKey<dynamic>(v0),
-                  astronomy: controller.rxAstronomy.value,
-                  onAstronomyChanged: controller.setAstronomy,
-                );
-              },
-            ),
-          ),
-          const SizedBox(height: 8),
-        ],
-      ),
+    return CustomTextFormField(
+      controller: controller.astronomyController,
+      onChanged: controller.rxAstronomyString.call,
+      keyboardType: TextInputType.text,
+      textInputAction: TextInputAction.done,
+      validator: (String? value) {
+        final String text = (value ?? "").trim();
+        return text.isEmpty ? LanguagesUtil().required : null;
+      },
+      autofillHints: const <String>[],
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.singleLineFormatter,
+      ],
+      labelText: LanguagesUtil().astronomy,
+      hintText: LanguagesUtil().astronomyHint,
+      readOnly: true,
+      onTap: controller.onTapAstronomy,
     );
   }
 
@@ -519,78 +384,48 @@ class YourDetailsScreen extends GetView<YourDetailsController> {
   }
 
   Widget smokeWidget() {
-    return CustomContainer(
-      borderRadius: BorderRadius.circular(24),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          const SizedBox(height: 8),
-          CustomText(
-            data: LanguagesUtil().smoke,
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-          ),
-          const SizedBox(height: 4),
-          SizedBox(
-            height: kToolbarHeight * 2,
-            width: double.infinity,
-            child: Builder(
-              builder: (BuildContext context) {
-                final SmokeEnum v0 = controller.rxSmoke.value;
-
-                return SmokePicker(
-                  key: ValueKey<dynamic>(v0),
-                  smoke: controller.rxSmoke.value,
-                  onSmokeChanged: controller.setSmoke,
-                );
-              },
-            ),
-          ),
-          const SizedBox(height: 8),
-        ],
-      ),
+    return CustomTextFormField(
+      controller: controller.smokeController,
+      onChanged: controller.rxSmokeString.call,
+      keyboardType: TextInputType.text,
+      textInputAction: TextInputAction.done,
+      validator: (String? value) {
+        final String text = (value ?? "").trim();
+        return text.isEmpty ? LanguagesUtil().required : null;
+      },
+      autofillHints: const <String>[],
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.singleLineFormatter,
+      ],
+      labelText: LanguagesUtil().smoke,
+      hintText: LanguagesUtil().smokeHint,
+      readOnly: true,
+      onTap: controller.onTapSmoke,
     );
   }
 
   Widget drinkWidget() {
-    return CustomContainer(
-      borderRadius: BorderRadius.circular(24),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          const SizedBox(height: 8),
-          CustomText(
-            data: LanguagesUtil().drink,
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-          ),
-          const SizedBox(height: 4),
-          SizedBox(
-            height: kToolbarHeight * 2,
-            width: double.infinity,
-            child: Builder(
-              builder: (BuildContext context) {
-                final DrinkEnum v0 = controller.rxDrink.value;
-
-                return DrinkPicker(
-                  key: ValueKey<dynamic>(v0),
-                  drink: controller.rxDrink.value,
-                  onDrinkChanged: controller.setDrink,
-                );
-              },
-            ),
-          ),
-          const SizedBox(height: 8),
-        ],
-      ),
+    return CustomTextFormField(
+      controller: controller.drinkController,
+      onChanged: controller.rxDrinkString.call,
+      keyboardType: TextInputType.text,
+      textInputAction: TextInputAction.done,
+      validator: (String? value) {
+        final String text = (value ?? "").trim();
+        return text.isEmpty ? LanguagesUtil().required : null;
+      },
+      autofillHints: const <String>[],
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.singleLineFormatter,
+      ],
+      labelText: LanguagesUtil().drink,
+      hintText: LanguagesUtil().drinkHint,
+      readOnly: true,
+      onTap: controller.onTapDrink,
     );
   }
 
-  Widget nextButton() {
+  Widget continueButton() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
@@ -616,7 +451,7 @@ class YourDetailsScreen extends GetView<YourDetailsController> {
               await controller.navigate();
             },
             child: CustomText(
-              data: LanguagesUtil().next,
+              data: LanguagesUtil().continueText,
               style: const TextStyle(),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,

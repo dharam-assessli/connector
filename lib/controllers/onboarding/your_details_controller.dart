@@ -1,10 +1,12 @@
 import "dart:async";
+import "dart:developer";
 
+import "package:connector/functions/readable_strings_functions.dart";
 import "package:connector/utils/languages_util.dart";
 import "package:connector/utils/routes_utils.dart";
 import "package:cross_file/cross_file.dart";
 import "package:flutter/foundation.dart";
-import "package:flutter/widgets.dart";
+import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:horizon/functions/astronomy_functions.dart";
 import "package:horizon/functions/drink_functions.dart";
@@ -21,7 +23,15 @@ import "package:horizon/services/jwt/auth_db_service.dart";
 import "package:horizon/services/jwt/user_refresh_service.dart";
 import "package:horizon/services/navigation_service.dart";
 import "package:horizon/utils/bottom_sheets/countries_sheet.dart";
+import "package:horizon/utils/overlays/custom_bottom_sheet.dart";
 import "package:horizon/utils/overlays/snack_bar_util.dart";
+import "package:horizon/widgets/cupertino_pickers/astronomy_picker.dart";
+import "package:horizon/widgets/cupertino_pickers/dob_picker.dart";
+import "package:horizon/widgets/cupertino_pickers/drink_picker.dart";
+import "package:horizon/widgets/cupertino_pickers/gender_picker.dart";
+import "package:horizon/widgets/cupertino_pickers/height_picker.dart";
+import "package:horizon/widgets/cupertino_pickers/smoke_picker.dart";
+import "package:horizon/widgets/cupertino_pickers/weight_picker.dart";
 
 enum NavigationSource { verify, home }
 
@@ -61,25 +71,41 @@ class YourDetailsController extends GetxController {
   final RxString rxEmail = "".obs;
   final RxBool rxIsEmailVerified = false.obs;
 
+  final TextEditingController dateOfBirthController = TextEditingController();
+  final RxString rxDateOfBirthString = "".obs;
   final Rx<DateTime> rxDateOfBirth = DateTime(DateTime.now().year - 18).obs;
 
+  final TextEditingController heightController = TextEditingController();
+  final RxString rxHeight = "".obs;
   final RxBool rxIsHeightInFtIn = true.obs;
   final Rx<(int, int)> rxHeightInFt = defaultHeightFt.obs;
   final RxInt rxHeightInCm = defaultHeightCm.obs;
 
+  final TextEditingController weightController = TextEditingController();
+  final RxString rxWeight = "".obs;
   final RxBool rxIsWeightInKg = true.obs;
   final RxInt rxWeightInKg = defaultWeightKg.obs;
   final RxInt rxWeightInLb = defaultWeightLb.obs;
 
+  final TextEditingController genderController = TextEditingController();
+  final RxString rxGenderString = "".obs;
   final Rx<GenderEnum> rxGender = defaultGender.obs;
 
+  final TextEditingController astronomyController = TextEditingController();
+  final RxString rxAstronomyString = "".obs;
   final Rx<AstronomyEnum> rxAstronomy = defaultAstronomy.obs;
 
+  final TextEditingController smokeController = TextEditingController();
+  final RxString rxSmokeString = "".obs;
   final Rx<SmokeEnum> rxSmoke = defaultSmoke.obs;
 
+  final TextEditingController drinkController = TextEditingController();
+  final RxString rxDrinkString = "".obs;
   final Rx<DrinkEnum> rxDrink = defaultDrink.obs;
 
   void setDateOfBirth(DateTime date) {
+    dateOfBirthController.text = "${date.day}-${date.month}-${date.year}";
+    rxDateOfBirthString.value = dateOfBirthController.text;
     rxDateOfBirth.value = date;
 
     return;
@@ -97,12 +123,22 @@ class YourDetailsController extends GetxController {
     rxHeightInFt.value = height;
     rxHeightInCm.value = ftToCm(height);
 
+    if (rxIsHeightInFtIn.value) {
+      heightController.text = "${height.$1} ft ${height.$2} in";
+      rxHeight.value = "${height.$1} ft ${height.$2} in";
+    }
+
     return;
   }
 
   void setHeightInCm(int height) {
     rxHeightInCm.value = height;
     rxHeightInFt.value = cmToFt(height);
+
+    if (!rxIsHeightInFtIn.value) {
+      heightController.text = "$height cm";
+      rxHeight.value = "$height cm";
+    }
 
     return;
   }
@@ -119,6 +155,11 @@ class YourDetailsController extends GetxController {
     rxWeightInKg.value = weight;
     rxWeightInLb.value = kgToLb(weight);
 
+    if (rxIsWeightInKg.value) {
+      weightController.text = "$weight kg";
+      rxWeight.value = "$weight kg";
+    }
+
     return;
   }
 
@@ -126,28 +167,41 @@ class YourDetailsController extends GetxController {
     rxWeightInLb.value = weight;
     rxWeightInKg.value = lbToKg(weight);
 
+    if (!rxIsWeightInKg.value) {
+      weightController.text = "$weight lb";
+      rxWeight.value = "$weight lb";
+    }
+
     return;
   }
 
   void setGender(GenderEnum gender) {
+    genderController.text = camelCaseToSentence(gender.name);
+    rxGenderString.value = camelCaseToSentence(gender.name);
     rxGender.value = gender;
 
     return;
   }
 
   void setAstronomy(AstronomyEnum astronomy) {
+    astronomyController.text = camelCaseToSentence(astronomy.name);
+    rxAstronomyString.value = camelCaseToSentence(astronomy.name);
     rxAstronomy.value = astronomy;
 
     return;
   }
 
   void setSmoke(SmokeEnum smoke) {
+    smokeController.text = camelCaseToSentence(smoke.name);
+    rxSmokeString.value = camelCaseToSentence(smoke.name);
     rxSmoke.value = smoke;
 
     return;
   }
 
   void setDrink(DrinkEnum drink) {
+    drinkController.text = camelCaseToSentence(drink.name);
+    rxDrinkString.value = camelCaseToSentence(drink.name);
     rxDrink.value = drink;
 
     return;
@@ -269,9 +323,9 @@ class YourDetailsController extends GetxController {
     );
 
     rxIsHeightInFtIn.value = true;
-    final List<String> heightInFt = (user.heightInFt ?? 0).toString().split(
-      ".",
-    );
+    final List<String> heightInFt = (user.heightInFt ?? defaultHeightFt)
+        .toString()
+        .split(".");
     setHeightInFt((
       heightInFt.asMap().containsKey(0)
           ? (int.tryParse(heightInFt[0]) ?? defaultHeightFt.$1)
@@ -378,6 +432,7 @@ class YourDetailsController extends GetxController {
       creditBalance: AuthDBService().user.creditBalance,
       createdAt: AuthDBService().user.createdAt,
       updatedAt: AuthDBService().user.updatedAt,
+      isNewUser: AuthDBService().user.isNewUser,
     );
 
     return user.toJson();
@@ -401,4 +456,224 @@ class YourDetailsController extends GetxController {
     return Future<void>.value();
   }
   //
+
+  Future<void> onTapDOB() async {
+    try {
+      await CustomBottomSheet().show(
+        child: Builder(
+          builder: (BuildContext context) {
+            return SizedBox(
+              height: MediaQuery.of(context).size.height / 4,
+              width: double.infinity,
+              child: Obx(() {
+                final DateTime v0 = rxDateOfBirth.value;
+
+                return DOBPicker(
+                  key: ValueKey<dynamic>(v0),
+                  initialDateTime: rxDateOfBirth.value,
+                  onDateTimeChanged: setDateOfBirth,
+                );
+              }),
+            );
+          },
+        ),
+      );
+    } on Exception catch (error, stackTrace) {
+      log("Exception", error: error, stackTrace: stackTrace);
+    } finally {}
+
+    return Future<void>.value();
+  }
+
+  Future<void> onTapHeight() async {
+    try {
+      await CustomBottomSheet().show(
+        child: Builder(
+          builder: (BuildContext context) {
+            return SizedBox(
+              height: MediaQuery.of(context).size.height / 4,
+              width: double.infinity,
+              child: Obx(() {
+                final bool v0 = rxIsHeightInFtIn.value;
+                final (int, int) v1 = rxHeightInFt.value;
+                final int v2 = rxHeightInCm.value;
+
+                return HeightPicker(
+                  key: ValueKey<dynamic>("${v0}_${v1}_$v2"),
+                  isHeightInFt: rxIsHeightInFtIn.value,
+                  heightInFt: rxHeightInFt.value,
+                  heightInCm: rxHeightInCm.value,
+                  onHeightChangedFt: setHeightInFt,
+                  onHeightChangedCm: setHeightInCm,
+                );
+              }),
+            );
+          },
+        ),
+        stickyHeader: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: ElevatedButton(
+            onPressed: toggleHeightUnit,
+            child: const Text("Toggle Unit"),
+          ),
+        ),
+      );
+    } on Exception catch (error, stackTrace) {
+      log("Exception", error: error, stackTrace: stackTrace);
+    } finally {}
+
+    return Future<void>.value();
+  }
+
+  Future<void> onTapWeight() async {
+    try {
+      await CustomBottomSheet().show(
+        child: Builder(
+          builder: (BuildContext context) {
+            return SizedBox(
+              height: MediaQuery.of(context).size.height / 4,
+              width: double.infinity,
+              child: Obx(() {
+                final bool v0 = rxIsWeightInKg.value;
+                final int v1 = rxWeightInKg.value;
+                final int v2 = rxWeightInLb.value;
+
+                return WeightPicker(
+                  key: ValueKey<dynamic>("${v0}_${v1}_$v2"),
+                  isWeightInKg: rxIsWeightInKg.value,
+                  weightInKg: rxWeightInKg.value,
+                  weightInLb: rxWeightInLb.value,
+                  onWeightChangedKg: setWeightInKg,
+                  onWeightChangedLb: setWeightInLb,
+                );
+              }),
+            );
+          },
+        ),
+        stickyHeader: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: ElevatedButton(
+            onPressed: toggleWeightUnit,
+            child: const Text("Toggle Unit"),
+          ),
+        ),
+      );
+    } on Exception catch (error, stackTrace) {
+      log("Exception", error: error, stackTrace: stackTrace);
+    } finally {}
+
+    return Future<void>.value();
+  }
+
+  Future<void> onTapGender() async {
+    try {
+      await CustomBottomSheet().show(
+        child: Builder(
+          builder: (BuildContext context) {
+            return SizedBox(
+              height: MediaQuery.of(context).size.height / 4,
+              width: double.infinity,
+              child: Obx(() {
+                final GenderEnum v0 = rxGender.value;
+
+                return GenderPicker(
+                  key: ValueKey<dynamic>(v0),
+                  gender: rxGender.value,
+                  onGenderChanged: setGender,
+                );
+              }),
+            );
+          },
+        ),
+      );
+    } on Exception catch (error, stackTrace) {
+      log("Exception", error: error, stackTrace: stackTrace);
+    } finally {}
+
+    return Future<void>.value();
+  }
+
+  Future<void> onTapAstronomy() async {
+    try {
+      await CustomBottomSheet().show(
+        child: Builder(
+          builder: (BuildContext context) {
+            return SizedBox(
+              height: MediaQuery.of(context).size.height / 4,
+              width: double.infinity,
+              child: Obx(() {
+                final AstronomyEnum v0 = rxAstronomy.value;
+
+                return AstronomyPicker(
+                  key: ValueKey<dynamic>(v0),
+                  astronomy: rxAstronomy.value,
+                  onAstronomyChanged: setAstronomy,
+                );
+              }),
+            );
+          },
+        ),
+      );
+    } on Exception catch (error, stackTrace) {
+      log("Exception", error: error, stackTrace: stackTrace);
+    } finally {}
+
+    return Future<void>.value();
+  }
+
+  Future<void> onTapSmoke() async {
+    try {
+      await CustomBottomSheet().show(
+        child: Builder(
+          builder: (BuildContext context) {
+            return SizedBox(
+              height: MediaQuery.of(context).size.height / 4,
+              width: double.infinity,
+              child: Obx(() {
+                final SmokeEnum v0 = rxSmoke.value;
+
+                return SmokePicker(
+                  key: ValueKey<dynamic>(v0),
+                  smoke: rxSmoke.value,
+                  onSmokeChanged: setSmoke,
+                );
+              }),
+            );
+          },
+        ),
+      );
+    } on Exception catch (error, stackTrace) {
+      log("Exception", error: error, stackTrace: stackTrace);
+    } finally {}
+
+    return Future<void>.value();
+  }
+
+  Future<void> onTapDrink() async {
+    try {
+      await CustomBottomSheet().show(
+        child: Builder(
+          builder: (BuildContext context) {
+            return SizedBox(
+              height: MediaQuery.of(context).size.height / 4,
+              width: double.infinity,
+              child: Obx(() {
+                final DrinkEnum v0 = rxDrink.value;
+
+                return DrinkPicker(
+                  key: ValueKey<dynamic>(v0),
+                  drink: rxDrink.value,
+                  onDrinkChanged: setDrink,
+                );
+              }),
+            );
+          },
+        ),
+      );
+    } on Exception catch (error, stackTrace) {
+      log("Exception", error: error, stackTrace: stackTrace);
+    } finally {}
+
+    return Future<void>.value();
+  }
 }
