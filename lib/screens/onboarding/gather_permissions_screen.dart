@@ -5,6 +5,7 @@ import "package:horizon/widgets/animations/animated_gradient.dart";
 import "package:horizon/widgets/app_bar/custom_app_bar.dart";
 import "package:horizon/widgets/builders/custom_page_view.dart";
 import "package:horizon/widgets/containers/custom_container.dart";
+import "package:horizon/widgets/texts/animated_read_more.dart";
 import "package:horizon/widgets/texts/custom_text.dart";
 import "package:material_ui/material_ui.dart";
 
@@ -15,16 +16,27 @@ class GatherPermissionsScreen extends GetView<GatherPermissionsController> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: const CustomAppBar(),
+      appBar: CustomAppBar(
+        centerTitle: true,
+        title: CustomText(
+          data: LanguagesUtil().introduction,
+          style: const TextStyle(),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
+      ),
       body: AnimatedGradient(
         child: SafeArea(
           child: Column(
             mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               const SizedBox(height: 0.0),
               Expanded(child: customPageView(context)),
               const SizedBox(height: 0.0),
               buttonWidget(),
+              const SizedBox(height: 0.0),
+              informationWidget(),
               const SizedBox(height: 0.0),
             ],
           ),
@@ -55,11 +67,31 @@ class GatherPermissionsScreen extends GetView<GatherPermissionsController> {
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Center(
-              child: Icon(controller.getIconData(index), size: kToolbarHeight),
+            Icon(controller.getIconData(index), size: kToolbarHeight),
+            const SizedBox(height: 16.0),
+            CustomText(
+              data: controller.getMainTitle(index),
+              style: const TextStyle(
+                fontSize: 24.0,
+                fontWeight: FontWeight.bold,
+              ),
+              maxLines: 5,
+              overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(height: 16.0),
+            CustomText(
+              data: "${LanguagesUtil().corePurpose}:",
+              style: TextStyle(
+                fontSize: 16.0,
+                fontWeight: FontWeight.normal,
+                color: Theme.of(context).hintColor,
+              ),
+              maxLines: 5,
+              overflow: TextOverflow.ellipsis,
+            ),
+            const SizedBox(height: 4.0),
             CustomText(
               data: controller.getHeading(index),
               style: const TextStyle(
@@ -71,6 +103,17 @@ class GatherPermissionsScreen extends GetView<GatherPermissionsController> {
             ),
             const SizedBox(height: 16.0),
             CustomText(
+              data: "${LanguagesUtil().whyItIsRequired}:",
+              style: TextStyle(
+                fontSize: 14.0,
+                fontWeight: FontWeight.normal,
+                color: Theme.of(context).hintColor,
+              ),
+              maxLines: 5,
+              overflow: TextOverflow.ellipsis,
+            ),
+            const SizedBox(height: 4.0),
+            CustomText(
               data: controller.getTopDescription(index),
               style: const TextStyle(
                 fontSize: 14.0,
@@ -80,6 +123,17 @@ class GatherPermissionsScreen extends GetView<GatherPermissionsController> {
               overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(height: 16.0),
+            CustomText(
+              data: "${LanguagesUtil().appStates}:",
+              style: TextStyle(
+                fontSize: 12.0,
+                fontWeight: FontWeight.normal,
+                color: Theme.of(context).hintColor,
+              ),
+              maxLines: 5,
+              overflow: TextOverflow.ellipsis,
+            ),
+            const SizedBox(height: 4.0),
             CustomText(
               data: controller.getBtmDescription(index),
               style: const TextStyle(
@@ -114,6 +168,32 @@ class GatherPermissionsScreen extends GetView<GatherPermissionsController> {
           ),
         ),
       ],
+    );
+  }
+
+  Widget informationWidget() {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          CustomText(
+            data: LanguagesUtil().prominentDisclosure,
+            style: const TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold),
+            maxLines: 5,
+            overflow: TextOverflow.ellipsis,
+          ),
+          const SizedBox(height: 4.0),
+          AnimatedReadMore(
+            data: LanguagesUtil().prominentDisclosureDescription,
+            textStyle: const TextStyle(
+              fontSize: 10.0,
+              fontWeight: FontWeight.normal,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

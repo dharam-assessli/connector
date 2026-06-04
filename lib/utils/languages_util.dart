@@ -175,5 +175,15 @@ class LanguagesUtil {
   String get usernameHint => "usernameHint".tr;
   String get continueText => "continueText".tr;
   String get prominentDisclosure => "prominentDisclosure".tr;
-  String get prominentDisclosureDescription => "prominentDisclosureDescription".tr;
+  String get prominentDisclosureDescription =>
+      "prominentDisclosureDescription".tr;
+  String get locationInForeground => "locationInForeground".tr;
+  String get locationInBackground => "locationInBackground".tr;
+  String get healthData => "healthData".tr;
+  String get notification => "notification".tr;
+  String get screenTimeData => "screenTimeData".tr;
+  String get batteryOptimization => "batteryOptimization".tr;
+  String get corePurpose => "corePurpose".tr;
+  String get whyItIsRequired => "whyItIsRequired".tr;
+  String get appStates => "appStates".tr;
 }

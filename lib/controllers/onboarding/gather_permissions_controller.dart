@@ -534,6 +534,26 @@ class GatherPermissionsController extends GetxController {
     }
   }
 
+  // Newly added...
+  String getMainTitle(int index) {
+    switch (index) {
+      case 0:
+        return LanguagesUtil().locationInForeground;
+      case 1:
+        return LanguagesUtil().locationInBackground;
+      case 2:
+        return LanguagesUtil().healthData;
+      case 3:
+        return LanguagesUtil().notification;
+      case 4:
+        return LanguagesUtil().screenTimeData;
+      case 5:
+        return LanguagesUtil().batteryOptimization;
+      default:
+        return "";
+    }
+  }
+
   String getHeading(int index) {
     switch (index) {
       case 0:
