@@ -83,52 +83,52 @@
 		<true/>
 	</dict>
 	<!-- <key>NSAppleMusicUsageDescription</key> -->
-	<!-- <string>Used to play and manage your Apple Music library directly within the app, giving you seamless access to your songs and playlists.</string> -->
+	<!-- <string>Dotsin accesses your Apple Music library to play and manage audio directly within the app.</string> -->
 	<!-- <key>NSBluetoothAlwaysUsageDescription</key> -->
-	<!-- <string>Used to discover and connect to nearby devices, enabling seamless pairing and communication with compatible accessories.</string> -->
+	<!-- <string>Dotsin uses Bluetooth to discover and connect to nearby compatible accessories for seamless pairing and data exchange.</string> -->
 	<!-- <key>NSBluetoothPeripheralUsageDescription</key> -->
-	<!-- <string>Used to discover and connect to nearby devices, enabling seamless pairing and communication with compatible accessories.</string> -->
+	<!-- <string>Dotsin uses Bluetooth to discover and connect to nearby compatible accessories for seamless pairing and data exchange.</string> -->
 	<!-- <key>NSCalendarsFullAccessUsageDescription</key> -->
-	<!-- <string>Allows the app to read and write events to your calendar, helping you schedule tasks, set reminders, and sync important dates without leaving the app.</string> -->
+	<!-- <string>Dotsin reads and writes calendar events so you can schedule tasks, set reminders, and sync important dates without leaving the app.</string> -->
 	<!-- <key>NSCalendarsUsageDescription</key> -->
-	<!-- <string>Allows the app to read and write events to your calendar, helping you schedule tasks, set reminders, and sync important dates without leaving the app.</string> -->
+	<!-- <string>Dotsin reads and writes calendar events so you can schedule tasks, set reminders, and sync important dates without leaving the app.</string> -->
 	<!-- <key>NSCalendarsWriteOnlyAccessUsageDescription</key> -->
-	<!-- <string>Allows the app to add events and reminders to your calendar so you can keep your schedule up to date without leaving the app.</string> -->
+	<!-- <string>Dotsin adds events and reminders to your calendar to keep your schedule up to date.</string> -->
 	<!-- <key>NSCameraUsageDescription</key> -->
-	<!-- <string>Required to take photos, scan QR codes, and record videos directly within the app. Your camera is only activated when you initiate these actions.</string> -->
+	<!-- <string>Dotsin uses your camera to take photos, scan QR codes, and record video. The camera is only activated when you initiate these actions.</string> -->
 	<!-- <key>NSContactsUsageDescription</key> -->
-	<!-- <string>Used to help you quickly find and connect with people you know, auto-fill recipient details, and share content with your connections seamlessly.</string> -->
+	<!-- <string>Dotsin accesses your contacts to help you find and connect with people you know and auto-fill recipient details.</string> -->
 	<!-- <key>NSFaceIDUsageDescription</key> -->
-	<!-- <string>Used to securely authenticate you with Face ID so you can unlock the app and approve sensitive actions without entering a password.</string> -->
+	<!-- <string>Dotsin uses Face ID to securely authenticate you and approve sensitive actions without requiring a password.</string> -->
 	<key>NSHealthClinicalHealthRecordsShareUsageDescription</key>
-	<string>Used to read your clinical health records from Apple Health to give you a complete view of your wellness, lab results, medications, and conditions.</string>
+	<string>Dotsin reads your clinical records — including lab results, medications, and conditions — from Apple Health to provide a complete picture of your physical wellbeing alongside your behavioral data.</string>
 	<key>NSHealthShareUsageDescription</key>
-	<string>Used to read and sync your health and activity data with Apple Health, providing you with personalized insights and a complete wellness overview.</string>
+	<string>Dotsin reads your activity, fitness, sleep, and wellness data from Apple Health to correlate physical health with behavioral patterns and deliver personalized insights.</string>
 	<key>NSHealthUpdateUsageDescription</key>
-	<string>Used to write health and activity data to Apple Health so your records stay synchronized across the apps and devices you use.</string>
+	<string>Dotsin writes derived activity and wellness data back to Apple Health so your records stay consistent across the apps and devices you use.</string>
 	<key>NSLocalNetworkUsageDescription</key>
-	<string>Used to discover and communicate with compatible devices on your local Wi-Fi network for seamless pairing and data exchange.</string>
+	<string>Dotsin uses your local network to discover and communicate with compatible devices on the same Wi-Fi network for data exchange and pairing.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Used to deliver location-aware features both while you are using the app and in the background, including geofenced reminders and continuous activity tracking. Your location data is never shared without your consent.</string>
+	<string>Dotsin uses your location in the foreground and background to track movement patterns, detect place transitions, and maintain continuity of behavioral analytics throughout your day. Your location is never shared without your consent.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Used to deliver location-aware features in the background, such as commute tracking, geofenced reminders, and region-specific content. Your location data is never shared without your consent.</string>
+	<string>Dotsin uses your location in the background to continuously monitor mobility patterns and routines, even when the app is not open. Your location is never shared without your consent.</string>
 	<key>NSLocationTemporaryUsageDescriptionDictionary</key>
 	<dict>
 		<key>PreciseLocationRequired</key>
-		<string>Precise location is required to deliver accurate, location-specific recommendations and mapping features.</string>
+		<string>Precise location is needed to accurately detect place transitions and deliver location-specific behavioral insights.</string>
 	</dict>
 	<key>NSLocationUsageDescription</key>
-	<string>Used to deliver location-aware features such as nearby recommendations, accurate mapping, and region-specific content. Your location data is never shared without your consent.</string>
+	<string>Dotsin uses your location to analyze movement patterns, detect meaningful place transitions, and enrich behavioral insights with environmental context. Your location is never shared without your consent.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Used to deliver location-aware features such as nearby recommendations, accurate mapping, and region-specific content while you are using the app.</string>
+	<string>Dotsin uses your location while you are in the app to provide context-aware behavioral insights, movement summaries, and place-based recommendations.</string>
 	<!-- <key>NSMicrophoneUsageDescription</key> -->
-	<!-- <string>Needed to record audio messages, enable voice commands, and support video calls. The microphone is only accessed during active recording sessions.</string> -->
+	<!-- <string>Dotsin uses your microphone to record audio messages and enable voice input. The microphone is only accessed during active recording sessions.</string> -->
 	<key>NSMotionUsageDescription</key>
-	<string>Accesses motion sensors and activity data to track your physical activity, detect movement patterns, and provide personalized health and fitness insights.</string>
+	<string>Dotsin accesses motion and activity data to detect movement patterns, track physical activity, and enrich behavioral insights with fitness context.</string>
 	<!-- <key>NSPhotoLibraryAddUsageDescription</key> -->
-	<!-- <string>Allows the app to save photos and videos you create in the app to your device library.</string> -->
+	<!-- <string>Dotsin saves photos and videos you create in the app to your device library.</string> -->
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Grants access to your photos, videos, and audio files so you can upload, share, and manage your media content directly from your device library.</string>
+	<string>Dotsin accesses your photo library so you can upload and attach media within the app.</string>
 	<key>NSPrivacyAccessedAPITypes</key>
 	<array>
 		<dict>
@@ -165,15 +165,15 @@
 		</dict>
 	</array>
 	<!-- <key>NSRemindersFullAccessUsageDescription</key> -->
-	<!-- <string>Allows the app to read and write reminders so you can manage tasks, follow-ups, and time-based notes alongside your calendar events.</string> -->
+	<!-- <string>Dotsin reads and writes reminders so you can manage tasks, follow-ups, and time-based notes alongside your calendar events.</string> -->
 	<!-- <key>NSRemindersUsageDescription</key> -->
-	<!-- <string>Allows the app to read and write reminders so you can manage tasks, follow-ups, and time-based notes alongside your calendar events.</string> -->
+	<!-- <string>Dotsin reads and writes reminders so you can manage tasks, follow-ups, and time-based notes alongside your calendar events.</string> -->
 	<!-- <key>NSSpeechRecognitionUsageDescription</key> -->
-	<!-- <string>Used to convert your spoken input into text for voice commands, dictation, and accessibility features.</string> -->
+	<!-- <string>Dotsin uses speech recognition to convert your spoken input into text for voice commands, dictation, and accessibility features.</string> -->
 	<key>NSUserNotificationUsageDescription</key>
-	<string>Enables real-time alerts for messages, reminders, and important updates. You can customize notification preferences anytime in your device settings.</string>
+	<string>Dotsin sends notifications for behavioral insights, data sync status, reminders, and alerts when permissions or background sync are interrupted. You can manage notification preferences anytime in Settings.</string>
 	<!-- <key>NSUserTrackingUsageDescription</key> -->
-	<!-- <string>Allows the app to link your activity across other apps and websites for more relevant ads and analytics. You can opt out at any time without affecting core app functionality.</string> -->
+	<!-- <string>Dotsin requests permission to link your activity across other apps and websites to improve ad relevance and analytics. You can opt out at any time without affecting core app functionality.</string> -->
 	<!-- <key>NSSiriUsageDescription</key> -->
 	<!-- <string>Dotsin uses Siri to let you trigger quick actions and shortcuts hands-free.</string> -->
 	<key>UIApplicationSceneManifest</key>

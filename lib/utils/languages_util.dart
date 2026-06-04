@@ -174,4 +174,6 @@ class LanguagesUtil {
   String get username => "username".tr;
   String get usernameHint => "usernameHint".tr;
   String get continueText => "continueText".tr;
+  String get prominentDisclosure => "prominentDisclosure".tr;
+  String get prominentDisclosureDescription => "prominentDisclosureDescription".tr;
 }

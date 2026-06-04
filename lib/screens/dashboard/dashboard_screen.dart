@@ -1,19 +1,16 @@
 import "dart:io";
 
 import "package:connector/constants/images_constants.dart";
-import "package:connector/constants/strings_constants.dart";
 import "package:connector/controllers/dashboard/dashboard_controller.dart";
+import "package:connector/utils/bottom_nav_bg_selector.dart";
 import "package:connector/utils/languages_util.dart";
-import "package:connector/utils/routes_utils.dart";
 import "package:connector/utils/theme_data_util.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:horizon/functions/greetings_functions.dart";
 import "package:horizon/services/gradient_service.dart";
-import "package:horizon/services/navigation_service.dart";
 import "package:horizon/widgets/animations/animated_gradient.dart";
 import "package:horizon/widgets/app_bar/custom_app_bar.dart";
-import "package:horizon/widgets/buttons/custom_icon_button.dart";
 import "package:horizon/widgets/containers/custom_container.dart";
 import "package:horizon/widgets/draggable_scrollable_sheet/custom_draggable_scrollable_sheet.dart";
 import "package:horizon/widgets/media/custom_media_viewer.dart";
@@ -42,13 +39,12 @@ class DashboardScreen extends GetView<DashboardController> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: appBar(context),
-      body: AnimatedGradient(
-        child: SafeArea(
-          child: Obx(() {
-            return body(context);
-          }),
-        ),
-      ),
+      body: Obx(() {
+        return AnimatedGradient(
+          type: BottomNavBgSelector().type,
+          child: SafeArea(child: body(context)),
+        );
+      }),
       bottomNavigationBar: bottomNavigationBar(context),
       backgroundColor: isDark
           ? dataLight.textTheme.bodyMedium?.color
@@ -68,7 +64,7 @@ class DashboardScreen extends GetView<DashboardController> {
           children: <Widget>[
             Flexible(
               child: CustomText(
-                data: "${LanguagesUtil().hi}, ${StringsConstants().name}!",
+                data: "${LanguagesUtil().hi}, ${controller.firstName}!",
                 style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
@@ -109,32 +105,6 @@ class DashboardScreen extends GetView<DashboardController> {
           ..refreshTabWidgets()
           ..refreshIndex();
       },
-      leadingActions: <Widget>[
-        // Account
-        CustomIconButton(
-          onPressed: () async {
-            final String route = RoutesUtils().yourDetailsScreen;
-
-            await NavigationService().pushNamed(route);
-          },
-          data: const Icon(Icons.account_circle_outlined),
-        ),
-        // Connector
-        CustomIconButton(
-          onPressed: () async {
-            final String route = RoutesUtils().connectorScreen;
-
-            await NavigationService().pushNamed(route);
-          },
-          data: const Icon(Icons.link),
-        ),
-        // Sign Out
-        CustomIconButton(
-          onPressed: controller.signOut,
-          data: const Icon(Icons.logout_outlined),
-        ),
-      ],
-      trailingActions: const <SizedBox>[SizedBox(width: 8)],
     );
   }
 

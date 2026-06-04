@@ -1,5 +1,9 @@
 import "package:google_maps_flutter/google_maps_flutter.dart";
 
+const String storeAndroidPrefix =
+    "https://play.google.com/store/apps/details?id=";
+const String storeiOSPrefix = "https://apps.apple.com/us/app/";
+
 class StringsConstants {
   factory StringsConstants() {
     return _singleton;
@@ -10,25 +14,25 @@ class StringsConstants {
 
   String get appName => "Dotsin Connector";
 
-  String get storeAndroidID => "com.assessli.connector";
-  String get storeAppleID => "6446764418";
+  String get storeAndroid => "${storeAndroidPrefix}com.assessli.connector";
+  String get storeiOS => "${storeiOSPrefix}dotsin-connector/id6769772549";
 
   String get remoteConfigMaintenanceKey => "is_under_maintenance";
-  String get appMaintenanceURL => "https://example.com";
+  String get appMaintenanceURL => "https://www.dotsin.ai";
 
-  String get privacyPolicyURL => "https://www.assessli.com/privacy-policy";
-  String get tAndCURL => "https://www.assessli.com/terms-and-conditions";
+  String get privacyPolicyURL => "https://www.dotsin.ai/privacy-policy";
+  String get tAndCURL => "https://www.dotsin.ai/terms-and-conditions";
+  String get supportWebsite => "https://www.dotsin.ai/help-and-support";
+  String get generalFAQsURL => "https://www.dotsin.ai/faqs";
+  String get dataUsageDisclosureURL =>
+      "https://www.dotsin.ai/data-usage-disclosure";
 
   String get supportPhoneNumber => "+917208729629";
   String get supportWhatsAppNumber => "+917208729629";
   String get supportSMSNumber => "+917208729629";
   String get supportEmail => "sg@assessli.com";
-  String get supportWebsite => "https://www.assessli.com/contactus";
-
   String get supportLocationTitle => "Assessli";
   String get supportLatLong => "12.933381550595675, 77.62152392427426";
-
-  String get name => "Dharam";
 
   double get defaultLat => 12.9259;
   double get defaultLng => 77.6229;
