@@ -122,27 +122,27 @@ class GatherPermissionsScreen extends GetView<GatherPermissionsController> {
               maxLines: 5,
               overflow: TextOverflow.ellipsis,
             ),
-            const SizedBox(height: 16.0),
-            CustomText(
-              data: "${LanguagesUtil().appStates}:",
-              style: TextStyle(
-                fontSize: 12.0,
-                fontWeight: FontWeight.normal,
-                color: Theme.of(context).hintColor,
-              ),
-              maxLines: 5,
-              overflow: TextOverflow.ellipsis,
-            ),
-            const SizedBox(height: 4.0),
-            CustomText(
-              data: controller.getBtmDescription(index),
-              style: const TextStyle(
-                fontSize: 12.0,
-                fontWeight: FontWeight.normal,
-              ),
-              maxLines: 5,
-              overflow: TextOverflow.ellipsis,
-            ),
+            // const SizedBox(height: 16.0),
+            // CustomText(
+            //   data: "${LanguagesUtil().appStates}:",
+            //   style: TextStyle(
+            //     fontSize: 12.0,
+            //     fontWeight: FontWeight.normal,
+            //     color: Theme.of(context).hintColor,
+            //   ),
+            //   maxLines: 5,
+            //   overflow: TextOverflow.ellipsis,
+            // ),
+            // const SizedBox(height: 4.0),
+            // CustomText(
+            //   data: controller.getBtmDescription(index),
+            //   style: const TextStyle(
+            //     fontSize: 12.0,
+            //     fontWeight: FontWeight.normal,
+            //   ),
+            //   maxLines: 5,
+            //   overflow: TextOverflow.ellipsis,
+            // ),
           ],
         ),
       ),
