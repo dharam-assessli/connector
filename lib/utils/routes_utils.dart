@@ -9,6 +9,7 @@ import "package:connector/bindings/dashboard/tab_home_binding.dart";
 import "package:connector/bindings/dashboard/tab_hub_binding.dart";
 import "package:connector/bindings/onboarding/gather_permissions_binding.dart";
 import "package:connector/bindings/onboarding/your_details_binding.dart";
+import "package:connector/bindings/settings/settings_binding.dart";
 import "package:connector/bindings/splash/splash_binding.dart";
 import "package:connector/bindings/sync/manual_sync_binding.dart";
 import "package:connector/bindings/unknown_route/unknown_route_binding.dart";
@@ -23,6 +24,7 @@ import "package:connector/screens/dashboard/tab_home_screen.dart";
 import "package:connector/screens/dashboard/tab_hub_screen.dart";
 import "package:connector/screens/onboarding/gather_permissions_screen.dart";
 import "package:connector/screens/onboarding/your_details_screen.dart";
+import "package:connector/screens/settings/settings_screen.dart";
 import "package:connector/screens/splash/splash_screen.dart";
 import "package:connector/screens/sync/manual_sync_screen.dart";
 import "package:connector/screens/unknown_route/unknown_route_screen.dart";
@@ -55,6 +57,8 @@ class RoutesUtils {
   String get tabHubScreen => "/tabHubScreen";
 
   String get manualSyncScreen => "/manualSyncScreen";
+
+  String get settingsScreen => "/settingsScreen";
 
   // Unknown Page
   GetPage<dynamic> get getUnknownPage {
@@ -135,6 +139,12 @@ class RoutesUtils {
       binding: ManualSyncBinding(),
     );
 
+    final GetPage<dynamic> settingsRoute = GetPage<dynamic>(
+      name: settingsScreen,
+      page: SettingsScreen.new,
+      binding: SettingsBinding(),
+    );
+
     return <GetPage<dynamic>>[
       splashRoute,
       signInRoute,
@@ -150,7 +160,9 @@ class RoutesUtils {
       tabCommunityRoute,
       tabHubRoute,
 
-      manualSyncRoute
+      manualSyncRoute,
+
+      settingsRoute,
     ];
   }
 }

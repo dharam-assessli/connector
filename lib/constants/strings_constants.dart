@@ -26,6 +26,7 @@ class StringsConstants {
   String get generalFAQsURL => "https://www.dotsin.ai/faqs";
   String get dataUsageDisclosureURL =>
       "https://www.dotsin.ai/data-usage-disclosure";
+  String get aboutUs => "https://www.dotsin.ai/about-us";
 
   String get supportPhoneNumber => "+917208729629";
   String get supportWhatsAppNumber => "+917208729629";

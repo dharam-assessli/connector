@@ -4,13 +4,16 @@ import "package:connector/constants/images_constants.dart";
 import "package:connector/controllers/dashboard/dashboard_controller.dart";
 import "package:connector/utils/bottom_nav_bg_selector.dart";
 import "package:connector/utils/languages_util.dart";
+import "package:connector/utils/routes_utils.dart";
 import "package:connector/utils/theme_data_util.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:horizon/functions/greetings_functions.dart";
 import "package:horizon/services/gradient_service.dart";
+import "package:horizon/services/navigation_service.dart";
 import "package:horizon/widgets/animations/animated_gradient.dart";
 import "package:horizon/widgets/app_bar/custom_app_bar.dart";
+import "package:horizon/widgets/buttons/custom_icon_button.dart";
 import "package:horizon/widgets/containers/custom_container.dart";
 import "package:horizon/widgets/draggable_scrollable_sheet/custom_draggable_scrollable_sheet.dart";
 import "package:horizon/widgets/media/custom_media_viewer.dart";
@@ -105,6 +108,18 @@ class DashboardScreen extends GetView<DashboardController> {
           ..refreshTabWidgets()
           ..refreshIndex();
       },
+      trailingActions: <Widget>[
+        CustomIconButton(
+          onPressed: () async {
+            final String route = RoutesUtils().settingsScreen;
+
+            final Map<String, dynamic> arguments = <String, dynamic>{};
+
+            await NavigationService().pushNamed(route, arguments: arguments);
+          },
+          data: const Icon(Icons.settings_outlined),
+        ),
+      ],
     );
   }
 
