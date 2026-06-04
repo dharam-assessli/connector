@@ -48,7 +48,7 @@ class DashboardScreen extends GetView<DashboardController> {
           child: SafeArea(child: body(context)),
         );
       }),
-      bottomNavigationBar: bottomNavigationBar(context),
+      // bottomNavigationBar: bottomNavigationBar(context),
       backgroundColor: isDark
           ? dataLight.textTheme.bodyMedium?.color
           : dataDark.textTheme.bodyMedium?.color,
