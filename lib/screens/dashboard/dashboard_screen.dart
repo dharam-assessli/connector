@@ -1,5 +1,3 @@
-import "dart:io";
-
 import "package:connector/constants/images_constants.dart";
 import "package:connector/controllers/dashboard/dashboard_controller.dart";
 import "package:connector/utils/bottom_nav_bg_selector.dart";
@@ -48,7 +46,7 @@ class DashboardScreen extends GetView<DashboardController> {
           child: SafeArea(child: body(context)),
         );
       }),
-      // bottomNavigationBar: bottomNavigationBar(context),
+      // bottomNavigationBar: SafeArea(child: bottomNavigationBar(context)),
       backgroundColor: isDark
           ? dataLight.textTheme.bodyMedium?.color
           : dataDark.textTheme.bodyMedium?.color,
@@ -185,15 +183,7 @@ class DashboardScreen extends GetView<DashboardController> {
             child: CustomContainer(
               borderRadius: BorderRadius.circular(100),
               padding: const EdgeInsets.all(8),
-              margin: EdgeInsets.only(
-                bottom: Platform.isAndroid
-                    ? kBottomNavigationBarHeight + 8
-                    : Platform.isIOS
-                    ? kBottomNavigationBarHeight - 32
-                    : 0,
-                left: 8,
-                right: 8,
-              ),
+              margin: const EdgeInsets.only(left: 8, right: 8),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

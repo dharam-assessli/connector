@@ -1,9 +1,13 @@
+import "dart:async";
+
 import "package:connector/bindings/splash/splash_binding.dart";
+import "package:connector/constants/colors_constants.dart";
 import "package:connector/constants/strings_constants.dart";
 import "package:connector/utils/routes_utils.dart";
 import "package:connector/utils/theme_data_util.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
+import "package:flutter/services.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:get/get.dart";
 import "package:horizon/observer/observer.dart";
@@ -17,8 +21,40 @@ import "package:horizon/utils/overlays/circular_overlay.dart";
 import "package:horizon/utils/overlays/loader_overlay_util.dart";
 import "package:overlay_support/overlay_support.dart";
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addObserver(this);
+
+    WidgetsBinding.instance.addPostFrameCallback((Duration duration) async {
+      await applySystemUI();
+    });
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+
+    super.dispose();
+  }
+
+  @override
+  Future<void> didChangeAppLifecycleState(AppLifecycleState state) async {
+    super.didChangeAppLifecycleState(state);
+
+    if (state == AppLifecycleState.resumed) {
+      await applySystemUI();
+    }
+  }
 
   @override
   Widget build(final BuildContext context) {
@@ -90,5 +126,34 @@ class MyApp extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> applySystemUI() async {
+    final ThemeMode themeMode = selectedTheme.value;
+
+    final bool isDark =
+        themeMode == ThemeMode.dark ||
+        (themeMode == ThemeMode.system &&
+            WidgetsBinding.instance.platformDispatcher.platformBrightness ==
+                Brightness.dark);
+
+    await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarColor: ColorsConstants().transparent,
+        systemStatusBarContrastEnforced: false,
+
+        systemNavigationBarColor: ColorsConstants().transparent,
+        systemNavigationBarContrastEnforced: false,
+
+        statusBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
+        systemNavigationBarIconBrightness: isDark
+            ? Brightness.light
+            : Brightness.dark,
+      ),
+    );
+
+    return Future<void>.value();
   }
 }

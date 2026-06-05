@@ -21,6 +21,7 @@ class SettingsScreen extends GetView<SettingsController> {
       appBar: const CustomAppBar(needHelpButton: false),
       body: SafeArea(
         child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Obx(() {
             return Column(
               mainAxisSize: MainAxisSize.min,
