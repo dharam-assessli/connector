@@ -51,9 +51,14 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   Future<void> didChangeAppLifecycleState(AppLifecycleState state) async {
     super.didChangeAppLifecycleState(state);
 
-    if (state == AppLifecycleState.resumed) {
-      await applySystemUI();
-    }
+    (state == AppLifecycleState.resumed) ? await applySystemUI() : (() {})();
+  }
+
+  @override
+  Future<void> didChangePlatformBrightness() async {
+    super.didChangePlatformBrightness();
+
+    await applySystemUI();
   }
 
   @override

@@ -54,14 +54,9 @@ class YourDetailsController extends GetxController {
   final TextEditingController usernameController = TextEditingController();
   final RxString rxUsername = "".obs;
 
-  final Rx<Countries> rxSelectedCountry = Countries(
-    name: "United States",
-    code: "US",
-    dialCode: "+1",
-    flag: "🇺🇸",
-    minLength: 10,
-    maxLength: 10,
-  ).obs;
+  // Using static
+  final Rx<Countries> rxSelectedCountry =
+      CountryFindService().defaultCountry.obs;
 
   final TextEditingController numberTextController = TextEditingController();
   final RxString rxNumber = "".obs;

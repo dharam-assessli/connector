@@ -8,20 +8,16 @@ import "package:get/get.dart";
 import "package:horizon/models/auth/send_otp.dart";
 import "package:horizon/models/countries/countries.dart";
 import "package:horizon/repositories/auth/auth_repository.dart";
+import "package:horizon/services/country_find_service.dart";
 import "package:horizon/services/jwt/sign_in_service.dart";
 import "package:horizon/services/navigation_service.dart";
 import "package:horizon/services/sms_service.dart";
 import "package:horizon/utils/overlays/snack_bar_util.dart";
 
 class VerifyOTPController extends GetxController {
-  final Rx<Countries> rxSelectedCountry = Countries(
-    name: "United States",
-    code: "US",
-    dialCode: "+1",
-    flag: "🇺🇸",
-    minLength: 10,
-    maxLength: 10,
-  ).obs;
+  // Using static
+  final Rx<Countries> rxSelectedCountry =
+      CountryFindService().defaultCountry.obs;
 
   final TextEditingController numberTextController = TextEditingController();
   final TextEditingController emailTextController = TextEditingController();

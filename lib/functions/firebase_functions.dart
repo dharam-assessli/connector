@@ -13,7 +13,7 @@ import "package:horizon/services/crashlytics_service.dart";
 import "package:horizon/services/firebase_core_service.dart";
 import "package:horizon/services/remote_config_service.dart";
 
-Future<void> initCore() async {
+Future<void> initFirebaseCore() async {
   try {
     FirebaseOptions? options;
 
@@ -44,7 +44,7 @@ Future<void> initCore() async {
   return Future<void>.value();
 }
 
-Future<void> initCrashlytics() async {
+Future<void> initFirebaseCrashlytics() async {
   try {
     FlutterError.onError = CrashlyticsService().recordFlutterFatalError;
 
@@ -58,7 +58,7 @@ Future<void> initCrashlytics() async {
   return Future<void>.value();
 }
 
-Future<void> initRemoteConfig() async {
+Future<void> initFirebaseRemoteConfig() async {
   try {
     await RemoteConfigService().initialize();
   } on Object catch (error, stackTrace) {

@@ -1,10 +1,12 @@
 import "dart:async";
+import "dart:developer";
 import "dart:ui";
 
 import "package:connector/functions/environment_functions.dart";
 import "package:connector/functions/firebase_functions.dart";
 import "package:connector/main/super_main.dart";
 import "package:firebase_messaging/firebase_messaging.dart";
+import "package:flutter/services.dart";
 import "package:horizon/services/device_info_service.dart";
 import "package:horizon/services/languages_service.dart";
 // import "package:horizon/services/location_service.dart";
@@ -18,15 +20,28 @@ import "package:material_ui/material_ui.dart";
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   DartPluginRegistrant.ensureInitialized();
 
-  await OrientationsUtil().setPreferredOrientations(); // ← move to top
+  await OrientationsUtil().setPreferredOrientations();
+
+  await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
 
   setEnvironmentConfig();
 
-  await initCore();
-  await initCrashlytics();
-  await initRemoteConfig();
+  const Duration timeout = Duration(seconds: 5);
+  await initFirebaseCore().timeout(
+    timeout,
+    onTimeout: () => log("initFirebaseCore() timeout"),
+  );
+  await initFirebaseCrashlytics().timeout(
+    timeout,
+    onTimeout: () => log("initFirebaseCrashlytics() timeout"),
+  );
+  await initFirebaseRemoteConfig().timeout(
+    timeout,
+    onTimeout: () => log("initFirebaseRemoteConfig() timeout"),
+  );
 
   await StorageService().init();
   await PackageInfoService().init();

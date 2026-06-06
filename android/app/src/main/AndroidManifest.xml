@@ -268,9 +268,22 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:extractNativeLibs="true">
 
+        <!-- Below code does have screenOrientation -->
+        <!-- <activity -->
+            <!-- android:name=".MainActivity" -->
+            <!-- android:screenOrientation="portrait" -->
+            <!-- android:exported="true" -->
+            <!-- android:launchMode="singleTask" -->
+            <!-- android:taskAffinity="" -->
+            <!-- android:theme="@style/LaunchTheme" -->
+            <!-- android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode" -->
+            <!-- android:hardwareAccelerated="true" -->
+            <!-- android:windowSoftInputMode="adjustResize" -->
+            <!-- android:supportsPictureInPicture="true"> -->
+
+        <!-- Below code does not have screenOrientation -->
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait"
             android:exported="true"
             android:launchMode="singleTask"
             android:taskAffinity=""
@@ -322,9 +335,11 @@
             android:name="androidx.work.impl.foreground.SystemForegroundService"
             android:foregroundServiceType="location|health|dataSync|connectedDevice|specialUse|microphone|camera|mediaPlayback|mediaProjection|phoneCall"
             tools:node="merge">
+            
             <property
                 android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
                 android:value="Periodic background sync of user health, activity, and connected-device data via WorkManager"/>
+        
         </service>
 
         <service

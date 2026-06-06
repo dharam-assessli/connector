@@ -17,14 +17,9 @@ import "package:horizon/utils/bottom_sheets/countries_sheet.dart";
 import "package:horizon/utils/overlays/snack_bar_util.dart";
 
 class SignInController extends GetxController {
-  final Rx<Countries> rxSelectedCountry = Countries(
-    name: "United States",
-    code: "US",
-    dialCode: "+1",
-    flag: "🇺🇸",
-    minLength: 10,
-    maxLength: 10,
-  ).obs;
+  // Using static
+  final Rx<Countries> rxSelectedCountry =
+      CountryFindService().defaultCountry.obs;
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
