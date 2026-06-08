@@ -14,8 +14,8 @@ import "package:horizon/utils/min_max_length_input_formatter.dart";
 import "package:horizon/widgets/animations/animated_gradient.dart";
 import "package:horizon/widgets/app_bar/custom_app_bar.dart";
 import "package:horizon/widgets/buttons/custom_floating_button.dart";
-import "package:horizon/widgets/buttons/custom_outlined_button.dart";
 import "package:horizon/widgets/buttons/custom_text_button.dart";
+import "package:horizon/widgets/containers/custom_card.dart";
 import "package:horizon/widgets/dividers/custom_divider.dart";
 import "package:horizon/widgets/fields/custom_text_form_field.dart";
 import "package:horizon/widgets/media/custom_media_viewer.dart";
@@ -222,48 +222,61 @@ class SignInScreen extends GetView<SignInController> {
   }
 
   Widget socialButtonsWidget(BuildContext context) {
-    return Row(
+    return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        const SizedBox(width: 0),
-        Expanded(
-          child: SizedBox(
-            height: kToolbarHeight,
-            width: double.infinity,
-            child: CustomOutlinedButton(
-              onPressed: controller.signInWithGoogle,
-              data: "",
-              fullWidth: true,
-              customChild: CustomMediaViewer(
-                data: ImagesConstants().signInWithGoogle,
-                height: 24,
-              ),
+        SizedBox(
+          height: kToolbarHeight,
+          width: double.infinity,
+          child: CustomCard(
+            onTap: controller.signInWithGoogle,
+            color: Theme.of(context).textTheme.bodyMedium?.color,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                CustomMediaViewer(data: ImagesConstants().signInWithGoogle),
+                const SizedBox(width: 16),
+                CustomText(
+                  data: "Continue with Google",
+                  style: TextStyle(
+                    color: Theme.of(context).scaffoldBackgroundColor,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
             ),
           ),
         ),
-        if (Platform.isIOS) const SizedBox(width: 16),
+
+        if (Platform.isIOS) const SizedBox(height: 16),
         if (Platform.isIOS)
-          Expanded(
-            child: SizedBox(
-              height: kToolbarHeight,
-              width: double.infinity,
-              child: CustomOutlinedButton(
-                onPressed: controller.signInWithApple,
-                data: "",
-                fullWidth: true,
-                customChild: CustomMediaViewer(
-                  data: ImagesConstants().signInWithApple,
-                  height: 24,
-                  colorFilter: ColorFilter.mode(
-                    Theme.of(context).dividerColor,
-                    BlendMode.srcIn,
+          SizedBox(
+            height: kToolbarHeight,
+            width: double.infinity,
+            child: CustomCard(
+              onTap: controller.signInWithApple,
+              color: Theme.of(context).scaffoldBackgroundColor,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  CustomMediaViewer(data: ImagesConstants().signInWithApple),
+                  const SizedBox(width: 16),
+                  CustomText(
+                    data: "Continue with Apple",
+                    style: TextStyle(
+                      color: Theme.of(context).textTheme.bodyMedium?.color,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                ),
+                ],
               ),
             ),
           ),
-        const SizedBox(width: 0),
       ],
     );
   }
@@ -299,6 +312,7 @@ class SignInScreen extends GetView<SignInController> {
                   recognizer: TapGestureRecognizer()
                     ..onTap = () async {
                       final String url = StringsConstants().tAndCURL;
+
                       await CustomTabsService().open(url: url);
                     },
                 ),
@@ -315,6 +329,7 @@ class SignInScreen extends GetView<SignInController> {
                   recognizer: TapGestureRecognizer()
                     ..onTap = () async {
                       final String url = StringsConstants().privacyPolicyURL;
+
                       await CustomTabsService().open(url: url);
                     },
                 ),

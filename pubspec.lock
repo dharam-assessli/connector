@@ -913,10 +913,10 @@ packages:
     dependency: transitive
     description:
       name: geolocator_platform_interface
-      sha256: "30cb64f0b9adcc0fb36f628b4ebf4f731a2961a0ebd849f4b56200205056fe67"
+      sha256: dde05dae7d584db6e82feb87dd9fb0b4b4c83ed68065667b4bef637be38e13a7
       url: "https://pub.dev"
     source: hosted
-    version: "4.2.6"
+    version: "4.2.7"
   geolocator_web:
     dependency: transitive
     description:
@@ -1106,7 +1106,7 @@ packages:
     description:
       path: "."
       ref: main
-      resolved-ref: "434e9ed07265ab844b0841ab4fe17c200691c860"
+      resolved-ref: "16bbaefc933c14c541cdf6a3dca9697a1336697f"
       url: "https://github.com/Assessli-tech/horizon-flutter.git"
     source: git
     version: "1.0.0+1"
@@ -1818,8 +1818,8 @@ packages:
     dependency: transitive
     description:
       path: "packages/screen_time_plugin"
-      ref: "434e9ed07265ab844b0841ab4fe17c200691c860"
-      resolved-ref: "434e9ed07265ab844b0841ab4fe17c200691c860"
+      ref: "16bbaefc933c14c541cdf6a3dca9697a1336697f"
+      resolved-ref: "16bbaefc933c14c541cdf6a3dca9697a1336697f"
       url: "https://github.com/Assessli-tech/horizon-flutter.git"
     source: git
     version: "0.0.1"
