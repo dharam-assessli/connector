@@ -1106,7 +1106,7 @@ packages:
     description:
       path: "."
       ref: main
-      resolved-ref: f50b7c84581f3143c42f8260f9670fda26330521
+      resolved-ref: "434e9ed07265ab844b0841ab4fe17c200691c860"
       url: "https://github.com/Assessli-tech/horizon-flutter.git"
     source: git
     version: "1.0.0+1"
@@ -1818,8 +1818,8 @@ packages:
     dependency: transitive
     description:
       path: "packages/screen_time_plugin"
-      ref: f50b7c84581f3143c42f8260f9670fda26330521
-      resolved-ref: f50b7c84581f3143c42f8260f9670fda26330521
+      ref: "434e9ed07265ab844b0841ab4fe17c200691c860"
+      resolved-ref: "434e9ed07265ab844b0841ab4fe17c200691c860"
       url: "https://github.com/Assessli-tech/horizon-flutter.git"
     source: git
     version: "0.0.1"

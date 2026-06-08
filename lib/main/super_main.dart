@@ -10,6 +10,8 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:get/get.dart";
+import "package:horizon/automations/continuous_automations/sensors_data_automation.dart"
+    as sensors_data_automation;
 import "package:horizon/observer/observer.dart";
 import "package:horizon/services/languages_service.dart";
 import "package:horizon/utils/bottom_sheets/gradient_sheet.dart";
@@ -37,6 +39,8 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
     WidgetsBinding.instance.addPostFrameCallback((Duration duration) async {
       await applySystemUI();
+
+      sensors_data_automation.startTimer();
     });
   }
 
@@ -51,7 +55,11 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   Future<void> didChangeAppLifecycleState(AppLifecycleState state) async {
     super.didChangeAppLifecycleState(state);
 
-    (state == AppLifecycleState.resumed) ? await applySystemUI() : (() {})();
+    if (state == AppLifecycleState.resumed) {
+      await applySystemUI();
+
+      sensors_data_automation.startTimer();
+    }
   }
 
   @override
@@ -59,6 +67,8 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     super.didChangePlatformBrightness();
 
     await applySystemUI();
+
+    sensors_data_automation.startTimer();
   }
 
   @override

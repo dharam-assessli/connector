@@ -94,7 +94,6 @@ class ManualSyncScreen extends GetView<ManualSyncController> {
               const SizedBox(height: 16),
               Row(
                 mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Expanded(
                     child: CustomContainer(
@@ -104,13 +103,34 @@ class ManualSyncScreen extends GetView<ManualSyncController> {
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Icon(Icons.sync, size: 16.0),
-                          SizedBox(width: 8),
-                          CustomText(
-                            data: "Location",
-                            style: TextStyle(fontSize: 12.0),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
+                          Flexible(
+                            child: CustomText(
+                              data: "Location",
+                              style: TextStyle(fontSize: 12.0),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: CustomContainer(
+                      padding: const EdgeInsets.all(16),
+                      onTap: controller.syncSensorsData,
+                      child: const Row(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Flexible(
+                            child: CustomText(
+                              data: "Sensors",
+                              style: TextStyle(fontSize: 12.0),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
                           ),
                         ],
                       ),
@@ -125,13 +145,13 @@ class ManualSyncScreen extends GetView<ManualSyncController> {
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Icon(Icons.sync, size: 16.0),
-                          SizedBox(width: 8),
-                          CustomText(
-                            data: "Health",
-                            style: TextStyle(fontSize: 12.0),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
+                          Flexible(
+                            child: CustomText(
+                              data: "Health",
+                              style: TextStyle(fontSize: 12.0),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
                           ),
                         ],
                       ),
@@ -147,13 +167,13 @@ class ManualSyncScreen extends GetView<ManualSyncController> {
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Icon(Icons.sync, size: 16.0),
-                            SizedBox(width: 8),
-                            CustomText(
-                              data: "Screen",
-                              style: TextStyle(fontSize: 12.0),
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
+                            Flexible(
+                              child: CustomText(
+                                data: "Screen",
+                                style: TextStyle(fontSize: 12.0),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
                             ),
                           ],
                         ),

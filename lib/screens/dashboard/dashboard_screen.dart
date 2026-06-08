@@ -1,3 +1,5 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 import "package:connector/constants/images_constants.dart";
 import "package:connector/controllers/dashboard/dashboard_controller.dart";
 import "package:connector/utils/bottom_nav_bg_selector.dart";
@@ -37,19 +39,24 @@ class DashboardScreen extends GetView<DashboardController> {
 
     final bool isDark = Theme.of(context).brightness == Brightness.dark;
 
-    return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: appBar(context),
-      body: Obx(() {
-        return AnimatedGradient(
-          type: BottomNavBgSelector().type,
-          child: SafeArea(child: body(context)),
-        );
-      }),
-      // bottomNavigationBar: SafeArea(child: bottomNavigationBar(context)),
-      backgroundColor: isDark
-          ? dataLight.textTheme.bodyMedium?.color
-          : dataDark.textTheme.bodyMedium?.color,
+    return GetBuilder<DashboardController>(
+      init: controller,
+      builder: (DashboardController controller) {
+        return Obx(() {
+          return Scaffold(
+            extendBodyBehindAppBar: true,
+            appBar: appBar(context),
+            body: AnimatedGradient(
+              type: BottomNavBgSelector().type,
+              child: SafeArea(child: body(context)),
+            ),
+            // bottomNavigationBar: SafeArea(child: bottomNavigationBar(context)),
+            backgroundColor: isDark
+                ? dataLight.textTheme.bodyMedium?.color
+                : dataDark.textTheme.bodyMedium?.color,
+          );
+        });
+      },
     );
   }
 
@@ -65,7 +72,7 @@ class DashboardScreen extends GetView<DashboardController> {
           children: <Widget>[
             Flexible(
               child: CustomText(
-                data: "${LanguagesUtil().hi} ${controller.firstName}",
+                data: "${LanguagesUtil().hi} ${controller.firstName.value}",
                 style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
@@ -114,6 +121,8 @@ class DashboardScreen extends GetView<DashboardController> {
             final Map<String, dynamic> arguments = <String, dynamic>{};
 
             await NavigationService().pushNamed(route, arguments: arguments);
+
+            controller.update();
           },
           data: const Icon(Icons.settings_outlined),
         ),
@@ -126,7 +135,6 @@ class DashboardScreen extends GetView<DashboardController> {
       children: <Widget>[
         Positioned.fill(child: customPageView(context)),
 
-        //
         // Only show on Home tab
         if (controller.rxIndex.value == 0)
           Positioned.fill(
@@ -166,139 +174,133 @@ class DashboardScreen extends GetView<DashboardController> {
 
   // New
   Widget customPageView(BuildContext context) {
-    return Obx(() {
-      return IndexedStack(
-        index: controller.rxIndex.value,
-        children: controller.getViews,
-      );
-    });
+    return IndexedStack(
+      index: controller.rxIndex.value,
+      children: controller.getViews,
+    );
   }
 
   Widget bottomNavigationBar(BuildContext context) {
-    return Obx(() {
-      return Stack(
-        clipBehavior: Clip.none,
-        children: <Widget>[
-          Positioned(
-            child: CustomContainer(
-              borderRadius: BorderRadius.circular(100),
-              padding: const EdgeInsets.all(8),
-              margin: const EdgeInsets.only(left: 8, right: 8),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: List<Widget>.generate(controller.tabWidgets.length, (
-                  int index,
-                ) {
-                  final InkWell child = InkWell(
-                    borderRadius: BorderRadius.circular(100),
-                    onTap: () async {
-                      await controller.updateIndex(index: index, animate: true);
-                    },
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: <Widget>[
-                        const SizedBox(height: 8),
-                        Visibility(
-                          visible: controller.rxIndex.value != index,
-                          maintainSize: true,
-                          maintainAnimation: true,
-                          maintainState: true,
-                          child: controller.tabWidgets[index].icon,
-                        ),
-                        CustomText(
-                          data: controller.tabWidgets[index].label ?? "",
-                          style: const TextStyle(fontSize: 10),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        const SizedBox(height: 8),
-                      ],
-                    ),
-                  );
-
-                  final StatelessWidget menu = index == 2
-                      ? PieMenu(
-                          theme: PieTheme(
-                            brightness: ThemeDataUtil().brightness,
-                          ),
-                          onPressed: () {},
-                          actions: <PieAction>[
-                            PieAction(
-                              tooltip: const SizedBox(),
-                              onSelect: () {},
-                              child: const Icon(Icons.camera),
-                            ),
-                          ],
-                          child: child,
-                        )
-                      : child;
-
-                  return Expanded(
-                    child: controller.rxIndex.value == index ? menu : menu,
-                  );
-                }),
-              ),
-            ),
-          ),
-
-          Positioned(
-            top: -8,
-            left: 24,
-            right: 24,
+    return Stack(
+      clipBehavior: Clip.none,
+      children: <Widget>[
+        Positioned(
+          child: CustomContainer(
+            borderRadius: BorderRadius.circular(100),
+            padding: const EdgeInsets.all(8),
+            margin: const EdgeInsets.only(left: 8, right: 8),
             child: Row(
+              mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: List<Widget>.generate(controller.tabWidgets.length, (
                 int index,
               ) {
-                final bool isSelected = controller.rxIndex.value == index;
+                final InkWell child = InkWell(
+                  borderRadius: BorderRadius.circular(100),
+                  onTap: () async {
+                    await controller.updateIndex(index: index, animate: true);
+                  },
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: <Widget>[
+                      const SizedBox(height: 8),
+                      Visibility(
+                        visible: controller.rxIndex.value != index,
+                        maintainSize: true,
+                        maintainAnimation: true,
+                        maintainState: true,
+                        child: controller.tabWidgets[index].icon,
+                      ),
+                      CustomText(
+                        data: controller.tabWidgets[index].label ?? "",
+                        style: const TextStyle(fontSize: 10),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      const SizedBox(height: 8),
+                    ],
+                  ),
+                );
+
+                final StatelessWidget menu = index == 2
+                    ? PieMenu(
+                        theme: PieTheme(brightness: ThemeDataUtil().brightness),
+                        onPressed: () {},
+                        actions: <PieAction>[
+                          PieAction(
+                            tooltip: const SizedBox(),
+                            onSelect: () {},
+                            child: const Icon(Icons.camera),
+                          ),
+                        ],
+                        child: child,
+                      )
+                    : child;
 
                 return Expanded(
-                  child: Center(
-                    child: AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 320),
-                      switchInCurve: Curves.easeOutCubic,
-                      switchOutCurve: Curves.easeInCubic,
-                      transitionBuilder:
-                          (Widget child, Animation<double> animation) {
-                            return FadeTransition(
-                              opacity: animation,
-                              child: SlideTransition(
-                                position: Tween<Offset>(
-                                  begin: const Offset(0, 0.4),
-                                  end: Offset.zero,
-                                ).animate(animation),
-                                child: child,
-                              ),
-                            );
-                          },
-                      child: isSelected
-                          ? Card.outlined(
-                              key: ValueKey<int>(index),
-                              color: Theme.of(context).scaffoldBackgroundColor,
-                              shape: OvalBorder(
-                                side: BorderSide(
-                                  color: Theme.of(context).hintColor,
-                                  width: 0,
-                                ),
-                              ),
-                              margin: EdgeInsets.zero,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: controller.tabWidgets[index].icon,
-                              ),
-                            )
-                          : const SizedBox.shrink(),
-                    ),
-                  ),
+                  child: controller.rxIndex.value == index ? menu : menu,
                 );
               }),
             ),
           ),
-        ],
-      );
-    });
+        ),
+
+        Positioned(
+          top: -8,
+          left: 24,
+          right: 24,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: List<Widget>.generate(controller.tabWidgets.length, (
+              int index,
+            ) {
+              final bool isSelected = controller.rxIndex.value == index;
+
+              return Expanded(
+                child: Center(
+                  child: AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 320),
+                    switchInCurve: Curves.easeOutCubic,
+                    switchOutCurve: Curves.easeInCubic,
+                    transitionBuilder:
+                        (Widget child, Animation<double> animation) {
+                          return FadeTransition(
+                            opacity: animation,
+                            child: SlideTransition(
+                              position: Tween<Offset>(
+                                begin: const Offset(0, 0.4),
+                                end: Offset.zero,
+                              ).animate(animation),
+                              child: child,
+                            ),
+                          );
+                        },
+                    child: isSelected
+                        ? Card.outlined(
+                            key: ValueKey<int>(index),
+                            color: Theme.of(context).scaffoldBackgroundColor,
+                            shape: OvalBorder(
+                              side: BorderSide(
+                                color: Theme.of(context).hintColor,
+                                width: 0,
+                              ),
+                            ),
+                            margin: EdgeInsets.zero,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: controller.tabWidgets[index].icon,
+                            ),
+                          )
+                        : const SizedBox.shrink(),
+                  ),
+                ),
+              );
+            }),
+          ),
+        ),
+      ],
+    );
   }
 }

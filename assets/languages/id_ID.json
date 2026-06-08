@@ -10,6 +10,9 @@
     "introLocationHeadingBG": "Akses lokasi latar belakang memungkinkan Dotsin memantau pola mobilitas dan rutinitas secara berkelanjutan untuk memberikan wawasan perilaku yang akurat meski aplikasi tidak digunakan.",
     "introLocationTopDescriptionBG": "• Memantau pola pergerakan dan rutinitas secara berkelanjutan.\n• Mendeteksi transisi tempat dan pola perjalanan secara real time.\n• Menjaga konteks perilaku tanpa gangguan sepanjang hari.",
     "introLocationBtmDescriptionBG": "• Foreground: Menampilkan wawasan lokasi secara langsung.\n• Background: Melacak pergerakan secara berkelanjutan untuk analisis perilaku tanpa gangguan.\n• Terminated: Pembaruan lokasi terbatas dapat terjadi tergantung pada batasan OS.",
+    "introSensorHeading": "Data sensor digunakan untuk memahami pergerakan, aktivitas fisik, orientasi perangkat, konteks lingkungan, dan pola perilaku yang mendukung fitur analitik, pengenalan aktivitas, wawasan kesehatan, dan kecerdasan perilaku Dotsin. Sensor-sensor ini memberikan informasi kontekstual yang melengkapi data Kesehatan, Lokasi, dan Waktu Layar, memungkinkan wawasan yang lebih akurat dan bermakna sekaligus meningkatkan kualitas sinkronisasi dan deteksi kejadian.",
+    "introSensorTopDescription": "• Mendeteksi dan mengklasifikasikan aktivitas fisik dan pola pergerakan.\n• Meningkatkan akurasi wawasan perilaku dan kesehatan.\n• Menghubungkan pergerakan fisik dengan sinyal kesehatan, lokasi, dan waktu layar.",
+    "introSensorBtmDescription": "• Latar Depan: Data sensor digunakan untuk memberikan wawasan aktivitas, pergerakan, lingkungan, dan perilaku secara real-time saat pengguna aktif menggunakan aplikasi.\n• Latar Belakang: Data sensor digunakan untuk menjaga kesinambungan pengenalan aktivitas dan analisis perilaku saat aplikasi tidak terlihat.\n• Dihentikan: Mendukung sinkronisasi latar belakang yang disetujui untuk menjaga kesinambungan aktivitas dan analitik perilaku.",
     "introHealthHeading": "Data kesehatan memungkinkan Dotsin mengkorelasikan kesejahteraan fisik dengan pola perilaku, membantu pengguna memahami hubungan antara aktivitas, pemulihan, kesehatan, dan kinerja harian.",
     "introHealthTopDescription": "• Mengakses metrik aktivitas, kebugaran, tidur, dan kesehatan.\n• Menghasilkan wawasan kesehatan yang dipersonalisasi.\n• Mengidentifikasi tren antara kesejahteraan fisik dan perilaku.\n• Menyediakan tampilan kesehatan dan perilaku yang terpadu.",
     "introHealthBtmDescription": "• Foreground: Menampilkan metrik dan wawasan kesehatan terkini.\n• Background: Menyinkronkan catatan kesehatan dan data sensor.\n• Terminated: Memproses pembaruan kesehatan terjadwal dan menjaga kesinambungan analitik jangka panjang.",
@@ -202,5 +205,6 @@
     "batteryOptimization": "Pengecualian Optimasi Baterai",
     "corePurpose": "Tujuan Inti",
     "whyItIsRequired": "Mengapa Ini Dibutuhkan",
-    "appStates": "Status Aplikasi"
+    "appStates": "Status Aplikasi",
+    "sensors": "Sensors"
 }

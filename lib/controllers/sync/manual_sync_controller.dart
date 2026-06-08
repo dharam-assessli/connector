@@ -9,9 +9,11 @@ import "package:horizon/automations/manual_automations/location_data_automation_
     as location_data_automation_2;
 import "package:horizon/automations/manual_automations/screen_data_automation.dart"
     as screen_data_automation;
+// import "package:uuid/uuid.dart";
+import "package:horizon/automations/manual_automations/sensors_data_automation.dart"
+    as sensors_data_automation;
 import "package:horizon/models/connector/get_health.dart";
 import "package:horizon/models/connector/get_screen.dart";
-// import "package:uuid/uuid.dart";
 
 class ManualSyncController extends GetxController {
   final Rx<DateTime> rxStrDateTime = DateTime(
@@ -35,9 +37,7 @@ class ManualSyncController extends GetxController {
 
   Future<void> syncLocationData() async {
     try {
-      // Type 1
       await location_data_automation.startAutomation();
-      // Type 2
       await location_data_automation_2.startAutomation();
     } on Object catch (error, stackTrace) {
       log("Exception", error: error, stackTrace: stackTrace);
@@ -75,6 +75,16 @@ class ManualSyncController extends GetxController {
       );
 
       await screen_data_automation.startAutomation(get: get);
+    } on Object catch (error, stackTrace) {
+      log("Exception", error: error, stackTrace: stackTrace);
+    } finally {}
+
+    return Future<void>.value();
+  }
+
+  Future<void> syncSensorsData() async {
+    try {
+      await sensors_data_automation.startAutomation();
     } on Object catch (error, stackTrace) {
       log("Exception", error: error, stackTrace: stackTrace);
     } finally {}

@@ -98,7 +98,7 @@ class DashboardController extends GetxController {
     return Future<void>.value();
   }
 
-  String get firstName {
-    return AuthDBService().user.firstName ?? "";
+  RxString get firstName {
+    return (AuthDBService().user.firstName ?? "").obs;
   }
 }

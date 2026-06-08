@@ -10,6 +10,9 @@
     "introLocationHeadingBG": "Background location access allows Dotsin to continuously monitor mobility patterns and routines to deliver accurate behavioral insights even when the app is not in use.",
     "introLocationTopDescriptionBG": "• Continuously monitor movement patterns and routines.\n• Detect place transitions and travel patterns in real time.\n• Maintain uninterrupted behavioral context throughout the day.",
     "introLocationBtmDescriptionBG": "• Foreground: Display live location-aware insights.\n• Background: Continuously track movement for uninterrupted behavioral analysis.\n• Terminated: Limited location updates may occur depending on OS restrictions.",
+    "introSensorHeading": "Sensor data is used to understand movement, physical activity, device orientation, environmental context, and behavioral patterns that help power Dotsin's analytics, activity recognition, wellbeing insights, and behavioral intelligence features. These sensors provide contextual information that complements Health, Location, and Screen Time data, enabling more accurate and meaningful insights while improving synchronization quality and event detection.",
+    "introSensorTopDescription": "• Detect and classify physical activity and movement patterns.\n• Improve accuracy of behavioral and wellness insights.\n• Correlate physical movement with health, location, and screen-time signals.",
+    "introSensorBtmDescription": "• Foreground: Sensor data is used to provide real-time activity, movement, environmental, and behavioral insights while the user is actively using the application.\n• Background: Sensor data is used to maintain continuity of activity recognition and behavioral analysis when the application is not visible.\n• Terminated: Supports approved background synchronization to maintain continuity of activity and behavioral analytics.",
     "introHealthHeading": "Health data enables Dotsin to correlate physical wellbeing with behavioral patterns, helping users understand the relationship between activity, recovery, health, and daily performance.",
     "introHealthTopDescription": "• Access activity, fitness, sleep, and wellness metrics.\n• Generate personalized health insights.\n• Identify trends between physical wellbeing and behavior.\n• Provide a unified health and behavioral view.",
     "introHealthBtmDescription": "• Foreground: Display current health metrics and insights.\n• Background: Synchronize health records and sensor data.\n• Terminated: Process scheduled health updates and maintain continuity of long-term analytics.",
@@ -202,5 +205,6 @@
     "batteryOptimization": "Battery Optimization Exemption",
     "corePurpose": "Core Purpose",
     "whyItIsRequired": "Why It Is Required",
-    "appStates": "App States"
+    "appStates": "App States",
+    "sensors": "Sensors"
 }

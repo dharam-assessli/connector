@@ -13,17 +13,21 @@ import "package:horizon/services/location_service.dart";
 import "package:horizon/services/navigation_service.dart";
 import "package:horizon/services/permission_service.dart";
 import "package:horizon/services/screen_time_service.dart";
+import "package:horizon/services/sensors_service.dart";
 import "package:permission_handler/permission_handler.dart";
+
 
 // enum for permission types to manage the different permissions in a structured way
 enum PermissionType {
   locationForeground,
   locationBackground,
+  sensors,
   health,
   notification,
   screenTime,
   batteryOptimization,
 }
+//
 
 class GatherPermissionsController extends GetxController {
   final PageController pageController = PageController();
@@ -32,6 +36,7 @@ class GatherPermissionsController extends GetxController {
 
   final RxBool isLocationForegroundPermissionGranted = false.obs;
   final RxBool isLocationBackgroundPermissionGranted = false.obs;
+  final RxBool isSensorsPermissionGranted = false.obs;
   final RxBool isHealthPermissionGranted = false.obs;
   final RxBool isNotificationPermissionGranted = false.obs;
   final RxBool isScreenTimePermissionGranted = false.obs;
@@ -39,6 +44,7 @@ class GatherPermissionsController extends GetxController {
 
   final RxBool hasRequestedLocationForegroundPermission = false.obs;
   final RxBool hasRequestedLocationBackgroundPermission = false.obs;
+  final RxBool hasRequestedSensorsPermission = false.obs;
   final RxBool hasRequestedHealthPermission = false.obs;
   final RxBool hasRequestedNotificationPermission = false.obs;
   final RxBool hasRequestedScreenTimePermission = false.obs;
@@ -75,6 +81,27 @@ class GatherPermissionsController extends GetxController {
       isLocationBackgroundPermissionGranted.value =
           await checkLocationBackgroundPermission(request: true);
       hasRequestedLocationBackgroundPermission.value = true;
+    } on Object catch (error, stackTrace) {
+      log("Exception", error: error, stackTrace: stackTrace);
+    }
+
+    return Future<void>.value();
+  }
+
+  Future<void> requestSensorsPermission() async {
+    try {
+      if (hasRequestedSensorsPermission.value) {
+        await openSensorsPermission();
+        isSensorsPermissionGranted.value = await checkSensorsPermission(
+          request: false,
+        );
+        return;
+      }
+
+      isSensorsPermissionGranted.value = await checkSensorsPermission(
+        request: true,
+      );
+      hasRequestedSensorsPermission.value = true;
     } on Object catch (error, stackTrace) {
       log("Exception", error: error, stackTrace: stackTrace);
     }
@@ -216,6 +243,26 @@ class GatherPermissionsController extends GetxController {
       }
 
       value = condition1 && condition2;
+    } on Object catch (error, stackTrace) {
+      log("Exception", error: error, stackTrace: stackTrace);
+    } finally {}
+
+    return Future<bool>.value(value);
+  }
+
+  Future<bool> checkSensorsPermission({required bool request}) async {
+    bool value = false;
+
+    try {
+      final bool condition = await SensorsService().checkPermissions(
+        request: request,
+      );
+      if (!condition) {
+        // SnackBarUtil().show("Sensors permission is not granted.");
+        return Future<bool>.value(value);
+      }
+
+      value = condition;
     } on Object catch (error, stackTrace) {
       log("Exception", error: error, stackTrace: stackTrace);
     } finally {}
@@ -392,6 +439,23 @@ class GatherPermissionsController extends GetxController {
     return Future<void>.value();
   }
 
+  Future<void> openSensorsPermission() async {
+    try {
+      final bool condition = await SensorsService().checkPermissions(
+        request: false,
+      );
+      if (!condition) {
+        // SnackBarUtil().show("Opening app settings");
+        await PermissionService().openAppSettings();
+        return Future<void>.value();
+      }
+    } on Object catch (error, stackTrace) {
+      log("Exception", error: error, stackTrace: stackTrace);
+    } finally {}
+
+    return Future<void>.value();
+  }
+
   Future<void> openHealthPermission() async {
     try {
       final bool condition1 = await HealthService().sdkAvailable();
@@ -500,6 +564,7 @@ class GatherPermissionsController extends GetxController {
         ? <PermissionType>[
             PermissionType.locationForeground,
             PermissionType.locationBackground,
+            PermissionType.sensors,
             PermissionType.health,
             PermissionType.notification,
             PermissionType.screenTime,
@@ -509,6 +574,7 @@ class GatherPermissionsController extends GetxController {
         ? <PermissionType>[
             PermissionType.locationForeground,
             PermissionType.locationBackground,
+            PermissionType.sensors,
             PermissionType.health,
             PermissionType.notification,
           ]
@@ -522,12 +588,14 @@ class GatherPermissionsController extends GetxController {
       case 1:
         return Icons.location_on_outlined;
       case 2:
-        return Icons.favorite_border;
+        return Icons.sensors_outlined;
       case 3:
-        return Icons.notifications_outlined;
+        return Icons.favorite_border;
       case 4:
-        return Icons.hourglass_empty_outlined;
+        return Icons.notifications_outlined;
       case 5:
+        return Icons.hourglass_empty_outlined;
+      case 6:
         return Icons.battery_5_bar_outlined;
       default:
         return Icons.error_outline;
@@ -542,12 +610,14 @@ class GatherPermissionsController extends GetxController {
       case 1:
         return LanguagesUtil().locationInBackground;
       case 2:
-        return LanguagesUtil().healthData;
+        return LanguagesUtil().sensors;
       case 3:
-        return LanguagesUtil().notification;
+        return LanguagesUtil().healthData;
       case 4:
-        return LanguagesUtil().screenTimeData;
+        return LanguagesUtil().notification;
       case 5:
+        return LanguagesUtil().screenTimeData;
+      case 6:
         return LanguagesUtil().batteryOptimization;
       default:
         return "";
@@ -561,12 +631,14 @@ class GatherPermissionsController extends GetxController {
       case 1:
         return LanguagesUtil().introLocationHeadingBG;
       case 2:
-        return LanguagesUtil().introHealthHeading;
+        return LanguagesUtil().introSensorHeading;
       case 3:
-        return LanguagesUtil().introNotificationHeading;
+        return LanguagesUtil().introHealthHeading;
       case 4:
-        return LanguagesUtil().introScreenHeading;
+        return LanguagesUtil().introNotificationHeading;
       case 5:
+        return LanguagesUtil().introScreenHeading;
+      case 6:
         return LanguagesUtil().introBatteryHeading;
       default:
         return "";
@@ -580,12 +652,14 @@ class GatherPermissionsController extends GetxController {
       case 1:
         return LanguagesUtil().introLocationTopDescriptionBG;
       case 2:
-        return LanguagesUtil().introHealthTopDescription;
+        return LanguagesUtil().introSensorTopDescription;
       case 3:
-        return LanguagesUtil().introNotificationTopDescription;
+        return LanguagesUtil().introHealthTopDescription;
       case 4:
-        return LanguagesUtil().introScreenTopDescription;
+        return LanguagesUtil().introNotificationTopDescription;
       case 5:
+        return LanguagesUtil().introScreenTopDescription;
+      case 6:
         return LanguagesUtil().introBatteryTopDescription;
       default:
         return "";
@@ -599,12 +673,14 @@ class GatherPermissionsController extends GetxController {
       case 1:
         return LanguagesUtil().introLocationBtmDescriptionBG;
       case 2:
-        return LanguagesUtil().introHealthBtmDescription;
+        return LanguagesUtil().introSensorBtmDescription;
       case 3:
-        return LanguagesUtil().introNotificationBtmDescription;
+        return LanguagesUtil().introHealthBtmDescription;
       case 4:
-        return LanguagesUtil().introScreenBtmDescription;
+        return LanguagesUtil().introNotificationBtmDescription;
       case 5:
+        return LanguagesUtil().introScreenBtmDescription;
+      case 6:
         return LanguagesUtil().introBatteryBtmDescription;
       default:
         return "";
@@ -628,21 +704,26 @@ class GatherPermissionsController extends GetxController {
           break;
 
         case 2:
-          await requestHealthPermission();
+          await requestSensorsPermission();
           await nextPage();
           break;
 
         case 3:
-          await requestNotificationPermission();
+          await requestHealthPermission();
           await nextPage();
           break;
 
         case 4:
-          await requestScreenTimePermission();
+          await requestNotificationPermission();
           await nextPage();
           break;
 
         case 5:
+          await requestScreenTimePermission();
+          await nextPage();
+          break;
+
+        case 6:
           await requestBatteryOptimizationPermission();
           await navigate();
           break;
@@ -666,11 +747,16 @@ class GatherPermissionsController extends GetxController {
           break;
 
         case 2:
-          await requestHealthPermission();
+          await requestSensorsPermission();
           await nextPage();
           break;
 
         case 3:
+          await requestHealthPermission();
+          await nextPage();
+          break;
+
+        case 4:
           await requestNotificationPermission();
           await navigate();
           break;

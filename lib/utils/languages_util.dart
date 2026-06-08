@@ -23,6 +23,9 @@ class LanguagesUtil {
       "introLocationTopDescriptionBG".tr;
   String get introLocationBtmDescriptionBG =>
       "introLocationBtmDescriptionBG".tr;
+  String get introSensorHeading => "introSensorHeading".tr;
+  String get introSensorTopDescription => "introSensorTopDescription".tr;
+  String get introSensorBtmDescription => "introSensorBtmDescription".tr;
   String get introHealthHeading => "introHealthHeading".tr;
   String get introHealthTopDescription => "introHealthTopDescription".tr;
   String get introHealthBtmDescription => "introHealthBtmDescription".tr;
@@ -219,4 +222,5 @@ class LanguagesUtil {
   String get corePurpose => "corePurpose".tr;
   String get whyItIsRequired => "whyItIsRequired".tr;
   String get appStates => "appStates".tr;
+  String get sensors => "sensors".tr;
 }
