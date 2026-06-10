@@ -297,6 +297,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.0"
+  contribution_heatmap:
+    dependency: transitive
+    description:
+      name: contribution_heatmap
+      sha256: cedfb14f058f17baf793f929fb6ed512cf0f36d316f2dbaf0754ef3c98cc1d4e
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.3"
   cross_file:
     dependency: transitive
     description:
@@ -754,34 +762,42 @@ packages:
     dependency: transitive
     description:
       name: flutter_local_notifications
-      sha256: "0d9035862236fe38250fe1644d7ed3b8254e34a21b2c837c9f539fbb3bba5ef1"
+      sha256: be38e3854d2baabcda8e16966a5fe8748cebb655bb94701494da0f052c2fc352
       url: "https://pub.dev"
     source: hosted
-    version: "21.0.0"
+    version: "22.0.0"
   flutter_local_notifications_linux:
     dependency: transitive
     description:
       name: flutter_local_notifications_linux
-      sha256: e0f25e243c6c44c825bbbc6b2b2e76f7d9222362adcfe9fd780bf01923c840bd
+      sha256: "9ca97e63776f29ab1b955725c09999fc2c150523269db150c39274f2a43c5a8b"
       url: "https://pub.dev"
     source: hosted
-    version: "8.0.0"
+    version: "8.0.1"
   flutter_local_notifications_platform_interface:
     dependency: transitive
     description:
       name: flutter_local_notifications_platform_interface
-      sha256: e7db3d5b49c2b7ecc68deba4aaaa67a348f92ee0fef34c8e4b4459dbef0d7307
+      sha256: ff0013eae795e8dc8fad4a8992a209e64d3ba2fbd8bf5e43c36bf448f95bd814
       url: "https://pub.dev"
     source: hosted
-    version: "11.0.0"
+    version: "12.0.0"
+  flutter_local_notifications_web:
+    dependency: transitive
+    description:
+      name: flutter_local_notifications_web
+      sha256: "516afaf97a2d1e67a036c6617321b00d205d72f7a67b6eccf936cd565f985878"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   flutter_local_notifications_windows:
     dependency: transitive
     description:
       name: flutter_local_notifications_windows
-      sha256: "3a2654ba104fbb52c618ebed9def24ef270228470718c43b3a6afcd5c81bef0c"
+      sha256: "5aeed973a0c1480706784fad05c5c3a911335ebb561b2274b47fe80b375201e1"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0"
+    version: "3.1.0"
   flutter_localizations:
     dependency: "direct main"
     description: flutter
@@ -1106,7 +1122,7 @@ packages:
     description:
       path: "."
       ref: main
-      resolved-ref: "16bbaefc933c14c541cdf6a3dca9697a1336697f"
+      resolved-ref: "5cceec9b97253f999b43e9e8dfa9b887f9786f3a"
       url: "https://github.com/Assessli-tech/horizon-flutter.git"
     source: git
     version: "1.0.0+1"
@@ -1702,6 +1718,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.0"
+  radar_chart_plus:
+    dependency: transitive
+    description:
+      name: radar_chart_plus
+      sha256: a462a2f04522cca8dba135daabe782eeb2647a07c983f3ddbbd8de0c92541cca
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0"
   record:
     dependency: transitive
     description:
@@ -1818,8 +1842,8 @@ packages:
     dependency: transitive
     description:
       path: "packages/screen_time_plugin"
-      ref: "16bbaefc933c14c541cdf6a3dca9697a1336697f"
-      resolved-ref: "16bbaefc933c14c541cdf6a3dca9697a1336697f"
+      ref: "5cceec9b97253f999b43e9e8dfa9b887f9786f3a"
+      resolved-ref: "5cceec9b97253f999b43e9e8dfa9b887f9786f3a"
       url: "https://github.com/Assessli-tech/horizon-flutter.git"
     source: git
     version: "0.0.1"
@@ -2072,18 +2096,18 @@ packages:
     dependency: transitive
     description:
       name: syncfusion_flutter_core
-      sha256: fe25aa8cf709f8e10c17c6f36019dd98bffad4218d9402f3c990156408cfd941
+      sha256: "788020307d273fed25c2c8cb860d6e2fbe5cac18abb96819e66ca4e354c6a312"
       url: "https://pub.dev"
     source: hosted
-    version: "33.2.10"
+    version: "33.2.12"
   syncfusion_flutter_sliders:
     dependency: transitive
     description:
       name: syncfusion_flutter_sliders
-      sha256: "057fe0d59cd26f000d065d6b479cb80d150e9c34e9e8907c741d2ef294b824b6"
+      sha256: "1d746d15fc16e34b153d9db226f164c64fb2542d6cb252d04ddfefb8e10bb21b"
       url: "https://pub.dev"
     source: hosted
-    version: "33.2.10"
+    version: "33.2.12"
   synchronized:
     dependency: transitive
     description:

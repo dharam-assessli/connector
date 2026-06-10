@@ -557,7 +557,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-production";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 9M2B6NVYX2;
 				ENABLE_BITCODE = NO;
 				GOOGLE_CLIENT_ID = "153074686205-b4dd3ar94sb0tgd4fir7mvacj9trcjn8.apps.googleusercontent.com";
@@ -567,7 +567,7 @@
 					"@executable_path/Frameworks",
 				);
 				MAPS_API_KEY = "AIzaSyDf7k7tRdUZvGS0ehW-VB19kFwPxzQj5v0";
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 1.0.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.assessli.connector;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REVERSED_CLIENT_ID = "com.googleusercontent.apps.153074686205-b4dd3ar94sb0tgd4fir7mvacj9trcjn8";
@@ -697,7 +697,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-development";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 9M2B6NVYX2;
 				ENABLE_BITCODE = NO;
 				GOOGLE_CLIENT_ID = "799296776426-515pacq7e5u1cak96mobk6k68q1lhtel.apps.googleusercontent.com";
@@ -707,7 +707,7 @@
 					"@executable_path/Frameworks",
 				);
 				MAPS_API_KEY = "AIzaSyDf7k7tRdUZvGS0ehW-VB19kFwPxzQj5v0";
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 1.0.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.assessli.connector.development;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REVERSED_CLIENT_ID = "com.googleusercontent.apps.799296776426-515pacq7e5u1cak96mobk6k68q1lhtel";
@@ -801,7 +801,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-development";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 9M2B6NVYX2;
 				ENABLE_BITCODE = NO;
 				GOOGLE_CLIENT_ID = "799296776426-515pacq7e5u1cak96mobk6k68q1lhtel.apps.googleusercontent.com";
@@ -811,7 +811,7 @@
 					"@executable_path/Frameworks",
 				);
 				MAPS_API_KEY = "AIzaSyDf7k7tRdUZvGS0ehW-VB19kFwPxzQj5v0";
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 1.0.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.assessli.connector.development;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REVERSED_CLIENT_ID = "com.googleusercontent.apps.799296776426-515pacq7e5u1cak96mobk6k68q1lhtel";
@@ -904,7 +904,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-development";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 9M2B6NVYX2;
 				ENABLE_BITCODE = NO;
 				GOOGLE_CLIENT_ID = "799296776426-515pacq7e5u1cak96mobk6k68q1lhtel.apps.googleusercontent.com";
@@ -914,7 +914,7 @@
 					"@executable_path/Frameworks",
 				);
 				MAPS_API_KEY = "AIzaSyDf7k7tRdUZvGS0ehW-VB19kFwPxzQj5v0";
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 1.0.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.assessli.connector.development;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REVERSED_CLIENT_ID = "com.googleusercontent.apps.799296776426-515pacq7e5u1cak96mobk6k68q1lhtel";
@@ -1010,7 +1010,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-staging";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 9M2B6NVYX2;
 				ENABLE_BITCODE = NO;
 				GOOGLE_CLIENT_ID = "1047961685171-khp0r43j4efp7nnrqt2tmutafh7p2l4r.apps.googleusercontent.com";
@@ -1020,7 +1020,7 @@
 					"@executable_path/Frameworks",
 				);
 				MAPS_API_KEY = "AIzaSyDf7k7tRdUZvGS0ehW-VB19kFwPxzQj5v0";
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 1.0.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.assessli.connector.staging;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REVERSED_CLIENT_ID = "com.googleusercontent.apps.1047961685171-khp0r43j4efp7nnrqt2tmutafh7p2l4r";
@@ -1114,7 +1114,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-staging";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 9M2B6NVYX2;
 				ENABLE_BITCODE = NO;
 				GOOGLE_CLIENT_ID = "1047961685171-khp0r43j4efp7nnrqt2tmutafh7p2l4r.apps.googleusercontent.com";
@@ -1124,7 +1124,7 @@
 					"@executable_path/Frameworks",
 				);
 				MAPS_API_KEY = "AIzaSyDf7k7tRdUZvGS0ehW-VB19kFwPxzQj5v0";
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 1.0.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.assessli.connector.staging;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REVERSED_CLIENT_ID = "com.googleusercontent.apps.1047961685171-khp0r43j4efp7nnrqt2tmutafh7p2l4r";
@@ -1217,7 +1217,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-staging";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 9M2B6NVYX2;
 				ENABLE_BITCODE = NO;
 				GOOGLE_CLIENT_ID = "1047961685171-khp0r43j4efp7nnrqt2tmutafh7p2l4r.apps.googleusercontent.com";
@@ -1227,7 +1227,7 @@
 					"@executable_path/Frameworks",
 				);
 				MAPS_API_KEY = "AIzaSyDf7k7tRdUZvGS0ehW-VB19kFwPxzQj5v0";
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 1.0.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.assessli.connector.staging;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REVERSED_CLIENT_ID = "com.googleusercontent.apps.1047961685171-khp0r43j4efp7nnrqt2tmutafh7p2l4r";
@@ -1377,7 +1377,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-production";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 9M2B6NVYX2;
 				ENABLE_BITCODE = NO;
 				GOOGLE_CLIENT_ID = "153074686205-b4dd3ar94sb0tgd4fir7mvacj9trcjn8.apps.googleusercontent.com";
@@ -1387,7 +1387,7 @@
 					"@executable_path/Frameworks",
 				);
 				MAPS_API_KEY = "AIzaSyDf7k7tRdUZvGS0ehW-VB19kFwPxzQj5v0";
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 1.0.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.assessli.connector;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REVERSED_CLIENT_ID = "com.googleusercontent.apps.153074686205-b4dd3ar94sb0tgd4fir7mvacj9trcjn8";
@@ -1411,7 +1411,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-production";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 9M2B6NVYX2;
 				ENABLE_BITCODE = NO;
 				GOOGLE_CLIENT_ID = "153074686205-b4dd3ar94sb0tgd4fir7mvacj9trcjn8.apps.googleusercontent.com";
@@ -1421,7 +1421,7 @@
 					"@executable_path/Frameworks",
 				);
 				MAPS_API_KEY = "AIzaSyDf7k7tRdUZvGS0ehW-VB19kFwPxzQj5v0";
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 1.0.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.assessli.connector;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REVERSED_CLIENT_ID = "com.googleusercontent.apps.153074686205-b4dd3ar94sb0tgd4fir7mvacj9trcjn8";
