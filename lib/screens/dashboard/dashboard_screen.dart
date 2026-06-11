@@ -45,7 +45,7 @@ class DashboardScreen extends GetView<DashboardController> {
         return Obx(() {
           return Scaffold(
             extendBodyBehindAppBar: true,
-            appBar: appBar(context),
+            appBar: controller.rxIndex.value == 0 ? appBar(context) : null,
             body: AnimatedGradient(
               type: BottomNavBgSelector().type,
               child: SafeArea(child: body(context)),
