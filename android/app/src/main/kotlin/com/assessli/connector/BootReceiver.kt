@@ -72,7 +72,7 @@ class BootReceiver : BroadcastReceiver() {
         // Periodic task
         val periodicRequest = PeriodicWorkRequest.Builder(
             config.workerClass,
-            30, TimeUnit.MINUTES
+            15, TimeUnit.MINUTES
         )
             .setConstraints(constraints)
             .setInputData(workDataOf(config.dartTaskKey to "androidPeriodicTask"))
